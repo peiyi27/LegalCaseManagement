@@ -1,0 +1,138 @@
+/* Register.css */
+
+.register-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 720px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    margin: auto; /* Center the container on the page */
+    background: white;
+}
+
+.register-left-panel {
+    flex: 1; /* Assign flex to take up equal space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.logoRegister {
+    position:fixed;
+    top:5%; /* Adjust the top position as needed to control the vertical position */
+    left:19.5%; /* Adjust the left position as needed to control the horizontal position */
+    max-width: 50px; /* Set the maximum width for the logo */
+    border-radius: 20%; /* Space below the logo */
+}
+
+.register-left-panel h1 {
+    color: #3b3b3b;
+    font-size: 24px; /* Larger font size for readability */
+    text-align: center;
+    margin: 20px 0; /* Space above and below the title */
+}
+
+.register-left-panel img {
+    width: 100%; /* Responsive width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.register-right-panel {
+    flex: 1; /* Assign flex to take up equal space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.registerform {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+.register-form-title {
+    color: #3b3b3b;
+    margin-bottom: 20px;
+}
+
+.register-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #6c6c6c;
+}
+
+input[type="email"],
+input[type="password"],
+select {
+    width: 105%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 0; /* Square borders for the dropdown */
+    font-size: 16px;
+}
+
+.RegisterButton {
+    padding: 10px;
+    max-width: 105%;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #4C7BF3;
+    color: white;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.RegisterButton:hover {
+    background-color: #3658a4;
+}
+
+.register-text-center {
+    text-align: center;
+}
+
+.register-text-small {
+    font-size: 12px;
+    color: #888;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 960px) {
+    .register-container {
+        flex-direction: column;
+        width: auto;
+    }
+
+    .register-left-panel, .register-right-panel {
+        width: 100%;
+        padding: 40px 20px;
+    }
+
+    .registerform {
+        width: 100%;
+        max-width: none;
+        padding: 20px;
+    }
+}

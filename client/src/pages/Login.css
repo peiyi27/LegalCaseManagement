@@ -1,0 +1,160 @@
+/* General Styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #DFF2FF;
+  }
+  
+  /* Container for the entire login area */
+  .login-container {
+    width: 1000px;
+    height: 720px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    background: white;
+  }
+  
+  /* Left side of the login screen with branding */
+  .left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    /* Add any other styles you need for the left-panel */
+  }
+
+  /* Login.css */
+.logologin {
+    position:fixed;
+    top:0.5%; /* Adjust the top position as needed to control the vertical position */
+    left:16.5%; /* Adjust the left position as needed to control the horizontal position */
+    max-width: 50px; /* Set the maximum width for the logo */
+    border-radius: 20%;
+  }
+  
+  .left-panel h1 {
+    color: #3b3b3b;
+    font-size:20px;
+    margin-left: 20%;
+    margin-top: 1%;
+    text-align: center;
+  }
+  
+  .left-panel p {
+    color: #6c6c6c;
+    font-weight: bold;
+    margin-top: 3%;
+    margin-left: 20%;
+  }
+
+  .left-panel img {
+    width: 90%; /* Set the maximum width to 100% to fit the parent container */
+    height: auto; /* Automatically adjust the height to maintain aspect ratio */
+    margin-left: 55px;
+    margin-top: 40px;
+    justify-content: center;
+  }
+  
+  /* Right side of the login screen with form */
+  .right-panel {
+    flex-basis: 40%;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* Styling for the form and its elements */
+  form {
+    background: #ffffff;
+    padding: 70px 40px;
+
+    border-radius: 10px;
+    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+
+  }
+  
+  form h2 {
+    color: #3b3b3b;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #6c6c6c;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 99%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Styling for the buttons */
+  button {
+    padding: 10px;
+    max-width: 105%;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #4C7BF3;
+    color: white;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"] {
+    background-color: #4C7BF3;
+    color: white;
+    width: 107%;
+    font-size: 15px;
+  }
+  
+  
+  /* Utility and Miscellaneous Classes */
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-small {
+    font-size: 0.8em;
+  }
+  
+  .mt-20 {
+    margin-top: 20px;
+  }
+  
+  .mb-20 {
+    margin-bottom: 20px;
+    margin-left: 110px;
+    font-size: 15px;
+   
+  }
+  
+  /* Add responsiveness if needed */
+  @media (max-width: 960px) {
+    .login-container {
+      flex-direction: column;
+      width: auto;
+    }
+  
+    .left-panel, .right-panel {
+      flex-basis: auto;
+    }
+  }
+  
