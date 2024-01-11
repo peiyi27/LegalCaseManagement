@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import './Signup.css'; // Create a new CSS file for your Register page
 import legalRegisterLogo from './logo.png';
 import legalRegisterImage from './RegisterImage.jpg';
@@ -8,6 +8,7 @@ import legalRegisterImage from './RegisterImage.jpg';
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [role, setRole] = useState('');
   const [error, setError] = useState('');
 
@@ -17,12 +18,21 @@ function Register() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3001/register', { email, password, role });
+      const response = await axios.post('http://localhost:3001/register', {
+        email,
+        password,
+        role,
+        name,
+      });
       if (response.status === 200) {
         navigate('/login');
       }
     } catch (err) {
-      setError('Registration failed: User existed, please log in to the application.');
+      if (err.response && err.response.status === 400) {
+        setError(err.response.data); // Display the error message from the server
+      } else {
+        setError('Registration failed. Please try again later.');
+      }
     }
   };
 
@@ -30,12 +40,12 @@ function Register() {
     <div className="register-container">
       <div className="register-left-panel">
         <img src={legalRegisterLogo} alt="Legal Logo" className="logoRegister" />
-        <h1>Get Started with your Account </h1>
+        <h1>Get Started with your Account</h1>
         <img src={legalRegisterImage} alt="Legal Register Image" />
       </div>
       <div className="register-right-panel">
-        <form onSubmit={handleSubmit} className='registerform'>
-          <h2 className='register-form-title'>Create an account to get started...</h2>
+        <form onSubmit={handleSubmit} className="registerform">
+          <h2 className="register-form-title">Create an account to get started...</h2>
           <div>
             <label>Email:</label>
             <input
@@ -55,18 +65,34 @@ function Register() {
             />
           </div>
           <div>
+            <label>Name:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div>
             <label>Role:</label>
             <select value={role} onChange={(e) => setRole(e.target.value)} required>
               <option value="">Select Role</option>
               <option value="admin">Admin</option>
               <option value="user">User</option>
+              <option value="staff">Staff</option>
             </select>
           </div>
-          <button type="submit" className='RegisterButton'>Sign Up</button>
+          <button type="submit" className="RegisterButton">
+            Sign Up
+          </button>
           <div className="register-text-center">
-            <p>Already have an account? <Link to="/login">Sign In</Link></p>
+            <p>
+              Already have an account? <Link to="/login">Sign In</Link>
+            </p>
           </div>
-          {error && <p className="register-text-small text-center">{error}</p>}
+          {error && (
+            <p className="register-text-small text-center">{error}</p>
+          )}
         </form>
       </div>
     </div>
@@ -74,3 +100,5 @@ function Register() {
 }
 
 export default Register;
+
+

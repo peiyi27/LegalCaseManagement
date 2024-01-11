@@ -12,10 +12,13 @@ function Login() {
   const [role, setRole] = useState('');
 
   const navigate = useNavigate();
+  
+  axios.defaults.withCredentials = true;
 
   const handleForgotPasswordClick = () => {
     navigate('/ForgetPassword'); // Use a relative path, not a full URL
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,6 +68,7 @@ function Login() {
             <select value={role} onChange={(e) => setRole(e.target.value)} required>
               <option value="">Select Role</option>
               <option value="admin">Admin</option>
+              <option value="staff">Staff</option>
               <option value="user">User</option>
             </select>
           </div>

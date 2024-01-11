@@ -1,43 +1,79 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // You may need to install axios if you haven't already
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Make sure to install axios if not already installed
+import './ProfileSetting.css';
 import { useNavigate } from 'react-router-dom';
 
-function ProfileSettings() {
-    const navigate = useNavigate();
-  const [userData, setUserData] = useState({});
+const ProfileSettings = () => {
+  const navigate = useNavigate();
+  const [adminEmail, setAdminEmail] = useState('');
+  const [adminName, setAdminName] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  // useEffect(() => {
-  //   // Replace 'YOUR_SERVER_URL' with the actual URL of your server
-  //   axios.get('http://localhost:3001/profile-setting')
-  //     .then((response) => {
-  //       setUserData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching user data:', error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    // Assuming your server is running at http://localhost:3001
 
+    // Fetch admin email
+    axios.get('http://localhost:3001/profile-get-admin-email')
+      .then(response => {
+        const { success, adminEmail, message } = response.data;
 
+        if (success) {
+          setAdminEmail(adminEmail);
+        } else {
+          setError(message);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        setError('Internal Server Error');
+      });
+
+    // Fetch admin name
+    axios.get('http://localhost:3001/profile-get-admin-name')
+      .then(response => {
+        const { success, adminName, message } = response.data;
+
+        if (success) {
+          setAdminName(adminName);
+        } else {
+          setError(message);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        setError('Internal Server Error');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []); // Empty dependency array to run the effect only once when the component mounts
+
+  const handleEmailButtonClick = () => {
+    // Add the logic you want to perform when the email button is clicked
+    navigate('/UpdateEmail');
+  };
+
+  const handleNameButtonClick = () => {
+    // Add the logic you want to perform when the name button is clicked
+    navigate('/UpdateName');
+  };
 
   return (
-    <div className="profile-setting">
-      <div className="back-button-container" onClick={() => navigate('/home')}>
-        <FontAwesomeIcon icon={faArrowLeft} className="back-button-icon" />
-        <span>Back to Home</span>
-      </div>
-      <h1>Profile Settings</h1>
-      <div className="profile-info">
-      <div>
-        <strong>Email:</strong> {userData.email}
-      </div>
-      <div>
-        <strong>Role:</strong> {userData.role}
-      </div>
+    <div>
+      {loading && <p>Loading...</p>}
+      {!loading && error && <p>Error: {error}</p>}
+      {!loading && !error && (
+        <div>
+          <h2>Admin Name</h2>
+          <p>{adminName}</p>
+          <button onClick={handleNameButtonClick}>Update Name</button>
+          <h2>Admin Email</h2>
+          <p>{adminEmail}</p>
+          <button onClick={handleEmailButtonClick}>Update Email</button>
+        </div>
+      )}
     </div>
-         
-      </div>
   );
 };
 

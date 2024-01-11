@@ -1,25 +1,36 @@
-.profile-settings {
-  text-align: center;
-  margin: 20px;
+/* ProfileSetting.css */
+
+.profile-settings-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.update-profile {
-  text-align: center;
-  margin: 20px;
+.profile-details {
+  margin-top: 20px;
 }
 
-input {
-  width: 100%;
+h2 {
   margin-bottom: 10px;
-  padding: 5px;
+  font-size: 18px;
+}
+
+p {
+  margin-bottom: 15px;
 }
 
 button {
   background-color: #007bff;
   color: #fff;
+  padding: 8px 16px;
   border: none;
-  padding: 10px 20px;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
 }
 
 button:hover {

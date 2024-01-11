@@ -16,6 +16,12 @@ const HomePage = () => {
     navigate('/login');
   };
 
+   // Function to handle navigation to CreateCaseForm
+  const handleCreateCaseClick = () => {
+    // Navigate to the CreateCaseForm page
+    navigate('/CreateCaseForm');
+  };
+
   return (
     <div>
       <header className="home-top-nav">
@@ -40,7 +46,7 @@ const HomePage = () => {
           <ul>
             <li><a href="#dashboard">Dashboard</a></li>
             <li><a href="#clients">Clients</a></li>
-            <li><a href="#casematter">Case/Matter</a></li>
+            <li><a href="#casematter" onClick={handleCreateCaseClick}>Case/Matter</a></li>
             {/* ... other nav items */}
           </ul>
         </nav>

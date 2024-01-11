@@ -4,6 +4,10 @@ import Login from "./pages/Login";
 import ForgetPassword from "./pages/ForgetPassword";
 import Home from "./pages/Home";
 import ProfileSetting from "./pages/ProfileSetting";
+import CaseManagement from "./pages/CaseManagement";
+import CreateCaseForm from "./pages/CreateCaseForm";
+import UpdateEmail from "./pages/UpdateEmail";
+import UpdateName from "./pages/UpdateName";
 import Third from "./pages/Third";
 
 function App() {
@@ -16,6 +20,10 @@ function App() {
           <Route path="/ForgetPassword" element={<ForgetPassword/>} />
           <Route path="/Home" element={<Home/>} />
           <Route path="/ProfileSetting" element={<ProfileSetting/>} />
+          <Route path="/CaseManagement" element={<CaseManagement/>} />
+          <Route path="/CreateCaseForm" element={<CreateCaseForm/>} />
+          <Route path="/UpdateEmail" element={<UpdateEmail/>} />
+          <Route path="/UpdateName" element={<UpdateName/>} />
         </Routes>
       </BrowserRouter>
     </div>
