@@ -10,7 +10,7 @@ const port = 3001;
 
 app.use(cors({
   origin: ["http://localhost:3000"],
-  methods: ["POST", "GET"],
+  methods: ["POST", "GET",'PUT', 'DELETE'],
   credentials: true
 }));
 app.use(express.json());
@@ -454,6 +454,93 @@ app.get('/get-cases-staff', (req, res) => {
   });
 });
 
+app.get('/get-case-details/:caseId', (req, res) => {
+  const caseId = req.params.caseId;
+
+  // Log caseId to console for debugging
+  console.log('Case ID:', caseId);
+
+  // Fetch specific columns from the database for a particular case
+  const selectQuery = "SELECT * FROM `case` WHERE case_id = ?";
+
+  connection.query(selectQuery, [caseId], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else if (result.length === 0) {
+      // If no case is found with the given caseId, return a 404
+      return res.status(404).json({ success: false, message: 'Case not found' });
+    } else {
+      // Log the fetched data in the console
+      console.log('Fetched case details:', result[0]);
+
+      // Send the retrieved case details as a JSON response
+      return res.status(200).json({ success: true, caseData: result[0] });
+    }
+  });
+});
+
+app.post('/edit-case/:caseId', (req, res) => {
+  const caseId = req.params.caseId;
+  const {
+    caseName,
+    caseType,
+    caseStatus,
+    staffName,
+    client,
+    caseDetails,
+  } = req.body;
+
+  const updateQuery = `
+    UPDATE \`case\`
+    SET
+      case_name = ?,
+      case_type = ?,
+      case_status = ?,
+      staff_name = ?,
+      client_name = ?,
+      case_detail = ?
+    WHERE case_id = ?
+  `;
+
+  connection.query(
+    updateQuery,
+    [caseName, caseType, caseStatus, staffName, client, caseDetails, caseId],
+    (err, results) => {
+      if (err) {
+        console.error('Error updating case:', err);
+        return res.status(500).json({ success: false, message: 'Internal Server Error', error: err.message });
+      }
+
+      console.log('Case updated:', results);
+      return res.status(200).json({ success: true, message: 'Case updated successfully' });
+    }
+  );
+});
+
+
+// Delete a case by ID
+app.delete('/delete-case/:caseId', (req, res) => {
+  const { caseId } = req.params;
+
+  // Replace this with your database delete operation
+  // Example using MySQL
+  const deleteQuery = "DELETE FROM `case` WHERE case_id = ?";
+
+  connection.query(deleteQuery, [caseId], (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else {
+      // Check if any rows were affected
+      if (results.affectedRows > 0) {
+        return res.status(200).json({ success: true, message: 'Case deleted successfully' });
+      } else {
+        return res.status(404).json({ success: false, message: 'Case not found' });
+      }
+    }
+  });
+});
 
 
 
@@ -465,7 +552,6 @@ app.get('/', (req, res) => {
     return res.json({valid:false})
   };
 });*/
-
 
 
 // Main page after login

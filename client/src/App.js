@@ -8,6 +8,8 @@ import CaseManagement from "./pages/CaseManagement";
 import CreateCaseForm from "./pages/CreateCaseForm";
 import UpdateEmail from "./pages/UpdateEmail";
 import UpdateName from "./pages/UpdateName";
+import ViewCase from "./pages/ViewCase";
+import EditCase from "./pages/EditCase";
 import Third from "./pages/Third";
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path="/CreateCaseForm" element={<CreateCaseForm/>} />
           <Route path="/UpdateEmail" element={<UpdateEmail/>} />
           <Route path="/UpdateName" element={<UpdateName/>} />
+          <Route path="/ViewCase/:caseId" element={<ViewCase />} />
+          <Route path="/EditCase/:caseId" element={<EditCase />} />
         </Routes>
       </BrowserRouter>
     </div>
