@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser'
 
 const app = express();
 const port = 3001;
+
 app.use(cors({
   origin: ["http://localhost:3000"],
   methods: ["POST", "GET"],
@@ -35,6 +36,7 @@ const connection = mysql.createConnection({
   password: 'Fishyyy1#',
   database: 'legal',
 });
+
 
 connection.connect((err) => {
   if (err) throw err;
@@ -308,21 +310,6 @@ app.post('/create-case', (req, res) => {
 });
 
 
-app.get('/get-cases', (req, res) => {
-  // Fetch all cases from the database
-  const selectQuery = "SELECT * FROM case";
-
-  connection.query(selectQuery, (err, results) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ success: false, message: 'Internal Server Error' });
-    } else {
-      // Send the retrieved cases as a JSON response
-      return res.status(200).json({ success: true, cases: results });
-    }
-  });
-});
-
 
 // Logout route
 app.get('/logout', (req, res) => {
@@ -438,9 +425,32 @@ app.post('/update-admin-name', (req, res) => {
         console.error(updateErr);
         return res.status(500).json({ success: false, message: 'Internal Server Error' });
       }
-
+      console.log('User ID:', userId);
       return res.status(200).json({ success: true, message: 'Name updated successfully' });
     });
+  });
+});
+
+app.get('/get-cases-staff', (req, res) => {
+  const staffId = req.session.username;
+  
+  // Log staffId to console for debugging
+  console.log('Staff ID:', staffId);
+
+  // Fetch specific columns from the database
+  const selectQuery = "SELECT * FROM `case` WHERE staff_id = ?";
+
+  connection.query(selectQuery, [staffId], (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else {
+      // Log the fetched data in the console
+      console.log('Fetched cases:', results);
+
+      // Send the retrieved cases as a JSON response
+      return res.status(200).json({ success: true, cases: results });
+    }
   });
 });
 

@@ -19,7 +19,7 @@ const HomePage = () => {
    // Function to handle navigation to CreateCaseForm
   const handleCreateCaseClick = () => {
     // Navigate to the CreateCaseForm page
-    navigate('/CreateCaseForm');
+    navigate('/CaseManagement');
   };
 
   return (

@@ -3,13 +3,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CaseManagement.css';
+import { useNavigate } from 'react-router-dom';
 
 const CaseManagement = () => {
   const [cases, setCases] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch all cases from the server
-    axios.get('http://localhost:3001/get-cases')
+    axios.get('http://localhost:3001/get-cases-staff')
       .then(response => {
         console.log('Cases:', response.data.cases);
         setCases(response.data.cases);
@@ -17,9 +19,25 @@ const CaseManagement = () => {
       .catch(error => console.error('Error fetching cases:', error));
   }, []);
 
+  const handleCreateCaseClick = () => {
+    // Navigate to CreateCaseForm
+    navigate('/CreateCaseForm');
+  };
+
+  const handleBackClick = () => {
+    // Navigate to CreateCaseForm
+    navigate('/Home');
+  };
+
   return (
     <div className="case-management">
       <h2>Case Management</h2>
+      <button className="create-case-button" onClick={handleCreateCaseClick}>
+          Create Case
+        </button>
+       <button className="create-back-button" onClick={handleBackClick}>
+          Back
+        </button>
       {cases.length > 0 ? (
         <table>
           <thead>

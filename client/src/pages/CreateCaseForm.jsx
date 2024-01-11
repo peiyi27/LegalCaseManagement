@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const CreateCaseForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ const CreateCaseForm = () => {
     client: '',
     caseDetails: '',
   });
+
+  const navigate = useNavigate();
 
   const [staffNames, setStaffNames] = useState([]);
   const [clientNames, setClientNames] = useState([]);
@@ -73,7 +76,7 @@ const CreateCaseForm = () => {
           timer: 1500,
         }).then(() => {
           // Redirect or perform any other action after success
-          window.location.href = '/main'; // Replace with your desired redirect URL
+          navigate('/CaseManagement');
         });
       } else {
         // Display an error message
@@ -94,10 +97,18 @@ const CreateCaseForm = () => {
     }
   };
 
+  const handleBackClick = () => {
+    // Navigate to CreateCaseForm
+    navigate('/CaseManagement');
+  };
+
 
   return (
     <div className="create-case-form">
       <h2>Create Case</h2>
+      <button className="create-back-button" onClick={handleBackClick}>
+          Back
+        </button>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="caseName">
           <Form.Label>Case Name</Form.Label>
