@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import session from 'express-session';
 import cookieParser from 'cookie-parser'
+import multer from 'multer';
 
 const app = express();
 const port = 3001;
@@ -290,26 +291,6 @@ app.get('/get-staff-names', (req, res) => {
 });
 
 
-app.post('/create-case', (req, res) => {
-  const staffId = req.session.username;
-  const { caseName, caseType, caseStatus, staffName, client, caseDetails } = req.body;
-
-  // Insert the case details into the database
-  const insertQuery = "INSERT INTO `case` (case_name, case_type, case_status,staff_id, staff_name, client_name, case_detail) VALUES (?, ? , ?, ?, ?, ?, ?)";
-
-  connection.query(insertQuery, [caseName, caseType, caseStatus,staffId, staffName, client, caseDetails], (err, results) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ success: false, message: 'Internal Server Error' });
-    } else {
-      // Assuming success, you can send a response with the case_id
-      const caseId = results.insertId; // The auto-incremented case_id
-      return res.status(200).json({ success: true, caseId, message: 'Case created successfully!' });
-    }
-  });
-});
-
-
 
 // Logout route
 app.get('/logout', (req, res) => {
@@ -539,6 +520,101 @@ app.delete('/delete-case/:caseId', (req, res) => {
         return res.status(404).json({ success: false, message: 'Case not found' });
       }
     }
+  });
+});
+
+
+
+
+app.post('/create-case', (req, res) => {
+  const staffId = req.session.username;
+  const { caseName, caseType, caseStatus, staffName, client, caseDetails } = req.body;
+
+  // Insert the case details into the database
+  const insertQuery = "INSERT INTO `case` (case_name, case_type, case_status,staff_id, staff_name, client_name, case_detail) VALUES (?, ? , ?, ?, ?, ?, ?)";
+
+  connection.query(insertQuery, [caseName, caseType, caseStatus,staffId, staffName, client, caseDetails], (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else {
+      // Assuming success, you can send a response with the case_id
+      const caseId = results.insertId; // The auto-incremented case_id
+      return res.status(200).json({ success: true, caseId, message: 'Case created successfully!' });
+    }
+  });
+});
+
+app.get('/get-case-documents/:caseId', (req, res) => {
+  const caseId = req.params.caseId;
+
+  // Replace this with your database query to fetch documents for the given caseId
+  // Assume you have a 'documents' table with columns 'name', 'url', 'content', and 'case_id'
+  const sql = 'SELECT id, title, content,type FROM document WHERE case_id = ?';
+
+  connection.query(sql, [caseId], (err, results) => {
+    if (err) {
+      console.error('Error fetching documents:', err);
+      res.status(500).json({ error: 'Internal server error' });
+      return;
+    }
+
+    const documents = results.map(result => ({
+      documentId: result.id,
+      name: result.title,
+      documentType: result.type,
+      // Sending content as base64 encoded string for simplicity
+      content: result.content.toString('base64'),
+    }));
+
+    res.json({ documents });
+  });
+});
+
+
+
+
+// Multer storage configuration
+const storage = multer.memoryStorage(); // Use memory storage for storing file content in the database
+
+const upload = multer({ storage });
+
+// Handle file upload
+app.post('/upload-document', upload.single('file'), (req, res) => {
+  const caseId = req.body.caseId;
+  const title = req.body.title;
+  const content = req.file.buffer; // Use req.file.buffer to get the file content
+  const fileType = req.body.fileType; // Retrieve the file type from the request body
+
+  // Store file information in the database
+  const insertQuery = 'INSERT INTO document (title, content, case_id, type) VALUES (?, ?, ?, ?)';
+  connection.query(insertQuery, [title, content, caseId, fileType], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+    res.json({ success: true, message: 'File uploaded successfully' });
+  });
+});
+
+
+// Handle document deletion
+app.delete('/delete-document/:documentId', (req, res) => {
+  const documentId = req.params.documentId;
+
+  // Delete the document from the database
+  const deleteQuery = 'DELETE FROM document WHERE id = ?';
+  connection.query(deleteQuery, [documentId], (deleteErr, deleteResult) => {
+    if (deleteErr) {
+      console.error(deleteErr);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+
+    if (deleteResult.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Document not found' });
+    }
+
+    res.json({ success: true, message: 'Document deleted successfully' });
   });
 });
 

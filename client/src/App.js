@@ -10,6 +10,8 @@ import UpdateEmail from "./pages/UpdateEmail";
 import UpdateName from "./pages/UpdateName";
 import ViewCase from "./pages/ViewCase";
 import EditCase from "./pages/EditCase";
+import DocumentManagement from "./pages/DocumentManagement";
+import UploadDocument from "./pages/UploadDocument";
 import Third from "./pages/Third";
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
           <Route path="/UpdateName" element={<UpdateName/>} />
           <Route path="/ViewCase/:caseId" element={<ViewCase />} />
           <Route path="/EditCase/:caseId" element={<EditCase />} />
+          <Route path="/DocumentManagement/:caseId" element={<DocumentManagement/>} />
+          <Route path="/UploadDocument/:caseId" element={<UploadDocument/>} />
         </Routes>
       </BrowserRouter>
     </div>

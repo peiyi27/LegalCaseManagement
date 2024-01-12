@@ -59,6 +59,10 @@ const ProfileSettings = () => {
     navigate('/UpdateName');
   };
 
+  const handleBackClick = () => {
+    navigate(`/Home`);
+  };
+
   return (
     <div>
       {loading && <p>Loading...</p>}
@@ -66,6 +70,7 @@ const ProfileSettings = () => {
       {!loading && !error && (
         <div>
           <h2>Admin Name</h2>
+          <button onClick={handleBackClick}>Back</button>
           <p>{adminName}</p>
           <button onClick={handleNameButtonClick}>Update Name</button>
           <h2>Admin Email</h2>

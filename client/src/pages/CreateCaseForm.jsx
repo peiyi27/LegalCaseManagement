@@ -174,6 +174,7 @@ const CreateCaseForm = () => {
           <Form.Control as="textarea" rows={3} onChange={handleChange} />
         </Form.Group>
 
+    
         <Button variant="primary" type="submit">
           Create Case
         </Button>
@@ -183,3 +184,5 @@ const CreateCaseForm = () => {
 };
 
 export default CreateCaseForm;
+
+

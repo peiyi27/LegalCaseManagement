@@ -4,10 +4,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './ViewCase.css'; // Import the CSS file
+import { useNavigate } from 'react-router-dom';
 
 const ViewCase = () => {
   const [caseData, setCaseData] = useState({});
   const { caseId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch case details by caseId
@@ -19,9 +21,17 @@ const ViewCase = () => {
       .catch(error => console.error('Error fetching case details:', error));
   }, [caseId]);
 
+  const handleBackClick = (caseId) => {
+    navigate(`/CaseManagement`);
+    // Handle Edit button click, you can navigate to an edit page or perform any action
+  };
+
   return (
     <div className="view-case-container">
       <h2 className="view-case-title">Case Information</h2>
+      <button  onClick={handleBackClick}>
+          Back
+        </button>
       <p className="case-info-item">Case Id: {caseData.case_id}</p>
       <p className="case-info-item">Case Name: {caseData.case_name}</p>
       <p className="case-info-item">Case Type: {caseData.case_type}</p>

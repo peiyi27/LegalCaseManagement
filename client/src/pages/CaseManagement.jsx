@@ -40,6 +40,11 @@ const CaseManagement = () => {
     console.log(`Edit clicked for caseId: ${caseId}`);
   };
 
+  const handleDocumentClick = (caseId) => {
+    navigate(`/DocumentManagement/${caseId}`);
+    // Handle Edit button click, you can navigate to an edit page or perform any action
+  };
+
   const handleDeleteClick = async (caseId) => {
     // Prompt a confirmation dialog
     const confirmDelete = window.confirm("Are you sure you want to delete this case?");
@@ -85,6 +90,8 @@ const CaseManagement = () => {
         <table>
           <thead>
             <tr>
+              <th>Index</th>
+              <th>Case ID</th>
               <th>Case Name</th>
               <th>Case Type</th>
               <th>Case Status</th>
@@ -96,6 +103,8 @@ const CaseManagement = () => {
           <tbody>
             {cases.map((caseItem, index) => (
               <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{caseItem.case_id}</td>
                 <td>{caseItem.case_name}</td>
                 <td>{caseItem.case_type}</td>
                 <td>{caseItem.case_status}</td>
@@ -105,6 +114,7 @@ const CaseManagement = () => {
                   <button onClick={() => handleViewClick(caseItem.case_id)}>View</button>
                   <button onClick={() => handleEditClick(caseItem.case_id)}>Edit</button>
                   <button onClick={() => handleDeleteClick(caseItem.case_id)}>Delete</button>
+                  <button onClick={() => handleDocumentClick(caseItem.case_id)}>Document</button>
                 </td>
               </tr>
             ))}
