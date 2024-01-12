@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Make sure to install axios if not already installed
-import './ProfileSetting.css';
+import './ProfileSettingAdmin.css';
 import { useNavigate } from 'react-router-dom';
 
-const ProfileSettings = () => {
+const ProfileSettingAdmin = () => {
   const navigate = useNavigate();
   const [adminEmail, setAdminEmail] = useState('');
   const [adminName, setAdminName] = useState('');
@@ -51,12 +51,12 @@ const ProfileSettings = () => {
 
   const handleEmailButtonClick = () => {
     // Add the logic you want to perform when the email button is clicked
-    navigate('/UpdateEmail');
+    navigate('/UpdateEmailAdmin');
   };
 
   const handleNameButtonClick = () => {
     // Add the logic you want to perform when the name button is clicked
-    navigate('/UpdateName');
+    navigate('/UpdateNameAdmin');
   };
 
   const handleBackClick = () => {
@@ -82,4 +82,4 @@ const ProfileSettings = () => {
   );
 };
 
-export default ProfileSettings;
+export default ProfileSettingAdmin;

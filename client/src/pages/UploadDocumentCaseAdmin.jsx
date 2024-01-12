@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import './UploadDocumentCaseAdmin.css'; // Import your CSS file
 
-const UploadDocument = () => {
+const UploadDocumentCaseAdmin = () => {
   const { caseId } = useParams();
   const navigate = useNavigate();
 
@@ -52,7 +53,7 @@ const UploadDocument = () => {
 
       if (response.data.success) {
         alert('Document uploaded successfully.');
-        navigate(`/DocumentManagement/${caseId}`);
+        navigate(`/DocumentManagementCaseAdmin/${caseId}`);
       } else {
         alert('Error uploading document. Please try again.');
       }
@@ -65,7 +66,7 @@ const UploadDocument = () => {
   };
 
   const handleBackClick = () => {
-    navigate(`/DocumentManagement/${caseId}`);
+    navigate(`/DocumentManagementCaseAdmin/${caseId}`);
   };
 
   return (
@@ -107,4 +108,4 @@ const UploadDocument = () => {
   );
 };
 
-export default UploadDocument;
+export default UploadDocumentCaseAdmin;

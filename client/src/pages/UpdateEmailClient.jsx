@@ -2,24 +2,24 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
-import './UpdateName.css'; // Import your CSS file
+import './UpdateEmailClient.css'; // Import your CSS file
 
-const UpdateName = () => {
-  const [adminName, setAdminName] = useState('');
+const UpdateEmailClient = () => {
+  const [adminEmail, setAdminEmail] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [newName, setNewName] = useState('');
+  const [newEmail, setNewEmail] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:3001/profile-get-admin-name')
+    axios.get('http://localhost:3001/profile-get-client-email')
       .then(response => {
-        const { success, adminName, message } = response.data;
+        const { success, adminEmail, message } = response.data;
 
         if (success) {
-          setAdminName(adminName);
+          setAdminEmail(adminEmail);
         } else {
           setError(message);
         }
@@ -31,33 +31,42 @@ const UpdateName = () => {
   }, []);
 
   const handleSaveButtonClick = () => {
-    axios.post('http://localhost:3001/update-admin-name', { newName })
+    axios.post('http://localhost:3001/update-client-email', { newEmail })
       .then(response => {
-        setError('Name Updated Successfully');
+        setError('Email Updated Successfully');
         setIsModalOpen(true);
       })
       .catch(error => {
         console.error(error);
-        setError('Name Update Failed: ' + error.response.data.message);
+        setError('Email Update Failed: ' + error.response.data.message);
       });
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    navigate('/Home');
+    navigate('/HomeForClient');
+  };
+  
+  const handleBackClick = () => {
+    // Navigate to Home
+    navigate('/HomeForClient');
   };
 
-  return (
-    <div className="UpdateNameContainer"> {/* Use a different class name for styling */}
-      <h2>Change Name</h2>
-      <label>Current Name:</label>
-      <p>{adminName}</p>
 
-      <label>New Name:</label>
+  return (
+    <div className="UpdateEmailContainer"> {/* Add the class name here */}
+    <button  onClick={handleBackClick}>
+        Back
+      </button>
+      <h2>Change Email</h2>
+      <label>Current Email:</label>
+      <p>{adminEmail}</p>
+
+      <label>New Email:</label>
       <input
         type="text"
-        value={newName}
-        onChange={(e) => setNewName(e.target.value)}
+        value={newEmail}
+        onChange={(e) => setNewEmail(e.target.value)}
       />
 
       <button onClick={handleSaveButtonClick}>Save</button>
@@ -67,7 +76,7 @@ const UpdateName = () => {
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
-        contentLabel="Name Update Modal"
+        contentLabel="Email Update Modal"
       >
         <p>{error}</p>
         <button onClick={closeModal}>OK</button>
@@ -76,4 +85,4 @@ const UpdateName = () => {
   );
 };
 
-export default UpdateName;
+export default UpdateEmailClient;

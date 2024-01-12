@@ -1,0 +1,53 @@
+/* CaseManagementAdmin.css */
+
+.case-management {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .case-management h2 {
+    color: #333;
+  }
+  
+  .case-management .create-case-button,
+  .case-management .create-back-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  .case-management table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .case-management th,
+  .case-management td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .case-management th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .case-management tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .case-management button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin: 2px;
+    cursor: pointer;
+  }
+  

@@ -3,8 +3,9 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { saveAs } from 'file-saver';
+import './DocumentManagementStaff.css';
 
-const DocumentManagement = () => {
+const DocumentManagementStaff = () => {
   const [documents, setDocuments] = useState([]);
   const { caseId } = useParams();
   const navigate = useNavigate();
@@ -21,12 +22,12 @@ const DocumentManagement = () => {
 
   const handleBackClick = () => {
     // Navigate back to the case details page
-    navigate(`/CaseManagement`);
+    navigate(`/CaseManagementStaff`);
   };
 
   const handleUploadDocumentClick = () => {
     // Navigate to the document upload page
-    navigate(`/UploadDocument/${caseId}`);
+    navigate(`/UploadDocumentStaff/${caseId}`);
   };
 
   const handleViewDocumentClick = (documentId, documentName, documentContent, documentType) => {
@@ -130,4 +131,4 @@ const DocumentManagement = () => {
   );
 };
 
-export default DocumentManagement;
+export default DocumentManagementStaff;

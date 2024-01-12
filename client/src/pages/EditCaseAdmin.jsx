@@ -6,8 +6,9 @@ import { useParams } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import './EditCaseAdmin.css';
 
-const EditCase = () => {
+const EditCaseAdmin = () => {
   const [formData, setFormData] = useState({
     caseName: '',
     caseType: '',
@@ -97,7 +98,7 @@ const EditCase = () => {
           timer: 1500,
         }).then(() => {
           // Redirect or perform any other action after success
-          navigate('/CaseManagement');
+          navigate('/CaseManagementAdmin');
         });
       } else {
         // Display an error message
@@ -118,8 +119,16 @@ const EditCase = () => {
     }
   };
 
+  const handleBackClick = (caseId) => {
+    navigate(`/CaseManagementAdmin`);
+    // Handle Edit button click, you can navigate to an edit page or perform any action
+  };
+
   return (
     <div className="edit-case-form">
+      <button  onClick={handleBackClick}>
+          Back
+        </button>
       <h2>Edit Case</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="caseName">
@@ -130,9 +139,20 @@ const EditCase = () => {
         <Form.Group controlId="caseType">
           <Form.Label>Case Type</Form.Label>
           <Form.Control as="select" onChange={handleChange} value={formData.caseType} required>
-            <option value="" disabled>Select case type</option>
+          <option value="" disabled>Select case type</option>
             <option value="Civil Cases">Civil Cases</option>
             <option value="Criminal Cases">Criminal Cases</option>
+            <option value="Administrative Cases">Administrative Cases</option>
+            <option value="Immigration Cases">Immigration Cases</option>
+            <option value="Commercial Cases">Commercial Cases</option>
+            <option value="Environmental Cases">Environmental Cases</option>
+            <option value="Family Law Cases">Family Law Cases</option>
+            <option value="Probate Cases">Probate Cases</option>
+            <option value="Constitutional Cases">Constitutional Cases</option>
+            <option value="Labor and Employment Cases">Labor and Employment Cases</option>
+            <option value="Real Estate Cases">Real Estate Cases</option>
+            <option value="Bankruptcy Cases">Bankruptcy Cases</option>
+            <option value="Intellectual Property Cases">Intellectual Property Cases</option>
             {/* Add more options as needed */}
           </Form.Control>
         </Form.Group>
@@ -140,9 +160,17 @@ const EditCase = () => {
         <Form.Group controlId="caseStatus">
           <Form.Label>Case Status</Form.Label>
           <Form.Control as="select" onChange={handleChange} value={formData.caseStatus} required>
-            <option value="" disabled>Select case status</option>
+          <option value="" disabled>Select case status</option>
             <option value="Pending">Pending</option>
             <option value="Active">Active</option>
+            <option value="Closed">Closed</option>
+            <option value="Settled">Settled</option>
+            <option value="Dismissed">Dismissed</option>
+            <option value="Adjudicated">Adjudicated</option>
+            <option value="Appealed">Appealed</option>
+            <option value="In Review">In Review</option>
+            <option value="In Mediation/Arbitration">In Mediation/Arbitration</option>
+            <option value="Warrant Issued">Warrant Issued</option>
             {/* Add more options as needed */}
           </Form.Control>
         </Form.Group>
@@ -176,4 +204,4 @@ const EditCase = () => {
   );
 };
 
-export default EditCase;
+export default EditCaseAdmin;

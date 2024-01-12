@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './CaseManagement.css';
+import './CaseManagementStaff.css';
 import { useNavigate } from 'react-router-dom';
 
 
-const CaseManagement = () => {
+const CaseManagementStaff = () => {
   const [cases, setCases] = useState([]);
   const navigate = useNavigate();
 
@@ -20,28 +20,28 @@ const CaseManagement = () => {
 
   const handleCreateCaseClick = () => {
     // Navigate to CreateCaseForm
-    navigate('/CreateCaseForm');
+    navigate('/CreateCaseFormStaff');
   };
 
   const handleBackClick = () => {
     // Navigate to Home
-    navigate('/Home');
+    navigate('/HomeForStaff');
   };
 
   const handleViewClick = (caseId) => {
-    navigate(`/ViewCase/${caseId}`);
+    navigate(`/ViewCaseStaff/${caseId}`);
     // Handle View button click, you can navigate to a specific view page or perform any action
     console.log(`View clicked for caseId: ${caseId}`);
   };
 
   const handleEditClick = (caseId) => {
-    navigate(`/EditCase/${caseId}`);
+    navigate(`/EditCaseStaff/${caseId}`);
     // Handle Edit button click, you can navigate to an edit page or perform any action
     console.log(`Edit clicked for caseId: ${caseId}`);
   };
 
   const handleDocumentClick = (caseId) => {
-    navigate(`/DocumentManagement/${caseId}`);
+    navigate(`/DocumentManagementStaff/${caseId}`);
     // Handle Edit button click, you can navigate to an edit page or perform any action
   };
 
@@ -127,4 +127,4 @@ const CaseManagement = () => {
   );
 };
 
-export default CaseManagement;
+export default CaseManagementStaff;

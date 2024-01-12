@@ -349,6 +349,50 @@ app.get('/profile-get-admin-name', (req, res) => {
   });
 });
 
+
+// Get email
+app.get('/profile-get-client-email', (req, res) => {
+  const userid = req.session.username;
+  console.log(userid);
+  const query = "SELECT email FROM user WHERE id = ?";
+
+  connection.query(query, [userid], (err, results) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: 'Internal Server Error' });
+      return;
+    }
+    if (results.length > 0) {
+      const adminEmail = results[0].email;
+      res.status(200).json({ success: true, adminEmail });
+    } else {
+      res.status(404).json({ success: false, message: 'Admin not found' });
+    }
+  });
+});
+
+// Get name
+app.get('/profile-get-client-name', (req, res) => {
+  const userid = req.session.username;
+  console.log(userid);
+  const query = "SELECT name FROM user WHERE id = ?";
+
+  connection.query(query, [userid], (err, results) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: 'Internal Server Error' });
+      return;
+    }
+    if (results.length > 0) {
+      const adminName = results[0].name;
+      res.status(200).json({ success: true, adminName });
+    } else {
+      res.status(404).json({ success: false, message: 'Admin not found' });
+    }
+  });
+});
+
+
 // Update email endpoint
 app.post('/update-admin-email', (req, res) => {
   const userid = req.session.username;
@@ -412,6 +456,71 @@ app.post('/update-admin-name', (req, res) => {
   });
 });
 
+
+
+// Update email endpoint
+app.post('/update-client-email', (req, res) => {
+  const userid = req.session.username;
+  const newEmail = req.body.newEmail; // Assuming the new email is sent in the request body
+
+  // Check if the new email already exists in the database
+  const checkEmailQuery = "SELECT id FROM user WHERE email = ?";
+  connection.query(checkEmailQuery, [newEmail], (checkErr, checkResults) => {
+    if (checkErr) {
+      console.error(checkErr);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+
+    if (checkResults.length > 0) {
+      // The new email already exists in the database
+      return res.status(400).json({ success: false, message: 'Email already exists' });
+    }
+
+    // If the new email doesn't exist, proceed with the update
+    const updateEmailQuery = "UPDATE user SET email = ? WHERE id = ?";
+    connection.query(updateEmailQuery, [newEmail, userid], (updateErr, updateResults) => {
+      if (updateErr) {
+        console.error(updateErr);
+        return res.status(500).json({ success: false, message: 'Internal Server Error' });
+      }
+
+      return res.status(200).json({ success: true, message: 'Email updated successfully' });
+    });
+  });
+});
+
+
+// Update name endpoint
+app.post('/update-client-name', (req, res) => {
+  const userId = req.session.username;
+  const newName = req.body.newName;
+
+  // Check if the new name already exists
+  const checkNameQuery = "SELECT id FROM user WHERE name = ? AND id != ?";
+  connection.query(checkNameQuery, [newName, userId], (checkNameErr, checkNameResults) => {
+    if (checkNameErr) {
+      console.error(checkNameErr);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+
+    if (checkNameResults.length > 0) {
+      // Name already exists
+      return res.status(400).json({ success: false, message: 'Name already in use. Please choose a different name.' });
+    }
+
+    // If the new name doesn't exist, proceed with the update
+    const updateNameQuery = "UPDATE user SET name = ? WHERE id = ?";
+    connection.query(updateNameQuery, [newName, userId], (updateErr, updateResults) => {
+      if (updateErr) {
+        console.error(updateErr);
+        return res.status(500).json({ success: false, message: 'Internal Server Error' });
+      }
+      console.log('User ID:', userId);
+      return res.status(200).json({ success: true, message: 'Name updated successfully' });
+    });
+  });
+});
+
 app.get('/get-cases-staff', (req, res) => {
   const staffId = req.session.username;
   
@@ -422,6 +531,50 @@ app.get('/get-cases-staff', (req, res) => {
   const selectQuery = "SELECT * FROM `case` WHERE staff_id = ?";
 
   connection.query(selectQuery, [staffId], (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else {
+      // Log the fetched data in the console
+      console.log('Fetched cases:', results);
+
+      // Send the retrieved cases as a JSON response
+      return res.status(200).json({ success: true, cases: results });
+    }
+  });
+});
+
+app.get('/get-cases-client', (req, res) => {
+  const clientId = req.session.username;
+  
+  // Log staffId to console for debugging
+  console.log('Client ID:', clientId);
+
+  // Fetch specific columns from the database
+  const selectQuery = "SELECT * FROM `case` WHERE client_id = ?";
+
+  connection.query(selectQuery, [clientId], (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else {
+      // Log the fetched data in the console
+      console.log('Fetched cases:', results);
+
+      // Send the retrieved cases as a JSON response
+      return res.status(200).json({ success: true, cases: results });
+    }
+  });
+});
+
+
+
+app.get('/get-all-cases-admin', (req, res) => {
+ 
+  // Fetch specific columns from the database
+  const selectQuery = "SELECT * FROM `case` ";
+
+  connection.query(selectQuery, (err, results) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ success: false, message: 'Internal Server Error' });
@@ -617,6 +770,154 @@ app.delete('/delete-document/:documentId', (req, res) => {
     res.json({ success: true, message: 'Document deleted successfully' });
   });
 });
+
+app.get('/api/count-for-client', (req, res) => {
+  const query = 'SELECT COUNT(*) AS clientCount FROM user';
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.error('MySQL query error: ', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    const clientCount = result[0][Object.keys(result[0])[0]];
+    return res.status(200).json({ clientCount });
+  });
+});
+
+app.get('/api/count-for-admin', (req, res) => {
+  const query = 'SELECT COUNT(*) AS adminCount FROM admin WHERE role = "admin"';
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.error('MySQL query error: ', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    const adminCount = result[0][Object.keys(result[0])[0]];
+    return res.status(200).json({ adminCount });
+  });
+});
+
+app.get('/api/count-for-staff', (req, res) => {
+  const query = 'SELECT COUNT(*) AS staffCount FROM admin WHERE role = "staff"';
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.error('MySQL query error: ', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    const staffCount = result[0][Object.keys(result[0])[0]];
+    return res.status(200).json({ staffCount });
+  });
+});
+
+app.get('/api/count-for-case', (req, res) => {
+  const query = 'SELECT COUNT(*) AS caseCount FROM `case`'; // Use backticks for the table name
+
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.error('MySQL query error: ', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    const caseCount = result[0][Object.keys(result[0])[0]];
+    return res.status(200).json({ caseCount });
+  });
+});
+app.get('/admin-get-external-user', (req, res) => {
+  const selectQuery = "SELECT * FROM user ";
+
+  connection.query(selectQuery, (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else if (result.length === 0) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    } else {
+      // Modify the data structure before sending it as a JSON response
+      const userData = result.map(user => ({
+        userId: user.id,
+        userName: user.name,
+        email: user.email,
+        role: user.role,
+        // Add more properties as needed
+      }));
+
+      console.log('Fetched External Users:', userData);
+
+      return res.status(200).json({ success: true, userData });
+    }
+  });
+});
+
+app.get('/admin-get-internal-user', (req, res) => {
+  const selectQuery = "SELECT * FROM admin ";
+
+  connection.query(selectQuery, (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else if (result.length === 0) {
+      return res.status(404).json({ success: false, message: 'Admin and staff not found' });
+    } else {
+      // Modify the data structure before sending it as a JSON response
+      const adminData = result.map(admin => ({
+        userId: admin.id,
+        userName: admin.name,
+        email: admin.email,
+        role: admin.role,
+        // Add more properties as needed
+      }));
+
+      console.log('Fetched Internal Users:', adminData);
+
+      return res.status(200).json({ success: true, adminData });
+    }
+  });
+});
+
+// Import necessary modules and set up your app
+
+// ... (your existing code)
+
+// Endpoint to delete an external user
+app.delete('/admin-delete-external-user/:userId', (req, res) => {
+  const userId = req.params.userId;
+
+  const deleteQuery = 'DELETE FROM user WHERE id = ?';
+
+  connection.query(deleteQuery, [userId], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    } else {
+      return res.status(200).json({ success: true, message: 'User deleted successfully' });
+    }
+  });
+});
+
+// Endpoint to delete an internal user
+app.delete('/admin-delete-internal-user/:userId', (req, res) => {
+  const userId = req.params.userId;
+
+  const deleteQuery = 'DELETE FROM admin WHERE id = ?';
+
+  connection.query(deleteQuery, [userId], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Admin not found' });
+    } else {
+      return res.status(200).json({ success: true, message: 'Admin deleted successfully' });
+    }
+  });
+});
+
 
 
 

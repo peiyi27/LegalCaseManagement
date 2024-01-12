@@ -1,10 +1,14 @@
+// EditCase.jsx
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Swal from 'sweetalert2';
+import { useParams } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import './EditMyCaseAdmin.css';
 
-const CreateCaseForm = () => {
+const EditMyCaseAdmin = () => {
   const [formData, setFormData] = useState({
     caseName: '',
     caseType: '',
@@ -14,17 +18,29 @@ const CreateCaseForm = () => {
     caseDetails: '',
   });
 
+  const { caseId } = useParams();
   const navigate = useNavigate();
 
   const [staffNames, setStaffNames] = useState([]);
   const [clientNames, setClientNames] = useState([]);
 
-  // Define handleChange function
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
-
   useEffect(() => {
+    // Fetch case details by caseId
+    axios.get(`http://localhost:3001/get-case-details/${caseId}`)
+      .then(response => {
+        console.log('Case Details:', response.data.caseData);
+        const caseDetails = response.data.caseData;
+        setFormData({
+          caseName: caseDetails.case_name || '',
+          caseType: caseDetails.case_type || '',
+          caseStatus: caseDetails.case_status || '',
+          staffName: caseDetails.staff_name || '',
+          client: caseDetails.client_name || '',
+          caseDetails: caseDetails.case_detail || '',
+        });
+      })
+      .catch(error => console.error('Error fetching case details:', error));
+
     // Fetch staff names
     axios.get('http://localhost:3001/get-staff-names')
       .then(response => {
@@ -40,7 +56,7 @@ const CreateCaseForm = () => {
         setClientNames(response.data.clientNames);
       })
       .catch(error => console.error('Error fetching client names:', error));
-  }, []);
+  }, [caseId]);
 
   // Helper functions for rendering options
   const renderOptions = (data) => {
@@ -58,25 +74,31 @@ const CreateCaseForm = () => {
   const renderStaffNameOptions = () => renderOptions(staffNames);
   const renderClientOptions = () => renderOptions(clientNames);
 
+  // Define handleChange function
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     console.log('Form Data:', formData); // Log the form data for debugging purposes
 
+    // Make an AJAX request to update the case details
     try {
-      const response = await axios.post('http://localhost:3001/create-case', formData);
+      const response = await axios.post(`http://localhost:3001/edit-case/${caseId}`, formData);
       if (response.data.success) {
         // Display a success message
         Swal.fire({
           icon: 'success',
-          title: 'Case Created',
+          title: 'Case Updated',
           text: response.data.message,
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
           // Redirect or perform any other action after success
-          navigate('/CaseManagement');
+          navigate('/MyCaseAdmin');
         });
       } else {
         // Display an error message
@@ -97,28 +119,27 @@ const CreateCaseForm = () => {
     }
   };
 
-  const handleBackClick = () => {
-    // Navigate to CreateCaseForm
-    navigate('/CaseManagement');
+  const handleBackClick = (caseId) => {
+    navigate(`/MyCaseAdmin`);
+    // Handle Edit button click, you can navigate to an edit page or perform any action
   };
 
-
   return (
-    <div className="create-case-form">
-      <h2>Create Case</h2>
-      <button className="create-back-button" onClick={handleBackClick}>
+    <div className="edit-case-form">
+      <button  onClick={handleBackClick}>
           Back
         </button>
+      <h2>Edit Case</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="caseName">
           <Form.Label>Case Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter case name" onChange={handleChange} />
+          <Form.Control type="text" placeholder="Enter case name" onChange={handleChange} value={formData.caseName} />
         </Form.Group>
 
         <Form.Group controlId="caseType">
           <Form.Label>Case Type</Form.Label>
           <Form.Control as="select" onChange={handleChange} value={formData.caseType} required>
-            <option value="" disabled>Select case type</option>
+          <option value="" disabled>Select case type</option>
             <option value="Civil Cases">Civil Cases</option>
             <option value="Criminal Cases">Criminal Cases</option>
             <option value="Administrative Cases">Administrative Cases</option>
@@ -137,8 +158,9 @@ const CreateCaseForm = () => {
         </Form.Group>
 
         <Form.Group controlId="caseStatus">
-        <Form.Control as="select" onChange={handleChange} value={formData.caseStatus} required>
-            <option value="" disabled>Select case status</option>
+          <Form.Label>Case Status</Form.Label>
+          <Form.Control as="select" onChange={handleChange} value={formData.caseStatus} required>
+          <option value="" disabled>Select case status</option>
             <option value="Pending">Pending</option>
             <option value="Active">Active</option>
             <option value="Closed">Closed</option>
@@ -150,10 +172,11 @@ const CreateCaseForm = () => {
             <option value="In Mediation/Arbitration">In Mediation/Arbitration</option>
             <option value="Warrant Issued">Warrant Issued</option>
             {/* Add more options as needed */}
+            {/* Add more options as needed */}
           </Form.Control>
-          </Form.Group>
+        </Form.Group>
 
-          <Form.Group controlId="staffName">
+        <Form.Group controlId="staffName">
           <Form.Label>Staff Name</Form.Label>
           <Form.Control as="select" onChange={handleChange} value={formData.staffName} required>
             <option value="" disabled>Select staff name</option>
@@ -171,18 +194,15 @@ const CreateCaseForm = () => {
 
         <Form.Group controlId="caseDetails">
           <Form.Label>Case Details</Form.Label>
-          <Form.Control as="textarea" rows={3} onChange={handleChange} />
+          <Form.Control as="textarea" rows={3} onChange={handleChange} value={formData.caseDetails} />
         </Form.Group>
 
-    
         <Button variant="primary" type="submit">
-          Create Case
+          Update Case
         </Button>
       </Form>
     </div>
   );
 };
 
-export default CreateCaseForm;
-
-
+export default EditMyCaseAdmin;

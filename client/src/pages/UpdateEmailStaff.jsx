@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
-import './UpdateEmail.css';
+import './UpdateEmailStaff.css'; // Import your CSS file
 
-const UpdateEmail = () => {
+const UpdateEmailStaff = () => {
   const [adminEmail, setAdminEmail] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -44,11 +44,20 @@ const UpdateEmail = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    navigate('/Home');
+    navigate('/HomeForStaff');
   };
+  
+  const handleBackClick = () => {
+    // Navigate to Home
+    navigate('/HomeForStaff');
+  };
+
 
   return (
     <div className="UpdateEmailContainer"> {/* Add the class name here */}
+    <button  onClick={handleBackClick}>
+        Back
+      </button>
       <h2>Change Email</h2>
       <label>Current Email:</label>
       <p>{adminEmail}</p>
@@ -76,4 +85,4 @@ const UpdateEmail = () => {
   );
 };
 
-export default UpdateEmail;
+export default UpdateEmailStaff;

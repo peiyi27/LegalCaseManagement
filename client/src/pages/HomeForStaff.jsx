@@ -4,7 +4,7 @@ import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import legalHomeLogo from './logo.png';
 import axios from 'axios';
-import './Home.css';
+import './HomeForStaff.css';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -18,31 +18,15 @@ const HomePage = () => {
     const baseUrl = 'http://localhost:3001'; // Adjust the base URL based on your server configuration
   
     // Fetch counts from the server using Axios
-    axios.get(`${baseUrl}/api/count-for-client`)
+    axios.get(`${baseUrl}/api/staff-count-for-client`)
       .then((response) => response.data)
       .then((data) => {
         setClientCount(data.clientCount);
       })
       .catch((error) => console.error('Error fetching client count:', error));
   
-    // Fetch staff count from the server using Axios
-    axios.get(`${baseUrl}/api/count-for-staff`)
-      .then((response) => response.data)
-      .then((data) => {
-        setStaffCount(data.staffCount);
-      })
-      .catch((error) => console.error('Error fetching staff count:', error));
-  
-    // Fetch admin count from the server using Axios
-    axios.get(`${baseUrl}/api/count-for-admin`)
-      .then((response) => response.data)
-      .then((data) => {
-        setAdminCount(data.adminCount);
-      })
-      .catch((error) => console.error('Error fetching admin count:', error));
-  
     // Fetch case count from the server using Axios
-    axios.get(`${baseUrl}/api/count-for-case`)
+    axios.get(`${baseUrl}/api/staff-count-for-case`)
       .then((response) => response.data)
       .then((data) => {
         setCaseCount(data.caseCount);
@@ -56,17 +40,8 @@ const HomePage = () => {
     navigate('/login');
   };
 
-  const handleUserManagementClick = () => {
-    navigate('/UserManagementAdmin');
-  };
-
   const handleCaseManagementClick = () => {
-    navigate('/CaseManagementAdmin');
-  };
-
-
-  const handleMyCaseClick = () => {
-    navigate('/MyCaseAdmin');
+    navigate('/CaseManagementStaff');
   };
 
 
@@ -78,7 +53,7 @@ const HomePage = () => {
           <h1 className="home-header">Apex Legal Solution</h1>
         </div>
         <div>
-          <div className="setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
+          <div className="setting-container1" onClick={() => navigate('/ProfileSettingStaff')}>
             <FontAwesomeIcon icon={faCog} className="custom-icon1" />
           </div>
           <div className="icon-container2" onClick={handleLogout}>
@@ -90,13 +65,7 @@ const HomePage = () => {
         <nav>
           <ul>
             <li>
-              <a href="#clients"onClick={handleUserManagementClick}>User Management</a>
-            </li>
-            <li>
-              <a href="#case"onClick={handleCaseManagementClick}>Case Management</a>
-            </li>
-            <li>
-              <a href="#casematter" onClick={handleMyCaseClick}>
+              <a href="#casematter" onClick={handleCaseManagementClick}>
                 My Case
               </a>
             </li>
@@ -104,10 +73,8 @@ const HomePage = () => {
         </nav>
       </aside>
       <main className="home-content">
-          <p>Total Client: {clientCount}</p>
-          <p>Total Staff : {staffCount}</p>
-          <p>Total Admin: {adminCount}</p>
-          <p>Total Case: {caseCount}</p>
+          <p>Client Count: {clientCount}</p>
+          <p>Case Count: {caseCount}</p>
       </main>
     </div>
   );

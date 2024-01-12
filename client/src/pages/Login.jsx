@@ -25,9 +25,22 @@ function Login() {
 
     try {
       const response = await axios.post('http://localhost:3001/login', { email, password });
+
       if (response.status === 200) {
-        
-        navigate('/Home');
+        switch (role) {
+          case 'admin':
+            navigate('/Home');
+            break;
+          case 'staff':
+            navigate('/HomeForStaff');
+            break;
+          case 'user':
+            navigate('/HomeForClient');
+            break;
+          default:
+            // Handle unknown role
+            navigate('/Home');
+        }
       }
     } catch (err) {
       setError('Login failed: Invalid details. If you do not have an account, please sign up!');
@@ -69,7 +82,7 @@ function Login() {
               <option value="">Select Role</option>
               <option value="admin">Admin</option>
               <option value="staff">Staff</option>
-              <option value="user">User</option>
+              <option value="user">Client</option>
             </select>
           </div>
           <div className="text-small mb-20">

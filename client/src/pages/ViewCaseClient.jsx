@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import './ViewCase.css'; // Import the CSS file
+import './ViewCaseClient.css'; // Import the CSS file
 import { useNavigate } from 'react-router-dom';
 
-const ViewCase = () => {
+const ViewCaseClient = () => {
   const [caseData, setCaseData] = useState({});
   const { caseId } = useParams();
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const ViewCase = () => {
   }, [caseId]);
 
   const handleBackClick = (caseId) => {
-    navigate(`/CaseManagement`);
+    navigate(`/CaseManagementClient`);
     // Handle Edit button click, you can navigate to an edit page or perform any action
   };
 
@@ -45,4 +45,4 @@ const ViewCase = () => {
   );
 };
 
-export default ViewCase;
+export default ViewCaseClient;
