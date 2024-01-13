@@ -1,39 +1,262 @@
-.case-management {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+/* CaseManagementAdmin.css */
+
+/* Main layout */
+.staff-case-body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #DFF2FF;
+  margin: 0;
+  padding: 0;
 }
 
-h2 {
-  color: #333;
+/* Top navigation bar */
+.staff-case-top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px; /* Set the height of your top-nav bar */
+  background-color: #ffffff;
+  z-index: 1000; /* Higher than side-nav to stay on top */
 }
 
-.create-case-button, .create-back-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  margin-right: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.staff-case-header {
+  font-size: 20px;
+  position: fixed;
+  top: 0.7%; /* Adjust the top position as needed to control the vertical position */
+  left: 4.5%; /* Adjust the left position as needed to control the horizontal position */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.create-back-button {
-  background-color: #dc3545;
+/* Side navigation */
+.staff-case-side-nav {
+  background-color: #2c3e50;
+  color: #ffffff;
+  width: 275px; /* Adjust width as necessary */
+  height: 100vh;
+  position: fixed;
+  top: 60px; /* Set this to the height of your top-nav bar */
+  left: 0;
+  overflow-y: auto;
+  padding-top: 3px; /* Add padding to push content down */
+  z-index: 999; /* Ensure it is below the top-nav which has a higher z-index */
 }
 
-table {
+/* Side nav items */
+.staff-case-side-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.staff-case-side-nav ul li {
+  padding: 15px 20px;
+  border-bottom: 1px solid #34495e;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.staff-case-side-nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.staff-case-management .table-container {
+  max-height: 600px;
+  overflow: auto;
+  margin-top: 60px; 
+}
+
+.staff-case-management table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
 }
 
-th, td {
+.staff-case-management th, .staff-case-management td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 12px;
   text-align: left;
 }
 
-th {
-  background-color: #f2f2f2;
+.staff-case-management th {
+  background-color: #436480;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+}
+
+.staff-case-management tbody {
+  max-height: 500px; /* Adjust the max-height of the tbody */
+  overflow-y: auto; /* Enable vertical scrolling for tbody */
+  overflow-x: auto; /* Enable horizontal scrolling for tbody */
+}
+
+.staff-case-management tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.staff-case-management td button {
+  background-color: #7890a0;
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.staff-case-management td button:hover {
+  background-color: #774e4e;
+}
+
+/* Increase the width of the Actions header */
+.staff-case-actions-header {
+  width:300px; /* Adjust the width as needed */
+}
+
+/* Increase the width of the Actions cells */
+.staff-case-actions-cell {
+  width: 180px; /* Adjust the width as needed */
+}
+
+/* Additional styling for the buttons inside the Actions cell (optional) */
+.staff-case-actions-cell button {
+  margin-right: 2px; /* Add spacing between buttons */
+}
+
+/* Main content area */
+.staff-case-content {
+  margin-left: 275px;
+  margin-top: 80px; /* Adjust the margin-top */
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* Hide the overflow to prevent double scrollbars */
+}
+
+/* Dashboard cards */
+.staff-case-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Card header */
+.staff-case-card-header {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Card content */
+.staff-case-card-content {
+  display: flex;
+  justify-content: space-between;
+  /* Additional styles for your card content */
+}
+
+/* Utility classes for text colors */
+.staff-case-text-success {
+  color: #2ecc71;
+}
+
+.staff-case-text-warning {
+  color: #f1c40f;
+}
+
+.staff-case-text-danger {
+  color: #e74c3c;
+}
+
+/* Utility classes for background colors */
+.staff-case-bg-primary {
+  background-color: #3498db;
+}
+
+.staff-case-bg-success {
+  background-color: #2ecc71;
+}
+
+.staff-case-bg-warning {
+  background-color: #f1c40f;
+}
+
+.staff-case-bg-danger {
+  background-color: #e74c3c;
+}
+
+.staff-case-custom-icon1,
+.staff-case-custom-icon2 {
+  position: fixed;
+  font-size: 38px;
+  color: #2c3e50;
+  top: 1%;
+}
+
+.staff-case-custom-icon1 {
+  right: 4.8%;
+}
+
+.staff-case-custom-icon2 {
+  right: 1%;
+}
+
+.staff-case-setting-container1 {
+  position: absolute; /* Change from fixed to absolute */
+  top: 0;
+  right: 4.1%; /* Adjust the horizontal position */
+  width: 60px;
+  height: 57px;
+  border: 1px solid #ccc;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
+}
+
+/* Add hover effect */
+.staff-case-setting-container1:hover {
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+.staff-case-icon-container2 {
+  position: absolute; /* Change from fixed to absolute */
+  top: 0;
+  right: 0.1%; /* Adjust the horizontal position */
+  width: 60px;
+  height: 57px;
+  border: 1px solid #ccc;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
+}
+
+/* Add hover effect */
+.staff-case-icon-container2:hover {
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Login.css */
+.staff-case-logohome {
+  position: fixed;
+  top: 0.5%; /* Adjust the top position as needed to control the vertical position */
+  left: 0.5%; /* Adjust the left position as needed to control the horizontal position */
+  max-width: 53px; /* Set the maximum width for the logo */
+  border-radius: 20%;
+}
+
+/* Find or add styles for Back and Create Case buttons */
+.staff-case-management button.create-back-button,
+.staff-case-management button.create-case-button {
+  background-color: #2a678f; /* Change this color to your desired color */
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.staff-case-management button.create-back-button:hover,
+.staff-case-management button.create-case-button:hover {
+  background-color: #861b48; /* Change this color to your desired hover color */
 }

@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './UserManagementAdmin.css'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import legalHomeLogo from './logo.png';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+
 
 
 const UserManagementAdmin = () => {
@@ -36,15 +43,23 @@ const UserManagementAdmin = () => {
     }, []);
 
     const handleDeleteInternalUser = (userId) => {
-        const baseUrl = 'http://localhost:3001'; // Replace with your base URL
-        const shouldDelete = window.confirm(`Are you sure you want to delete the user?`);
-      
-        if (shouldDelete) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Continue with the deletion logic
+          const baseUrl = 'http://localhost:3001'; // Replace with your base URL
           axios.delete(`${baseUrl}/admin-delete-internal-user/${userId}`)
             .then((response) => {
               if (response.data.success) {
                 console.log(response.data.message);
-                
+    
                 // Fetch updated internal users data after deletion
                 axios.get(`${baseUrl}/admin-get-internal-user`)
                   .then((response) => response.data)
@@ -61,18 +76,27 @@ const UserManagementAdmin = () => {
             })
             .catch((error) => console.error('Error deleting internal user:', error));
         }
-      };
-      
-      const handleDeleteExternalUser = (userId) => {
-        const baseUrl = 'http://localhost:3001'; // Replace with your base URL
-        const shouldDelete = window.confirm(`Are you sure you want to delete the user?`);
-      
-        if (shouldDelete) {
+      });
+    };
+    
+    const handleDeleteExternalUser = (userId) => {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Continue with the deletion logic
+          const baseUrl = 'http://localhost:3001'; // Replace with your base URL
           axios.delete(`${baseUrl}/admin-delete-external-user/${userId}`)
             .then((response) => {
               if (response.data.success) {
                 console.log(response.data.message);
-      
+  
                 // Fetch updated external users data after deletion
                 axios.get(`${baseUrl}/admin-get-external-user`)
                   .then((response) => response.data)
@@ -89,74 +113,128 @@ const UserManagementAdmin = () => {
             })
             .catch((error) => console.error('Error deleting external user:', error));
         }
-      };
-      
+      });
+    };
     
     const handleBackClick = () => {
         navigate(`/Home`);
       };
+
+      const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+      };
+    
+      const handleUserManagementClick = () => {
+        navigate('/UserManagementAdmin');
+      };
+    
+      const handleCaseManagementClick = () => {
+        navigate('/CaseManagementAdmin');
+      };
+    
+      const handleMyCaseClick = () => {
+        navigate('/MyCaseAdmin');
+      };
+    
   
-    return (
-      <div>
-        {/* Back button */}
-        <button  onClick={handleBackClick}>
-          Back
-        </button>
-        {/* External Users Table */}
-        <h2>External Users</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>User Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {externalUsers.map((user) => (
-              <tr key={user.userId}>
-                <td>{user.userId}</td>
-                <td>{user.userName}</td>
-                <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td>
-                <button onClick={() => handleDeleteExternalUser(user.userId)}>Delete</button>
-              </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-  
-        {/* Internal Users Table */}
-        <h2>Internal Users</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>User Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {internalUsers.map((admin) => (
-              <tr key={admin.userId}>
-                <td>{admin.userId}</td>
-                <td>{admin.userName}</td>
-                <td>{admin.email}</td>
-                <td>{admin.role}</td>
-                <td>
-                <button onClick={() => handleDeleteInternalUser(admin.userId)}>Delete</button>
-              </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  };
+      return (
+        <div className="admin-user-body">
+          <header className="admin-user-top-nav">
+            <div>
+              <img src={legalHomeLogo} alt="Legal Logo" className="admin-user-logohome" />
+              <h1 className="admin-user-header">Apex Legal Solution</h1>
+            </div>
+            <div>
+              <div className="admin-user-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
+                <FontAwesomeIcon icon={faCog} className="admin-user-custom-icon1" />
+              </div>
+              <div className="admin-user-icon-container2" onClick={handleLogout}>
+                <FontAwesomeIcon icon={faSignOutAlt} className="admin-user-custom-icon2" />
+              </div>
+            </div>
+          </header>
+          <aside className="admin-user-side-nav">
+            <nav>
+              <ul>
+                <li>
+                  <a href="#clients" onClick={handleUserManagementClick}>User Management</a>
+                </li>
+                <li>
+                  <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
+                </li>
+                <li>
+                  <a href="#casematter" onClick={handleMyCaseClick}>
+                    My Case
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </aside>
+          <main className="admin-user-content">
+            <button onClick={handleBackClick}>Back</button>
+            <div className="admin-user-table-container">
+              {/* External Users Table */}
+              <div>
+                <h2>External Users</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>User Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {externalUsers.map((user) => (
+                      <tr key={user.userId}>
+                        <td>{user.userId}</td>
+                        <td>{user.userName}</td>
+                        <td>{user.email}</td>
+                        <td>{user.role}</td>
+                        <td>
+                          <button onClick={() => handleDeleteExternalUser(user.userId)}>Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {/* Internal Users Table */}
+              <div>
+                <h2>Internal Users</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>User Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {internalUsers.map((admin) => (
+                      <tr key={admin.userId}>
+                        <td>{admin.userId}</td>
+                        <td>{admin.userName}</td>
+                        <td>{admin.email}</td>
+                        <td>{admin.role}</td>
+                        <td>
+                          <button onClick={() => handleDeleteInternalUser(admin.userId)}>Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </main>
+        </div>
+      );
+    };
+    
   
   export default UserManagementAdmin;

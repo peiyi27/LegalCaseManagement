@@ -3,6 +3,12 @@ import axios from 'axios';
 import './CaseManagementAdmin.css';
 import { useNavigate } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import legalHomeLogo from './logo.png';
+
+
+
 
 const CaseManagementAdmin = () => {
   const [cases, setCases] = useState([]);
@@ -20,12 +26,24 @@ const CaseManagementAdmin = () => {
 
   const handleCreateCaseClick = () => {
     // Navigate to CreateCaseForm
-    navigate('/CreateCaseFormStaff');
+    navigate('/CreateCaseFormAdmin');
   };
 
   const handleBackClick = () => {
     // Navigate to Home
     navigate('/Home');
+  };
+
+  const handleUserManagementClick = () => {
+    navigate('/UserManagementAdmin');
+  };
+
+  const handleCaseManagementClick = () => {
+    navigate('/CaseManagementAdmin');
+  };
+
+  const handleMyCaseClick = () => {
+    navigate('/MyCaseAdmin');
   };
 
   const handleViewClick = (caseId) => {
@@ -43,6 +61,11 @@ const CaseManagementAdmin = () => {
   const handleDocumentClick = (caseId) => {
     navigate(`/DocumentManagementCaseAdmin/${caseId}`);
     // Handle Edit button click, you can navigate to an edit page or perform any action
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
   };
 
   const handleDeleteClick = async (caseId) => {
@@ -75,17 +98,50 @@ const CaseManagementAdmin = () => {
     }
   };
   
-
-
   return (
-    <div className="case-management">
-      <h2>Case Management</h2>
-      <button className="create-case-button" onClick={handleCreateCaseClick}>
-        Create Case
-      </button>
-      <button className="create-back-button" onClick={handleBackClick}>
-        Back
-      </button>
+    <div>
+    <header className="admin-case-top-nav">
+      <div>
+        <img src={legalHomeLogo} alt="Legal Logo" className="admin-case-logohome" />
+        <h1 className="admin-case-header">Apex Legal Solution</h1>
+      </div>
+      <div>
+        <div className="admin-case-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
+          <FontAwesomeIcon icon={faCog} className="admin-case-custom-icon1" />
+        </div>
+        <div className="admin-case-icon-container2" onClick={handleLogout}>
+          <FontAwesomeIcon icon={faSignOutAlt} className="admin-case-custom-icon2" />
+        </div>
+      </div>
+    </header>
+    <aside className="admin-case-side-nav">
+    <nav>
+          <ul>
+            <li>
+              <a href="#clients" onClick={handleUserManagementClick}>User Management</a>
+            </li>
+            <li>
+              <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
+            </li>
+            <li>
+              <a href="#casematter" onClick={handleMyCaseClick}>
+                My Case
+              </a>
+            </li>
+          </ul>
+        </nav>
+    </aside>
+    <main className="admin-case-content">
+      <div>
+  <div className="admin-case-management">
+    <h2>Case Management</h2>
+    <button className="create-back-button" onClick={handleBackClick}>
+      Back
+    </button>
+    <button className="create-case-button" onClick={handleCreateCaseClick}>
+      Create Case
+    </button>
+    <div className="table-container">
       {cases.length > 0 ? (
         <table>
           <thead>
@@ -97,7 +153,7 @@ const CaseManagementAdmin = () => {
               <th>Case Status</th>
               <th>Staff Name</th>
               <th>Client Name</th>
-              <th>Actions</th> {/* Added Actions header */}
+              <th className="admin-case-actions-header">Actions</th> {/* Added Actions header */}
             </tr>
           </thead>
           <tbody>
@@ -110,7 +166,7 @@ const CaseManagementAdmin = () => {
                 <td>{caseItem.case_status}</td>
                 <td>{caseItem.staff_name}</td>
                 <td>{caseItem.client_name}</td>
-                <td>
+                <td className="admin-case-actions-cell">
                   <button onClick={() => handleViewClick(caseItem.case_id)}>View</button>
                   <button onClick={() => handleEditClick(caseItem.case_id)}>Edit</button>
                   <button onClick={() => handleDeleteClick(caseItem.case_id)}>Delete</button>
@@ -124,6 +180,11 @@ const CaseManagementAdmin = () => {
         <p>No cases available.</p>
       )}
     </div>
+  </div>
+</div>
+    </main>
+  </div>
+  
   );
 };
 

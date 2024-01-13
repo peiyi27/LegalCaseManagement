@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import legalHomeLogo from './logo.png';
 import axios from 'axios';
 import './HomeForClient.css';
+import caseLogo from './case-logo.png';
 
 const HomeForClient = () => {
   const navigate = useNavigate();
@@ -12,10 +13,30 @@ const HomeForClient = () => {
   const [adminCount, setAdminCount] = useState(0);
   const [clientCount, setClientCount] = useState(0);
   const [caseCount, setCaseCount] = useState(0);
+  const [adminName, setAdminName] = useState('');
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const baseUrl = 'http://localhost:3001'; // Adjust the base URL based on your server configuration
+
+    axios.get('http://localhost:3001/profile-get-client-name')
+    .then(response => {
+      const { success, adminName, message } = response.data;
+
+      if (success) {
+        setAdminName(adminName);
+      } else {
+        setError(message);
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      setError('Internal Server Error');
+    })
+    .finally(() => {
+      setLoading(false);
+    });
   
     // Fetch counts from the server using Axios
     axios.get(`${baseUrl}/api/staff-count-for-client`)
@@ -44,36 +65,53 @@ const HomeForClient = () => {
     navigate('/CaseManagementClient');
   };
 
+  const handleButtonClick1 = () => {
+    navigate('/CaseManagementClient');
+  };
 
   return (
     <div>
-      <header className="home-top-nav">
+      <header className="client-top-nav">
         <div>
-          <img src={legalHomeLogo} alt="Legal Logo" className="logohome" />
-          <h1 className="home-header">Apex Legal Solution</h1>
+          <img src={legalHomeLogo} alt="Legal Logo" className="client-logohome" />
+          <h1 className="client-header">Apex Legal Solution</h1>
         </div>
         <div>
-          <div className="setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
-            <FontAwesomeIcon icon={faCog} className="custom-icon1" />
+          <div className="client-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
+            <FontAwesomeIcon icon={faCog} className="client-custom-icon1" />
           </div>
-          <div className="icon-container2" onClick={handleLogout}>
-            <FontAwesomeIcon icon={faSignOutAlt} className="custom-icon2" />
+          <div className="client-icon-container2" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOutAlt} className="client-custom-icon2" />
           </div>
         </div>
       </header>
-      <aside className="home-side-nav">
+      <aside className="client-side-nav">
         <nav>
           <ul>
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>
-                My Case
+                Case Management
               </a>
             </li>
           </ul>
         </nav>
       </aside>
-      <main className="home-content">
-          <p>Case Count: {caseCount}</p>
+      <main className="client-content">
+        <h2 className="client-welcome-message">Welcome, {adminName}!</h2>
+        <div className="client-count-boxes">
+          <div className="client-count-box">
+            <img src={caseLogo} alt="Case Logo" className="client-count-box-image" />
+            <div className="client-count-box-content">
+              <p className="client-count-box-label">Total Case</p>
+              <p className="client-count-box-value">{caseCount}</p>
+            </div>
+          </div>
+        </div>
+        <div className="client-button-container">
+          <button className="client-action-button client-button1" onClick={handleButtonClick1}>
+            Explore and View Personal Case
+          </button>
+        </div>
       </main>
     </div>
   );

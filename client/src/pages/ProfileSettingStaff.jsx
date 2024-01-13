@@ -69,11 +69,11 @@ const ProfileSettingStaff = () => {
       {!loading && error && <p>Error: {error}</p>}
       {!loading && !error && (
         <div>
-          <h2>Admin Name</h2>
+          <h2>Staff Name</h2>
           <button onClick={handleBackClick}>Back</button>
           <p>{adminName}</p>
           <button onClick={handleNameButtonClick}>Update Name</button>
-          <h2>Admin Email</h2>
+          <h2>Staff Email</h2>
           <p>{adminEmail}</p>
           <button onClick={handleEmailButtonClick}>Update Email</button>
         </div>

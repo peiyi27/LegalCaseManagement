@@ -1,0 +1,319 @@
+/* Main layout */
+client-body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #DFF2FF;
+  margin: 0;
+  padding: 0;
+}
+
+/* Top navigation bar */
+.client-top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px; /* Set the height of your top-nav bar */
+  background-color: #ffffff;
+  z-index: 1000; /* Higher than side-nav to stay on top */
+}
+
+.client-header {
+  font-size: 20px;
+  position: fixed;
+  top: 0.7%; /* Adjust the top position as needed to control the vertical position */
+  left: 4.5%; /* Adjust the left position as needed to control the horizontal position */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Side navigation */
+.client-side-nav {
+  background-color: #2c3e50;
+  color: #ffffff;
+  width: 275px; /* Adjust width as necessary */
+  height: 100vh;
+  position: fixed;
+  top: 60px; /* Set this to the height of your top-nav bar */
+  left: 0;
+  overflow-y: auto;
+  padding-top: 3px; /* Add padding to push content down */
+  z-index: 999; /* Ensure it is below the top-nav which has a higher z-index */
+}
+
+/* Side nav items */
+.client-side-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.client-side-nav ul li {
+  padding: 15px 20px;
+  border-bottom: 1px solid #34495e;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.client-side-nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Main content area */
+.client-content {
+  margin-left: 275px; /* Adjust the margin-left to match the side nav width */
+  margin-top: 60px; /* Adjust the margin-top to match the top nav height */
+  padding: 20px;
+  height: calc(100vh - 60px); /* Calculate the remaining height of the viewport */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  overflow-y: auto; /* Add vertical scroll if content exceeds the height */
+}
+
+/* Dashboard cards */
+.client-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Card header */
+.client-card-header {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Card content */
+.client-card-content {
+  display: flex;
+  justify-content: space-between;
+  /* Additional styles for your card content */
+}
+
+/* Utility classes for text colors */
+.client-text-success {
+  color: #2ecc71;
+}
+
+.client-text-warning {
+  color: #f1c40f;
+}
+
+.client-text-danger {
+  color: #e74c3c;
+}
+
+/* Utility classes for background colors */
+.client-bg-primary {
+  background-color: #3498db;
+}
+
+.client-bg-success {
+  background-color: #2ecc71;
+}
+
+.client-bg-warning {
+  background-color: #f1c40f;
+}
+
+.client-bg-danger {
+  background-color: #e74c3c;
+}
+
+.client-custom-icon1 {
+  position: fixed;
+  font-size: 38px;
+  color: darkblue;
+  top: 1%;
+  right: 4.8%;
+}
+
+.client-custom-icon2 {
+  position: fixed;
+  font-size: 38px;
+  color: darkblue;
+  top: 1%;
+  right: 1%;
+}
+
+/* You can continue to expand this with specifics like grid layouts, charts, and media queries for responsiveness */
+
+.client-setting-container1 {
+  position: absolute; /* Change from fixed to absolute */
+  top: 0;
+  right: 4.1%; /* Adjust the horizontal position */
+  width: 60px;
+  height: 57px;
+  border: 1px solid #ccc;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
+}
+
+/* Add hover effect */
+.client-setting-container1:hover {
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+.client-icon-container2 {
+  position: absolute; /* Change from fixed to absolute */
+  top: 0;
+  right: 0.1%; /* Adjust the horizontal position */
+  width: 60px;
+  height: 57px;
+  border: 1px solid #ccc;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
+}
+
+/* Add hover effect */
+.client-icon-container2:hover {
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Login.css */
+.client-logohome {
+  position: fixed;
+  top: 0.5%; /* Adjust the top position as needed to control the vertical position */
+  left: 0.5%; /* Adjust the left position as needed to control the horizontal position */
+  max-width: 53px; /* Set the maximum width for the logo */
+  border-radius: 20%;
+}
+
+/* Adjust the width of the count boxes */
+.client-count-boxes {
+  display: flex;
+  gap: 20px; /* Adjust the gap as needed */
+}
+
+.client-count-box {
+  background: #3498db;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  color: #575252;
+  margin-bottom: 20px;
+  width: calc(100% - 40px); /* Adjusted width */
+}
+
+.client-count-box-image {
+  max-width: 60px;
+  margin-right: 20px;
+}
+
+.client-count-box-content {
+  flex-grow: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column; /* Display label and value vertically */
+  gap: 8px; /* Adjust the gap between label and value */
+}
+
+.client-count-box-label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 4px; /* Adjust the bottom margin for spacing */
+}
+
+.client-count-box-value {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 4px; /* Adjust the top margin for spacing */
+}
+
+.client-count-box:first-child {
+  background: #bddff7; /* Blue background color for Total Client */
+}
+
+.client-count-box img {
+  max-width: 50px; /* Set the maximum width for the logo */
+  margin-right: 10px; /* Adjust the right margin for spacing */
+}
+
+.client-welcome-message {
+  font-size: 2em; /* Increase the font size for emphasis */
+  font-weight: bold; /* Add bold font weight */
+  color: #081f2e; /* Set a color that complements your design */
+  margin-top: 20px; /* Adjust the margin-top for spacing */
+  margin-bottom: 30px; /* Adjust the margin-bottom for spacing */
+  text-transform: uppercase; /* Convert text to uppercase for a stylized look */
+  letter-spacing: 2px; /* Add letter spacing for clarity */
+}
+
+.client-button-container {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.client-action-button {
+  width: 100%;
+  height: 80px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: box-shadow 0.3s, background-color 0.3s;
+  font-size: 1.5em;
+  font-family: 'YourChosenFont', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Additional styles for the text display within buttons */
+.client-action-button-text {
+  font-family: 'Roboto', sans-serif; /* Change to your desired font */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Add styles for tooltips */
+.client-tooltip {
+  font-size: 0.8em;
+  color: #fff;
+  background-color: #333;
+  padding: 8px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Add specific styles for each button */
+.client-button1 {
+  background-image: url('./button-bg1.jpeg');
+}
+
+.client-action-button:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adjust the shadow for the floating effect */
+}
+
+.client-action-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2); /* Adjust the darkness */
+  z-index: 1;
+  transition: background 0.3s;
+}
+
+.client-action-button:hover::before {
+  background: rgba(0, 0, 0, 0.4); /* Adjust the darkness on hover */
+}

@@ -105,12 +105,9 @@ const CreateMyCaseFormAdmin= () => {
 
 
   return (
-    <div className="create-case-form">
-      <h2>Create Case</h2>
-      <button className="create-back-button" onClick={handleBackClick}>
-          Back
-        </button>
-      <Form onSubmit={handleSubmit}>
+    <Form className="admin-create-mycase-form" onSubmit={handleSubmit}>
+    <button onClick={handleBackClick}>Back</button>
+    <h2>Create New Case</h2>
         <Form.Group controlId="caseName">
           <Form.Label>Case Name</Form.Label>
           <Form.Control type="text" placeholder="Enter case name" onChange={handleChange} />
@@ -138,6 +135,7 @@ const CreateMyCaseFormAdmin= () => {
         </Form.Group>
 
         <Form.Group controlId="caseStatus">
+        <Form.Label>Case Status</Form.Label>
         <Form.Control as="select" onChange={handleChange} value={formData.caseStatus} required>
             <option value="" disabled>Select case status</option>
             <option value="Pending">Pending</option>
@@ -180,7 +178,6 @@ const CreateMyCaseFormAdmin= () => {
           Create Case
         </Button>
       </Form>
-    </div>
   );
 };
 

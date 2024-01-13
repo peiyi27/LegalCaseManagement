@@ -4,6 +4,8 @@ import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import legalHomeLogo from './logo.png';
 import axios from 'axios';
+import clientLogo from './client-logo.png';
+import caseLogo from './case-logo.png';
 import './HomeForStaff.css';
 
 const HomePage = () => {
@@ -12,10 +14,31 @@ const HomePage = () => {
   const [adminCount, setAdminCount] = useState(0);
   const [clientCount, setClientCount] = useState(0);
   const [caseCount, setCaseCount] = useState(0);
+  const [adminName, setAdminName] = useState('');
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const baseUrl = 'http://localhost:3001'; // Adjust the base URL based on your server configuration
+
+    
+    axios.get('http://localhost:3001/profile-get-admin-name')
+    .then(response => {
+      const { success, adminName, message } = response.data;
+
+      if (success) {
+        setAdminName(adminName);
+      } else {
+        setError(message);
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      setError('Internal Server Error');
+    })
+    .finally(() => {
+      setLoading(false);
+    });
   
     // Fetch counts from the server using Axios
     axios.get(`${baseUrl}/api/staff-count-for-client`)
@@ -44,24 +67,28 @@ const HomePage = () => {
     navigate('/CaseManagementStaff');
   };
 
+  const handleButtonClick1 = () => {
+    navigate('/CaseManagementStaff');
+  };
+
 
   return (
     <div>
-      <header className="home-top-nav">
+      <header className="staff-top-nav">
         <div>
-          <img src={legalHomeLogo} alt="Legal Logo" className="logohome" />
-          <h1 className="home-header">Apex Legal Solution</h1>
+          <img src={legalHomeLogo} alt="Legal Logo" className="staff-logohome" />
+          <h1 className="staff-header">Apex Legal Solution</h1>
         </div>
         <div>
-          <div className="setting-container1" onClick={() => navigate('/ProfileSettingStaff')}>
-            <FontAwesomeIcon icon={faCog} className="custom-icon1" />
+          <div className="staff-setting-container1" onClick={() => navigate('/ProfileSettingStaff')}>
+            <FontAwesomeIcon icon={faCog} className="staff-custom-icon1" />
           </div>
-          <div className="icon-container2" onClick={handleLogout}>
-            <FontAwesomeIcon icon={faSignOutAlt} className="custom-icon2" />
+          <div className="staff-icon-container2" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOutAlt} className="staff-custom-icon2" />
           </div>
         </div>
       </header>
-      <aside className="home-side-nav">
+      <aside className="staff-side-nav">
         <nav>
           <ul>
             <li>
@@ -72,9 +99,29 @@ const HomePage = () => {
           </ul>
         </nav>
       </aside>
-      <main className="home-content">
-          <p>Client Count: {clientCount}</p>
-          <p>Case Count: {caseCount}</p>
+      <main className="staff-content">
+        <h2 className="staff-welcome-message">Welcome, {adminName}!</h2>
+        <div className="staff-count-boxes">
+          <div className="staff-count-box">
+            <img src={clientLogo} alt="Client Logo" className="staff-count-box-image" />
+            <div className="staff-count-box-content">
+              <p className="staff-count-box-label">Total Client</p>
+              <p className="staff-count-box-value">{clientCount}</p>
+            </div>
+          </div>
+          <div className="staff-count-box">
+            <img src={caseLogo} alt="Case Logo" className="count-box-image" />
+            <div className="staff-count-box-content">
+              <p className="staff-count-box-label">Total Case</p>
+              <p className="staff-count-box-value">{caseCount}</p>
+            </div>
+          </div>
+        </div>
+        <div className="staff-button-container">
+  <button className="staff-action-button staff-button1" onClick={handleButtonClick1}>
+  Take charge of your client cases
+  </button>
+</div>
       </main>
     </div>
   );

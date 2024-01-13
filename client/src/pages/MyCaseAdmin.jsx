@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './MyCaseAdmin.css';
 import { useNavigate } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import legalHomeLogo from './logo.png';
 
 const MyCaseAdmin = () => {
   const [cases, setCases] = useState([]);
@@ -75,56 +77,112 @@ const MyCaseAdmin = () => {
     }
   };
   
+  
+ const handleLogout = () => {
+  localStorage.removeItem('token');
+  navigate('/login');
+};
 
+const handleUserManagementClick = () => {
+  navigate('/UserManagementAdmin');
+};
 
-  return (
-    <div className="case-management">
-      <h2>Case Management</h2>
-      <button className="create-case-button" onClick={handleCreateCaseClick}>
-        Create Case
-      </button>
-      <button className="create-back-button" onClick={handleBackClick}>
-        Back
-      </button>
-      {cases.length > 0 ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Index</th>
-              <th>Case ID</th>
-              <th>Case Name</th>
-              <th>Case Type</th>
-              <th>Case Status</th>
-              <th>Staff Name</th>
-              <th>Client Name</th>
-              <th>Actions</th> {/* Added Actions header */}
-            </tr>
-          </thead>
-          <tbody>
-            {cases.map((caseItem, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{caseItem.case_id}</td>
-                <td>{caseItem.case_name}</td>
-                <td>{caseItem.case_type}</td>
-                <td>{caseItem.case_status}</td>
-                <td>{caseItem.staff_name}</td>
-                <td>{caseItem.client_name}</td>
-                <td>
-                  <button onClick={() => handleViewClick(caseItem.case_id)}>View</button>
-                  <button onClick={() => handleEditClick(caseItem.case_id)}>Edit</button>
-                  <button onClick={() => handleDeleteClick(caseItem.case_id)}>Delete</button>
-                  <button onClick={() => handleDocumentClick(caseItem.case_id)}>Document</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>No cases available.</p>
-      )}
+const handleCaseManagementClick = () => {
+  navigate('/CaseManagementAdmin');
+};
+
+const handleMyCaseClick = () => {
+  navigate('/MyCaseAdmin');
+};
+
+return (
+  <div>
+  <header className="admin-mycase-top-nav">
+    <div>
+      <img src={legalHomeLogo} alt="Legal Logo" className="admin-mycase-logohome" />
+      <h1 className="admin-mycase-header">Apex Legal Solution</h1>
     </div>
-  );
+    <div>
+      <div className="admin-mycase-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
+        <FontAwesomeIcon icon={faCog} className="admin-mycase-custom-icon1" />
+      </div>
+      <div className="admin-mycase-icon-container2" onClick={handleLogout}>
+        <FontAwesomeIcon icon={faSignOutAlt} className="admin-mycase-custom-icon2" />
+      </div>
+    </div>
+  </header>
+  <aside className="admin-mycase-side-nav">
+  <nav>
+        <ul>
+          <li>
+            <a href="#clients" onClick={handleUserManagementClick}>User Management</a>
+          </li>
+          <li>
+            <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
+          </li>
+          <li>
+            <a href="#casematter" onClick={handleMyCaseClick}>
+              My Case
+            </a>
+          </li>
+        </ul>
+      </nav>
+  </aside>
+  <main className="admin-mycase-content">
+    <div>
+<div className="admin-mycase-management">
+  <h2>My Case</h2>
+  <button className="create-back-button" onClick={handleBackClick}>
+    Back
+  </button>
+  <button className="create-case-button" onClick={handleCreateCaseClick}>
+    Create Case
+  </button>
+  <div className="table-container">
+    {cases.length > 0 ? (
+      <table>
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Case ID</th>
+            <th>Case Name</th>
+            <th>Case Type</th>
+            <th>Case Status</th>
+            <th>Staff Name</th>
+            <th>Client Name</th>
+            <th className="admin-case-actions-header">Actions</th> {/* Added Actions header */}
+          </tr>
+        </thead>
+        <tbody>
+          {cases.map((caseItem, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{caseItem.case_id}</td>
+              <td>{caseItem.case_name}</td>
+              <td>{caseItem.case_type}</td>
+              <td>{caseItem.case_status}</td>
+              <td>{caseItem.staff_name}</td>
+              <td>{caseItem.client_name}</td>
+              <td className="admin-case-actions-cell">
+                <button onClick={() => handleViewClick(caseItem.case_id)}>View</button>
+                <button onClick={() => handleEditClick(caseItem.case_id)}>Edit</button>
+                <button onClick={() => handleDeleteClick(caseItem.case_id)}>Delete</button>
+                <button onClick={() => handleDocumentClick(caseItem.case_id)}>Document</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      <p>No cases available.</p>
+    )}
+  </div>
+</div>
+</div>
+  </main>
+</div>
+
+);
 };
 
 export default MyCaseAdmin;

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CaseManagementClient.css';
 import { useNavigate } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import legalHomeLogo from './logo.png';
 
 const CaseManagementClient = () => {
   const [cases, setCases] = useState([]);
@@ -37,13 +39,49 @@ const CaseManagementClient = () => {
   };
   
 
+  const handleCaseManagementClick = () => {
+    navigate('/CaseManagementClient');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
 
   return (
-    <div className="case-management">
-      <h2>Case Management</h2>
-      <button className="create-back-button" onClick={handleBackClick}>
-        Back
-      </button>
+    <div>
+    <header className="client-case-top-nav">
+      <div>
+        <img src={legalHomeLogo} alt="Legal Logo" className="client-case-logohome" />
+        <h1 className="client-case-header">Apex Legal Solution</h1>
+      </div>
+      <div>
+        <div className="client-case-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
+          <FontAwesomeIcon icon={faCog} className="client-case-custom-icon1" />
+        </div>
+        <div className="client-case-icon-container2" onClick={handleLogout}>
+          <FontAwesomeIcon icon={faSignOutAlt} className="client-case-custom-icon2" />
+        </div>
+      </div>
+    </header>
+    <aside className="client-case-side-nav">
+    <nav>
+          <ul>
+            <li>
+              <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
+            </li>
+          </ul>
+        </nav>
+    </aside>
+    <main className="client-case-content">
+      <div>
+  <div className="client-case-management">
+    <h2>Case Management</h2>
+    <button className="create-back-button" onClick={handleBackClick}>
+      Back
+    </button>
+    <div className="table-container">
       {cases.length > 0 ? (
         <table>
           <thead>
@@ -55,7 +93,7 @@ const CaseManagementClient = () => {
               <th>Case Status</th>
               <th>Staff Name</th>
               <th>Client Name</th>
-              <th>Actions</th> {/* Added Actions header */}
+              <th className="client-case-actions-header">Actions</th> {/* Added Actions header */}
             </tr>
           </thead>
           <tbody>
@@ -68,7 +106,7 @@ const CaseManagementClient = () => {
                 <td>{caseItem.case_status}</td>
                 <td>{caseItem.staff_name}</td>
                 <td>{caseItem.client_name}</td>
-                <td>
+                <td className="client-case-actions-cell">
                   <button onClick={() => handleViewClick(caseItem.case_id)}>View</button>
                   <button onClick={() => handleDocumentClick(caseItem.case_id)}>Document</button>
                 </td>
@@ -80,6 +118,11 @@ const CaseManagementClient = () => {
         <p>No cases available.</p>
       )}
     </div>
+  </div>
+</div>
+    </main>
+  </div>
+  
   );
 };
 

@@ -826,6 +826,39 @@ app.get('/api/count-for-case', (req, res) => {
     return res.status(200).json({ caseCount });
   });
 });
+
+app.get('/api/staff-count-for-case', (req, res) => {
+
+  const userId = req.session.username;
+  const query = 'SELECT COUNT(*) AS caseCount FROM `case` WHERE staff_id = ?'; // Use backticks for the table name
+
+  connection.query(query, [userId],(err, result) => {
+    if (err) {
+      console.error('MySQL query error: ', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    const caseCount = result[0][Object.keys(result[0])[0]];
+    return res.status(200).json({ caseCount });
+  });
+});
+
+app.get('/api/staff-count-for-client', (req, res) => {
+
+  const userId = req.session.username;
+  const query = 'SELECT DISTINCT COUNT(client_id) AS caseCount FROM `case` WHERE staff_id = ? '; // Use backticks for the table name
+
+  connection.query(query, [userId],(err, result) => {
+    if (err) {
+      console.error('MySQL query error: ', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    const caseCount = result[0][Object.keys(result[0])[0]];
+    return res.status(200).json({ clientCount });
+  });
+});
+
 app.get('/admin-get-external-user', (req, res) => {
   const selectQuery = "SELECT * FROM user ";
 
