@@ -1,0 +1,67 @@
+.client-update-email {
+    max-width: 600px;
+    margin: auto;
+    padding: 50px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .client-update-email button {
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color:#71879e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .client-update-email button:hover {
+    background-color: #885b5f;
+  }
+  
+  .client-update-email h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .client-update-email label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .client-update-email p {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .client-update-email input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .client-update-email button {
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #71879e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .client-update-email button:hover {
+    background-color: #885b5f;
+  }
+  
+  .client-update-email p.error {
+    color: red;
+  }
+  

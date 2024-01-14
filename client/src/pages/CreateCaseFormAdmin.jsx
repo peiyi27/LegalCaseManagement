@@ -123,7 +123,6 @@ const CreateCaseFormAdmin = () => {
             <option value="Immigration Cases">Immigration Cases</option>
             <option value="Commercial Cases">Commercial Cases</option>
             <option value="Environmental Cases">Environmental Cases</option>
-            <option value="Family Law Cases">Family Law Cases</option>
             <option value="Probate Cases">Probate Cases</option>
             <option value="Constitutional Cases">Constitutional Cases</option>
             <option value="Labor and Employment Cases">Labor and Employment Cases</option>

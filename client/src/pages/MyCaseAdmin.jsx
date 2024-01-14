@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import legalHomeLogo from './logo.png';
+import Swal from 'sweetalert2';
 
 const MyCaseAdmin = () => {
   const [cases, setCases] = useState([]);
@@ -48,28 +49,57 @@ const MyCaseAdmin = () => {
   };
 
   const handleDeleteClick = async (caseId) => {
-    // Prompt a confirmation dialog
-    const confirmDelete = window.confirm("Are you sure you want to delete this case?");
-  
-    if (confirmDelete) {
+    // Prompt a confirmation dialog using SweetAlert2
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to delete this case.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+    });
+
+    if (result.isConfirmed) {
       try {
         // If the user confirms, make an API call to delete the case using axios or your preferred method
         const response = await axios.delete(`http://localhost:3001/delete-case/${caseId}`, { withCredentials: true });
-  
+
         console.log(response.data);
-  
+
         // Check if the deletion was successful
         if (response.data.success) {
           // Refresh the cases or perform any necessary actions after successful deletion
           const updatedCasesResponse = await axios.get('http://localhost:3001/get-cases-staff');
           setCases(updatedCasesResponse.data.cases);
+
+          // Show success message using SweetAlert2
+          await Swal.fire({
+            icon: 'success',
+            title: 'Deleted!',
+            text: 'The case has been deleted successfully.',
+          });
         } else {
           // Handle deletion failure, display an error message, etc.
           console.error('Error deleting case:', response.data.message);
+
+          // Show error message using SweetAlert2
+          await Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: 'Failed to delete the case. Please try again.',
+          });
         }
       } catch (error) {
         // Handle AJAX error
         console.error('Error deleting case:', error);
+
+        // Show error message using SweetAlert2
+        await Swal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: 'An error occurred while deleting the case.',
+        });
       }
     } else {
       // If the user cancels, you can handle it or do nothing

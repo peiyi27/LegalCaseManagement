@@ -1,0 +1,76 @@
+.admin-document-management-mycase {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .admin-document-management-mycase-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .admin-document-management-mycase-header button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #7890a0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .admin-document-management-mycase-header button:hover {
+    background-color: #885b5f;
+  }
+  
+  .admin-document-management-mycase h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .admin-document-management-mycase-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .admin-document-management-mycase th, .admin-document-management-mycase td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .admin-document-management-mycase th {
+    background-color: #436480;; /* Change this color to your preference */
+    color: #fff;
+  }
+  
+  .admin-document-management-mycase tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .admin-document-management-mycase-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #2a678f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .admin-document-management-mycase-button:hover {
+    background-color: #885b5f;
+  }
+  
+  /* Additional Aesthetic Styles */
+  .admin-document-management-mycase {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-document-management-mycase-header button {
+    transition: background-color 0.3s ease-in-out;
+  }
+  

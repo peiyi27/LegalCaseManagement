@@ -1,0 +1,76 @@
+.staff-document-management-case {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .staff-document-management-case-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .staff-document-management-case-header button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #7890a0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .staff-document-management-case-header button:hover {
+    background-color: #885b5f;
+  }
+  
+  .staff-document-management-case h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .staff-document-management-case-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .staff-document-management-case th, .staff-document-management-case td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .staff-document-management-case th {
+    background-color: #436480;; /* Change this color to your preference */
+    color: #fff;
+  }
+  
+  .staff-document-management-case tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .staff-document-management-case-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #2a678f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .staff-document-management-case-button:hover {
+    background-color: #885b5f;
+  }
+  
+  /* Additional Aesthetic Styles */
+  .staff-document-management-case {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .staff-document-management-case-header button {
+    transition: background-color 0.3s ease-in-out;
+  }
+  

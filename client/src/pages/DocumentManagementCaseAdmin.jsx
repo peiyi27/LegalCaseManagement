@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { saveAs } from 'file-saver';
 import './DocumentManagementCaseAdmin.css';
+import Swal from 'sweetalert2'; // Import SweetAlert2s
 
 const DocumentManagementCaseAdmin = () => {
   const [documents, setDocuments] = useState([]);
@@ -64,71 +65,123 @@ const DocumentManagementCaseAdmin = () => {
 
     // Use FileSaver.js to trigger the file download
     saveAs(blob, documentName);
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Document Downloaded Successfully!',
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
+ 
   const handleDeleteDocumentClick = (documentId) => {
-    const shouldDelete = window.confirm(`Are you sure you want to delete the document ?`);
-  
-    if (shouldDelete) {
-      deleteDocument(documentId);
-    }
+    // Use SweetAlert2 for delete confirmation
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to delete this document.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // If confirmed, delete the document
+        deleteDocument(documentId);
+      }
+    });
   };
-  
+
   const deleteDocument = async (documentId) => {
     try {
       // Make a request to delete the document based on the documentId
       const response = await axios.delete(`http://localhost:3001/delete-document/${documentId}`);
-  
+
       if (response.data.success) {
-        alert('Document deleted successfully.');
+        // Use SweetAlert2 for delete success
+        Swal.fire({
+          icon: 'success',
+          title: 'Document Deleted Successfully!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
         // Fetch the updated list of documents after deletion
         const updatedDocuments = await axios.get(`http://localhost:3001/get-case-documents/${caseId}`);
         setDocuments(updatedDocuments.data.documents);
       } else {
-        alert('Error deleting document. Please try again.');
+        // Use SweetAlert2 for delete error
+        Swal.fire({
+          icon: 'error',
+          title: 'Error Deleting Document',
+          text: 'Please try again.',
+        });
       }
     } catch (error) {
+      // Use SweetAlert2 for unexpected error
+      Swal.fire({
+        icon: 'error',
+        title: 'Unexpected Error',
+        text: 'An unexpected error occurred. Please try again.',
+      });
       console.error('Error deleting document:', error);
-      alert('An unexpected error occurred. Please try again.');
     }
   };
 
-  return (
-    <div className="case-documents-container">
-      <div className="case-documents-header">
-        <button onClick={handleBackClick}>Back</button>
-        <button onClick={handleUploadDocumentClick}>Upload Document</button>
-      </div>
-      <h2>Case Documents</h2>
-      {documents.length > 0 ? (
-        <table>
-          <thead>
-            <tr>
-              <th>Index</th>
-              <th>Filename</th>
-              <th>File Type</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {documents.map((document, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{document.name}</td>
-                <td>{document.documentType}</td>
-                <td>
-                  <button onClick={() => handleViewDocumentClick(document.documentId, document.name, document.content, document.documentType)}>View</button>
-                  <button onClick={() => handleDeleteDocumentClick(document.documentId,)}>Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>No documents available for this case.</p>
-      )}
+ return (
+  <div className="admin-document-management-case">
+    <div className="admin-document-management-case-header">
+      <button onClick={handleBackClick} className="admin-document-management-case-button admin-document-management-case-back-button">
+        Back
+      </button>
+      <button onClick={handleUploadDocumentClick} className="admin-document-management-case-button admin-document-management-case-upload-button">
+        Upload Document
+      </button>
     </div>
-  );
+    <h2 className="admin-document-management-case-heading">Case Documents</h2>
+    {documents.length > 0 ? (
+      <table className="admin-document-management-case-table">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Filename</th>
+            <th>File Type</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {documents.map((document, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{document.name}</td>
+              <td>{document.documentType}</td>
+              <td>
+                <button
+                  onClick={() =>
+                    handleViewDocumentClick(document.documentId, document.name, document.content, document.documentType)
+                  }
+                  className="admin-document-management-case-button admin-document-management-case-view-button"
+                >
+                  View
+                </button>
+                <button
+                  onClick={() => handleDeleteDocumentClick(document.documentId)}
+                  className="admin-document-management-case-button admin-document-management-case-delete-button"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      <p className="admin-document-management-case-no-documents">No documents available for this case.</p>
+    )}
+  </div>
+);
+
 };
 
 export default DocumentManagementCaseAdmin;

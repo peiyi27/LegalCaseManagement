@@ -39,7 +39,7 @@ const HomePage = () => {
     .finally(() => {
       setLoading(false);
     });
-  
+ 
     // Fetch counts from the server using Axios
     axios.get(`${baseUrl}/api/staff-count-for-client`)
       .then((response) => response.data)
@@ -57,6 +57,7 @@ const HomePage = () => {
       .catch((error) => console.error('Error fetching case count:', error))
       .finally(() => setLoading(false)); // Set loading to false when counts are fetched
   }, []);
+  
 
   const handleLogout = () => {
     localStorage.removeItem('token');

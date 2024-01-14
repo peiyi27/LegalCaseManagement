@@ -1,0 +1,89 @@
+/* Style for the entire container */
+.admin-profile-setting {
+  max-width: 800px;
+  margin: auto;
+  padding: 50px;
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for loading text */
+.admin-profile-setting .loading {
+  font-size: 18px;
+  color: #555;
+}
+
+/* Style for error message */
+.admin-profile-setting .error {
+  font-size: 18px;
+  color: #ff5f5f;
+}
+
+/* Style for admin details */
+.admin-profile-setting .admin-details {
+  margin-top: 30px;
+}
+
+/* Style for back button */
+.admin-profile-setting .admin-details .back-button {
+  padding: 15px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #71879e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover effect for back button */
+.admin-profile-setting .admin-details .back-button:hover {
+  background-color: #885b5f;
+}
+
+/* Style for profile section */
+.admin-profile-setting .admin-details .profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Style for each profile item */
+.admin-profile-setting .admin-details .profile-item {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for heading */
+.admin-profile-setting .admin-details .profile-item .item-heading {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* Style for paragraph */
+.admin-profile-setting .admin-details .profile-item .item-content {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Style for update button */
+.admin-profile-setting .admin-details .profile-item .update-button {
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #71879e;
+  color: #fff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover effect for update button */
+.admin-profile-setting .admin-details .profile-item .update-button:hover {
+  background-color: #885b5f;
+}

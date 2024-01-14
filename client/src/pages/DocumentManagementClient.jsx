@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { saveAs } from 'file-saver';
 import './DocumentManagementClient.css';
+import Swal from 'sweetalert2';
 
 const DocumentManagementClient = () => {
   const [documents, setDocuments] = useState([]);
@@ -27,17 +28,14 @@ const DocumentManagementClient = () => {
 
   
   const handleViewDocumentClick = (documentId, documentName, documentContent, documentType) => {
-    const decodedContent = atob(documentContent); // Decode base64 content
-
-    // Convert the decoded content to a Uint8Array
+    const decodedContent = atob(documentContent);
     const uint8Array = new Uint8Array(decodedContent.length);
     for (let i = 0; i < decodedContent.length; i++) {
       uint8Array[i] = decodedContent.charCodeAt(i);
     }
-
-    // Determine the MIME type based on the document type
+  
     let mimeType;
-
+  
     if (documentType === 'pdf') {
       mimeType = 'application/pdf';
     } else if (documentType === 'docx') {
@@ -53,24 +51,33 @@ const DocumentManagementClient = () => {
     } else if (documentType === 'mp4') {
       mimeType = 'video/mp4';
     } else {
-      mimeType = 'application/octet-stream'; // Default to octet-stream for unknown types
+      mimeType = 'application/octet-stream';
     }
-
+  
     const blob = new Blob([uint8Array], { type: mimeType });
-
+  
+    // Use SweetAlert2 for success notification
+    Swal.fire({
+      icon: 'success',
+      title: 'Document Downloaded Successfully!',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  
     // Use FileSaver.js to trigger the file download
     saveAs(blob, documentName);
   };
-
- 
+  
   return (
-    <div className="case-documents-container">
-      <div className="case-documents-header">
-        <button onClick={handleBackClick}>Back</button>
+    <div className="client-document-management-case">
+      <div className="client-document-management-case-header">
+        <button onClick={handleBackClick} className="client-document-management-case-button client-document-management-case-back-button">
+          Back
+        </button>
       </div>
-      <h2>Case Documents</h2>
+      <h2 className="client-document-management-case-heading">Case Documents</h2>
       {documents.length > 0 ? (
-        <table>
+        <table className="client-document-management-case-table">
           <thead>
             <tr>
               <th>Index</th>
@@ -86,14 +93,21 @@ const DocumentManagementClient = () => {
                 <td>{document.name}</td>
                 <td>{document.documentType}</td>
                 <td>
-                  <button onClick={() => handleViewDocumentClick(document.documentId, document.name, document.content, document.documentType)}>View</button>
+                  <button
+                    onClick={() =>
+                      handleViewDocumentClick(document.documentId, document.name, document.content, document.documentType)
+                    }
+                    className="client-document-management-case-button client-document-management-case-view-button"
+                  >
+                    View
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       ) : (
-        <p>No documents available for this case.</p>
+        <p className="client-document-management-case-no-documents">No documents available for this case.</p>
       )}
     </div>
   );

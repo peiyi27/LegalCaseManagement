@@ -125,12 +125,11 @@ const EditCaseAdmin = () => {
   };
 
   return (
-    <div className="edit-case-form">
-      <button  onClick={handleBackClick}>
+      <Form className="admin-edit-case-form" onSubmit={handleSubmit}>
+        <button  onClick={handleBackClick}>
           Back
         </button>
-      <h2>Edit Case</h2>
-      <Form onSubmit={handleSubmit}>
+        <h2>Edit Case</h2>
         <Form.Group controlId="caseName">
           <Form.Label>Case Name</Form.Label>
           <Form.Control type="text" placeholder="Enter case name" onChange={handleChange} value={formData.caseName} />
@@ -200,7 +199,6 @@ const EditCaseAdmin = () => {
           Update Case
         </Button>
       </Form>
-    </div>
   );
 };
 

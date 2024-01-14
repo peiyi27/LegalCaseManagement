@@ -38,16 +38,9 @@ const HomeForClient = () => {
       setLoading(false);
     });
   
-    // Fetch counts from the server using Axios
-    axios.get(`${baseUrl}/api/staff-count-for-client`)
-      .then((response) => response.data)
-      .then((data) => {
-        setClientCount(data.clientCount);
-      })
-      .catch((error) => console.error('Error fetching client count:', error));
-  
+   
     // Fetch case count from the server using Axios
-    axios.get(`${baseUrl}/api/staff-count-for-case`)
+    axios.get(`${baseUrl}/api/client-count-for-case`)
       .then((response) => response.data)
       .then((data) => {
         setCaseCount(data.caseCount);

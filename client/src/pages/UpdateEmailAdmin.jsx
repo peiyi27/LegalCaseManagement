@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Modal from 'react-modal';
+import Swal from 'sweetalert2';
 import './UpdateEmailAdmin.css'; // Import your CSS file
 
 const UpdateEmailAdmin = () => {
@@ -9,7 +9,6 @@ const UpdateEmailAdmin = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [newEmail, setNewEmail] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -34,55 +33,51 @@ const UpdateEmailAdmin = () => {
     axios.post('http://localhost:3001/update-admin-email', { newEmail })
       .then(response => {
         setError('Email Updated Successfully');
-        setIsModalOpen(true);
+        Swal.fire({
+          title: 'Success!',
+          text: 'Email Updated Successfully',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        }).then(() => {
+          navigate('/ProfileSettingAdmin');
+        });
       })
       .catch(error => {
         console.error(error);
         setError('Email Update Failed: ' + error.response.data.message);
+        Swal.fire({
+          title: 'Error!',
+          text: 'Email Update Failed: ' + error.response.data.message,
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
       });
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    navigate('/Home');
-  };
-  
   const handleBackClick = () => {
-    // Navigate to Home
-    navigate('/Home');
+    navigate('/ProfileSettingAdmin');
   };
-
 
   return (
-    <div className="UpdateEmailContainer"> {/* Add the class name here */}
-    <button  onClick={handleBackClick}>
-        Back
-      </button>
+    <div className="admin-update-email">
+      <button onClick={handleBackClick}>Back</button>
       <h2>Change Email</h2>
       <label>Current Email:</label>
       <p>{adminEmail}</p>
-
+  
       <label>New Email:</label>
       <input
         type="text"
         value={newEmail}
         onChange={(e) => setNewEmail(e.target.value)}
       />
-
+  
       <button onClick={handleSaveButtonClick}>Save</button>
-
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        contentLabel="Email Update Modal"
-      >
-        <p>{error}</p>
-        <button onClick={closeModal}>OK</button>
-      </Modal>
+  
+      {error && <p className="error">{error}</p>}
     </div>
   );
+  
 };
 
 export default UpdateEmailAdmin;

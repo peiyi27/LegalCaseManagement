@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './UploadDocumentCaseAdmin.css'; // Import your CSS file
+import Swal from 'sweetalert2';
 
 const UploadDocumentCaseAdmin = () => {
   const { caseId } = useParams();
@@ -52,14 +53,28 @@ const UploadDocumentCaseAdmin = () => {
       });
 
       if (response.data.success) {
-        alert('Document uploaded successfully.');
-        navigate(`/DocumentManagementCaseAdmin/${caseId}`);
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Document uploaded successfully.',
+        }).then(() => {
+          navigate(`/DocumentManagementCaseAdmin/${caseId}`);
+        });
       } else {
-        alert('Error uploading document. Please try again.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: 'Error uploading document. Please try again.',
+        });
       }
     } catch (error) {
       console.error('Error uploading document:', error);
-      alert('An unexpected error occurred. Please try again.');
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'An unexpected error occurred. Please try again.',
+      });
     } finally {
       setConfirmationOpen(false);
     }
@@ -68,13 +83,13 @@ const UploadDocumentCaseAdmin = () => {
   const handleBackClick = () => {
     navigate(`/DocumentManagementCaseAdmin/${caseId}`);
   };
-
+  
   return (
-    <div className="upload-document-container">
+    <div className="admin-upload-document-case">
       <h2>Upload Document</h2>
       <button onClick={handleBackClick}>Back</button>
       <div>
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="title">Save File Name As:</label>
         <input type="text" id="title" value={title} onChange={handleTitleChange} />
       </div>
       <div>
@@ -82,7 +97,7 @@ const UploadDocumentCaseAdmin = () => {
         <input type="file" id="file" onChange={handleFileChange} />
       </div>
       <div>
-        <label htmlFor="fileType">File Type:</label>
+        <label htmlFor="fileType">Select File Type:</label>
         <select id="fileType" value={fileType} onChange={handleFileTypeChange}>
           <option value="pdf">pdf</option>
           <option value="docx">docx</option>
@@ -96,7 +111,7 @@ const UploadDocumentCaseAdmin = () => {
       </div>
       <p>Maximum file size: 2GB</p>
       <button onClick={handleOpenConfirmation}>Confirm Save</button>
-
+  
       {isConfirmationOpen && (
         <div className="confirmation-modal">
           <p>Confirm Save?</p>
@@ -105,7 +120,7 @@ const UploadDocumentCaseAdmin = () => {
         </div>
       )}
     </div>
-  );
+  );  
 };
 
 export default UploadDocumentCaseAdmin;

@@ -1,0 +1,76 @@
+.client-document-management-case {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .client-document-management-case-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .client-document-management-case-header button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #7890a0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .client-document-management-case-header button:hover {
+    background-color: #885b5f;
+  }
+  
+  .client-document-management-case h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .client-document-management-case-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .client-document-management-case th, .staff-document-management-case td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .client-document-management-case th {
+    background-color: #436480;; /* Change this color to your preference */
+    color: #fff;
+  }
+  
+  .client-document-management-case tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .client-document-management-case-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #2a678f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .client-document-management-case-button:hover {
+    background-color: #885b5f;
+  }
+  
+  /* Additional Aesthetic Styles */
+  .client-document-management-case {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .client-document-management-case-header button {
+    transition: background-color 0.3s ease-in-out;
+  }
+  

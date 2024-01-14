@@ -27,19 +27,19 @@ const ViewMyCaseAdmin = () => {
   };
 
   return (
-    <div className="view-case-container">
-      <h2 className="view-case-title">Case Information</h2>
-      <button  onClick={handleBackClick}>
+    <div className="admin-view-mycase-container">
+      <h2 className="admin-view-mycase-title">Case Information</h2>
+      <p className="admin-view-mycase-info-item">Case Id: {caseData.case_id}</p>
+      <p className="admin-view-mycase-info-item">Case Name: {caseData.case_name}</p>
+      <p className="admin-view-mycase-info-item">Case Type: {caseData.case_type}</p>
+      <p className="admin-view-mycase-info-item">Case Status: {caseData.case_status}</p>
+      <p className="admin-view-mycase-info-item">Case Created Date: {caseData.create_case_date}</p>
+      <p className="admin-view-mycase-info-item">Staff Name: {caseData.staff_name}</p>
+      <p className="admin-view-mycase-info-item">Client Name: {caseData.client_name}</p>
+      <p className="admin-view-mycase-info-item">Details: {caseData.case_detail}</p>
+      <button className="admin-view-mycase-button" onClick={handleBackClick}>
           Back
         </button>
-      <p className="case-info-item">Case Id: {caseData.case_id}</p>
-      <p className="case-info-item">Case Name: {caseData.case_name}</p>
-      <p className="case-info-item">Case Type: {caseData.case_type}</p>
-      <p className="case-info-item">Case Status: {caseData.case_status}</p>
-      <p className="case-info-item">Case Created Date: {caseData.create_case_date}</p>
-      <p className="case-info-item">Staff Name: {caseData.staff_name}</p>
-      <p className="case-info-item">Client Name: {caseData.client_name}</p>
-      <p className="case-info-item">Details: {caseData.case_detail}</p>
       {/* Add more details as needed */}
     </div>
   );

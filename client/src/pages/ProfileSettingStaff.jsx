@@ -64,21 +64,27 @@ const ProfileSettingStaff = () => {
   };
 
   return (
-    <div>
-      {loading && <p>Loading...</p>}
-      {!loading && error && <p>Error: {error}</p>}
-      {!loading && !error && (
-        <div>
-          <h2>Staff Name</h2>
-          <button onClick={handleBackClick}>Back</button>
-          <p>{adminName}</p>
-          <button onClick={handleNameButtonClick}>Update Name</button>
-          <h2>Staff Email</h2>
-          <p>{adminEmail}</p>
-          <button onClick={handleEmailButtonClick}>Update Email</button>
+    <div className="staff-profile-setting">
+    {loading && <p className="loading">Loading...</p>}
+    {!loading && error && <p className="error">Error: {error}</p>}
+    {!loading && !error && (
+      <div className="staff-details">
+        <button onClick={handleBackClick} className="back-button">&#8592; Back</button>
+        <div className="profile-section">
+          <div className="profile-item">
+            <h2>Staff's Name</h2>
+            <p>{adminName}</p>
+            <button onClick={handleNameButtonClick} className="update-button">Edit Name</button>
+          </div>
+          <div className="profile-item">
+            <h2>Staff's Email</h2>
+            <p>{adminEmail}</p>
+            <button onClick={handleEmailButtonClick} className="update-button">Edit Email</button>
+          </div>
         </div>
-      )}
-    </div>
+      </div>
+    )}
+  </div>
   );
 };
 

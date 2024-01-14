@@ -145,28 +145,28 @@ const HomePage = () => {
           <div className="admin-count-box">
             <img src={clientLogo} alt="Client Logo" className="admin-count-box-image" />
             <div className="admin-count-box-content">
-              <p className="admin-count-box-label">Total Client</p>
+              <p className="admin-count-box-label">Total Client In Firm</p>
               <p className="admin-count-box-value">{clientCount}</p>
             </div>
           </div>
           <div className="admin-count-box">
             <img src={staffLogo} alt="Admin Logo" className="admin-count-box-image" />
             <div className="admin-count-box-content">
-              <p className="admin-count-box-label">Total Admin</p>
+              <p className="admin-count-box-label">Total Admin In Firm</p>
               <p className="admin-count-box-value">{adminCount}</p>
             </div>
           </div>
           <div className="admin-count-box">
             <img src={staffLogo} alt="Staff Logo" className="admin-count-box-image" />
             <div className="admin-count-box-content">
-              <p className="admin-count-box-label">Total Staff</p>
+              <p className="admin-count-box-label">Total Staff In Firm</p>
               <p className="admin-count-box-value">{staffCount}</p>
             </div>
           </div>
           <div className="admin-count-box">
             <img src={staffLogo} alt="Case Logo" className="admin-count-box-image" />
             <div className="admin-count-box-content">
-              <p className="admin-count-box-label">Total Case</p>
+              <p className="admin-count-box-label">Total Case In Firm</p>
               <p className="admin-count-box-value">{caseCount}</p>
             </div>
           </div>

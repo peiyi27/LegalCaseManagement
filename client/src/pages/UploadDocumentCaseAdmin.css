@@ -1,0 +1,83 @@
+.admin-upload-document-case {
+    width: 100%; /* Increase the width further */
+    margin: auto;
+    padding: 40px; /* Increase the padding further for a larger container */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .admin-upload-document-case h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .admin-upload-document-case button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #797d94;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .admin-upload-document-case div {
+    margin-bottom: 15px;
+  }
+  
+  .admin-upload-document-case label {
+    font-weight: bold;
+  }
+  
+  .admin-upload-document-case input,
+  .admin-upload-document-case select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .admin-upload-document-case p {
+    margin-top: 10px;
+  }
+  
+  .admin-upload-document-case .confirmation-modal {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f5f5f5;
+  }
+  
+  .admin-upload-document-case .confirmation-modal p {
+    margin-bottom: 10px;
+  }
+  
+  .admin-upload-document-case .confirmation-modal button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .admin-upload-document-case .confirmation-modal button:last-child {
+    background-color: #af6d6d;
+  }
+  
+  .admin-upload-document-case .confirmation-modal button:hover {
+    background-color: #45a049;
+  }
+  
+  .admin-upload-document-case .confirmation-modal button:last-child:hover {
+    background-color: #999;
+  }
+  
