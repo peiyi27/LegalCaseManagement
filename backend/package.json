@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -24,5 +23,6 @@
     "mysql2": "^3.7.0",
     "nodemon": "^3.0.2",
     "react-modal": "^3.16.1"
-  }
+  },
+  "description": ""
 }

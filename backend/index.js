@@ -34,8 +34,8 @@ const connection = mysql.createConnection({
   host: '127.0.0.1',
   user: 'root',
   port: '3306',
-  password: 'Fishyyy1#',
-  database: 'legal',
+  password: 'root',
+  database: 'event',
 });
 
 
@@ -44,7 +44,29 @@ connection.connect((err) => {
   console.log('Connected to MySQL Server!');
 });
 
+app.get("/", (req, res) => {
+  res.json("Hello testing")
+})
 
+
+//get event details
+app.get('/events', (req, res) => {
+  const caseId = req.params.caseId;
+  console.log('Case ID:', caseId);
+  const query = 'SELECT * FROM `events` WHERE case_id = ?';
+
+  connection.query(query, [caseId], (error, results) => {
+    if (error) {
+      console.error('Error executing MySQL query: ', error);
+      res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else if (results.length === 0) {
+      return res.status(404).json({ success: false, message: 'Case not found' });       
+    } else {
+      console.log('Fetched event details:', results[0]);
+      return res.status(200).json({ success: true, caseData: results[0] });
+    }
+  });
+});
 
 app.post('/register', (req, res) => {
   const { email, password, name, role } = req.body;
