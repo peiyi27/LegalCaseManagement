@@ -6,6 +6,7 @@ import legalHomeLogo from './logo.png';
 import axios from 'axios';
 import './HomeForClient.css';
 import caseLogo from './case-logo.png';
+import { Link } from 'react-router-dom';
 
 const HomeForClient = () => {
   const navigate = useNavigate();
@@ -58,6 +59,11 @@ const HomeForClient = () => {
     navigate('/CaseManagementClient');
   };
 
+  const handleEventManagementClick = () => {
+    navigate('/EventManagementClient');
+  };
+  
+
   const handleButtonClick1 = () => {
     navigate('/CaseManagementClient');
   };
@@ -84,6 +90,11 @@ const HomeForClient = () => {
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>
                 Case Management
+              </a>
+            </li>
+            <li>
+              <a href="#casematter" onClick={handleEventManagementClick}>
+                Event Management
               </a>
             </li>
           </ul>
