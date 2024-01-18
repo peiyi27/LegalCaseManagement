@@ -1,56 +1,51 @@
-/* src/Calendar.css */
-.calendar-container {
-    max-width: 1200px; /* Increase the max-width for a larger container */
-    margin: 0 auto;
-    text-align: center;
-    padding: 40px; /* Increase padding for more spacing */
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    background-color: #f5f5f5;
-  }
-  
-  .calendar-header {
-    color: #333;
-    margin-bottom: 20px; /* Increase margin for more spacing */
-  }
-  
-  .custom-calendar {
-    width: 100%;
-    max-width: 800px; /* Increase the max-width for a larger calendar */
-    margin: 0 auto;
-    border: 2px solid #ccc; /* Increase border size */
-    border-radius: 16px;
-    background-color: #fff;
-  }
-  
-  .react-calendar__tile {
-    padding: 20px; /* Increase padding for more spacing */
-    font-size: 24px; /* Increase font size for larger text */
-    color: #333;
-  }
-  
-  .react-calendar__tile--now {
-    background-color: #ffffff;
-    color: #e36f49;
-  }
-  
-  
-  .react-calendar__month-view__weekdays {
-    font-weight: bold;
-    font-size: 18px; /* Increase font size for larger weekday labels */
-  }
-  
-  .react-calendar__navigation__label {
-    color: #333;
-    font-size: 20px; /* Increase font size for larger navigation labels */
-  }
-  
-  .react-calendar__navigation button:enabled:hover,
-  .react-calendar__navigation button:enabled:focus {
-    background-color: #dddddd;
-  }
-  
-  .react-calendar__navigation button[disabled] {
-    color: #ccc;
-  }
-  
+/* Additional Styles */
+
+/* Calendar Header Styles */
+.ant-fullcalendar-header {
+  background-color: #1890ff; /* Change the background color as needed */
+  color: #fff; /* Change the text color as needed */
+}
+
+/* Calendar Tile (Day) Styles */
+.day-button {
+  background-color: #fafafa; /* Change the background color as needed */
+  color: #333; /* Change the text color as needed */
+  border: 1px solid #d9d9d9; /* Change the border color as needed */
+  width: 10px; /* Adjust the width of each day cell as needed */
+  height: 40px; /* Adjust the height of each day cell as needed */
+  line-height: 40px;
+}
+
+.day-button:hover {
+  background-color: #1890ff; /* Change the background color on hover as needed */
+  color: #fff; /* Change the text color on hover as needed */
+}
+
+/* List Item Styles */
+.ant-list-item {
+  border-bottom: 6px solid #000000; /* Change the border color as needed */
+}
+
+.ant-list-item:last-child {
+  border-bottom: none; /* Remove border for the last item in the list */
+}
+
+.list-header {
+  margin-top: 20px;
+  margin-left:100px;
+}
+
+.list {
+  margin-top: 0px;
+  margin-left:100px;
+}
+
+/* Wrapper Margin */
+.wrapper {
+  margin-top: 20px; /* Adjust the top margin as needed */
+}
+
+.calendar {
+  margin-left:100px;
+  margin-right: 800px;
+}
