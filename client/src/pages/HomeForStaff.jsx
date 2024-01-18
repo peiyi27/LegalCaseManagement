@@ -87,7 +87,7 @@ const HomePage = () => {
         <div>
           <div className="staff-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
             <FontAwesomeIcon icon={faBell} className="staff-custom-bell-icon" />
-          </div>
+            </div>
           <div className="staff-setting-container1" onClick={() => navigate('/ProfileSettingStaff')}>
             <FontAwesomeIcon icon={faCog} className="staff-custom-icon1" />
           </div>

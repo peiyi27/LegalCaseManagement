@@ -1,5 +1,10 @@
 /* Additional Styles */
 
+.logo-test {
+  width: 200px;
+  margin-left: 15px;
+}
+
 /* Calendar Header Styles */
 .ant-fullcalendar-header {
   background-color: #1890ff; /* Change the background color as needed */

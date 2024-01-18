@@ -4,6 +4,7 @@ import './CaseManagementStaff.css';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 import legalHomeLogo from './logo.png';
 import Swal from 'sweetalert2';
 
@@ -124,12 +125,14 @@ const handleCaseManagementClick = () => {
       <div>
       <header className="staff-case-top-nav">
         <div>
-          <img src={legalHomeLogo} alt="Legal Logo" className="staff-case-logohome" />
           <h1 className="staff-case-header">Apex Legal Solution</h1>
         </div>
         <div>
+        <div className="staff-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
+          <FontAwesomeIcon icon={faBell} className="staff-custom-bell-icon" />
+        </div>
           <div className="staff-case-setting-container1" onClick={() => navigate('/ProfileSettingStaff')}>
-            <FontAwesomeIcon icon={faCog} className="admin-case-custom-icon1" />
+            <FontAwesomeIcon icon={faCog} className="staff-case-custom-icon1" />
           </div>
           <div className="staff-case-icon-container2" onClick={handleLogout}>
             <FontAwesomeIcon icon={faSignOutAlt} className="staff-case-custom-icon2" />
@@ -139,6 +142,9 @@ const handleCaseManagementClick = () => {
       <aside className="staff-case-side-nav">
       <nav>
             <ul>
+            <li>
+              <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
+            </li>
               <li>
                 <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
               </li>

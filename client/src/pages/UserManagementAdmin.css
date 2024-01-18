@@ -12,9 +12,9 @@
   .admin-user-top-nav {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 20;
     right: 0;
-    width: 100%;
+    width: 1005px;
     height: 60px;
     background-color: #ffffff;
     z-index: 1001; /* Higher than side-nav to stay on top */
@@ -24,7 +24,7 @@
     font-size: 20px;
     position: fixed;
     top: 0.7%;
-    left: 4.5%;
+    left: 25%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   
@@ -35,7 +35,7 @@
     width: 275px;
     height: 100vh;
     position: fixed;
-    top: 60px;
+    top: 0;
     left: 0;
     overflow-y: auto;
     padding-top: 3px;
@@ -147,19 +147,36 @@
   }
   
   /* Custom icons */
-  .admin-user-custom-icon1,
+  .admin-notification-container {
+    position: absolute; 
+    top: 0;
+    right: 12%;
+    width: 60px;
+    height: 57px;
+    transition: box-shadow 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .admin-custom-bell-icon {
+    font-size: 2.5em;
+    color: darkblue; 
+  }
+
+  .admin-user-custom-icon1 {
+    position: fixed;
+    font-size: 38px;
+    color: darkblue;
+    top: 1.5%;
+    right: 5.5%;
+  }
+  
   .admin-user-custom-icon2 {
     position: fixed;
     font-size: 38px;
-    color: #2c3e50;
+    color: darkblue;
     top: 1%;
-  }
-  
-  .admin-user-custom-icon1 {
-    right: 4.8%;
-  }
-  
-  .admin-user-custom-icon2 {
     right: 1%;
   }
   
@@ -167,33 +184,18 @@
   .admin-user-setting-container1 {
     position: absolute;
     top: 0;
-    right: 4.1%;
+    right: 12%;
     width: 60px;
     height: 57px;
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s;
   }
-  
-  /* Add hover effect */
-  .admin-user-setting-container1:hover {
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
-  }
-  
+
   /* Icon container */
   .admin-user-icon-container2 {
     position: absolute;
     top: 0;
-    right: 0.1%;
+    right: 4.1%;
     width: 60px;
     height: 57px;
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s;
   }
-  
-  /* Add hover effect */
-  .admin-user-icon-container2:hover {
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
-  }
-  
