@@ -139,6 +139,29 @@ admin-body {
 
 /* You can continue to expand this with specifics like grid layouts, charts, and media queries for responsiveness */
 
+.admin-notification-container {
+  position: absolute; 
+  top: 0;
+  right: 8.2%;
+  width: 60px;
+  height: 57px;
+  border: 1px solid #ccc;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-notification-container:hover {
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+.admin-custom-bell-icon {
+  font-size: 2.5em;
+  color: darkblue; 
+}
+
 .admin-setting-container1 {
   position: absolute; /* Change from fixed to absolute */
   top: 0;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import legalHomeLogo from './logo.png';
 import clientLogo from './client-logo.png';
@@ -118,6 +119,9 @@ const HomePage = () => {
           <h1 className="admin-header">Apex Legal Solution</h1>
         </div>
         <div>
+        <div className="admin-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
+            <FontAwesomeIcon icon={faBell} className="admin-custom-bell-icon" />
+          </div>
           <div className="admin-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
             <FontAwesomeIcon icon={faCog} className="admin-custom-icon1" />
           </div>

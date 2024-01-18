@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 import dayLocaleData from 'dayjs/plugin/localeData';
-import { Button, Calendar, List, Col, Radio, Row, Select, Typography, theme } from 'antd';
+import { Button, message, Space, Calendar, List, Col, Radio, Row, Select, Typography, theme } from 'antd';
 import { Link } from 'react-router-dom';
-import './EventManagementClient.css';
+import './EventManagementStaff.css';
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 import legalHomeLogo from './logo.png';
 import axios from 'axios';
 import caseLogo from './case-logo.png';
-
 
 dayjs.extend(dayLocaleData);
 dayjs.locale('en');
@@ -27,9 +26,10 @@ const App = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const events = [
-    { date: '2023-12-01', startTime: '10:00 AM', endTime: '12:00 PM', title: 'Formal Meeting with Mr. Henry' },
-    { date: '2023-12-05', startTime: '02:30 PM', endTime: '04:00 PM', title: 'Evidence Inspection' },
-    { date: '2023-12-07', startTime: '08:30 AM', endTime: '02:00 PM', title: 'Discussion of Case 007' },
+    { date: '2024-01-24', startTime: '10:00 AM', endTime: '12:00 PM', title: 'Formal Meeting with Mr. Henry' },
+    { date: '2024-01-27', startTime: '02:30 PM', endTime: '04:00 PM', title: 'Evidence Inspection' },
+    { date: '2024-01-28', startTime: '08:30 AM', endTime: '01:00 PM', title: 'Discussion of Case 007' },
+    { date: '2024-01-30', startTime: '09:00 AM', endTime: '12:30 PM', title: 'Crime Scene 003 Investigation' },
   ];
   
 
@@ -61,20 +61,44 @@ const App = () => {
 
   const dateFullCellRender = (value) => {
     const day = value.date();
+    const isEventDate = events.some((event) => dayjs(event.date).isSame(value, 'day'));
+    const [messageApi, contextHolder] = message.useMessage();
+    const error = () => {
+      messageApi.open({
+        type: 'error',
+        content: 'No event available',
+      });
+    };
 
-
-    return (
-      <Link to={`/ViewEventClient`}>
-        <Button
-          type="text"
-          style={{ width: '70%', height: '100%', textAlign: 'center', margin: '0', padding: '0' }}
-          onClick={() => console.log(`Clicked on ${value.format('YYYY-MM-DD')}`)}
-        >
-          {day}
-        </Button>
-      </Link>
-    );
-  };
+return (
+    <>
+      {isEventDate ? (
+        <Link to={`/ViewEventClient`}>
+          <Button
+            type="text"
+            className={`event-button event-date`}
+            onClick={() => console.log(`Clicked on ${value.format('YYYY-MM-DD')}`)}
+          >
+            {day}
+          </Button>
+        </Link>
+      ) : (
+        <>
+          {contextHolder}
+            <Space>
+              <Button
+                type="text"
+                className={`event-button`}
+                onClick={error}
+              >
+                {day}
+              </Button>
+            </Space>
+          </>
+      )}
+    </>
+  );  
+};
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -97,6 +121,10 @@ const App = () => {
     // Navigate to Home
     navigate('/HomeForStaff');
   };
+
+  const handleCreateEvent = () => {
+    navigate('/CreateEventForm');
+  }
 
   return (
     <div>
@@ -215,7 +243,12 @@ const App = () => {
           onPanelChange={onPanelChange}
           dateFullCellRender={dateFullCellRender}
         />
-        <h2 className="list-header">List of Upcoming Events:</h2>
+        <div className="button-container">
+          <h2 className="list-header">List of Upcoming Events:</h2>
+          <button className="create-event-button" onClick={handleCreateEvent}>
+            Create Event
+          </button>
+        </div>
         <List
           className="list"
           dataSource={events}
