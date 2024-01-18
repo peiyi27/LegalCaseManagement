@@ -6,13 +6,18 @@ client-body {
   padding: 0;
 }
 
+.logo-test {
+  width: 200px;
+  margin-left: 15px;
+}
+
 /* Top navigation bar */
 .client-top-nav {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 20;
   right: 0;
-  width: 100%;
+  width: 1005px;
   height: 60px; /* Set the height of your top-nav bar */
   background-color: #ffffff;
   z-index: 1000; /* Higher than side-nav to stay on top */
@@ -22,7 +27,7 @@ client-body {
   font-size: 20px;
   position: fixed;
   top: 0.7%; /* Adjust the top position as needed to control the vertical position */
-  left: 4.5%; /* Adjust the left position as needed to control the horizontal position */
+  left: 25%; /* Adjust the left position as needed to control the horizontal position */
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -33,7 +38,7 @@ client-body {
   width: 275px; /* Adjust width as necessary */
   height: 100vh;
   position: fixed;
-  top: 60px; /* Set this to the height of your top-nav bar */
+  top: 0; /* Set this to the height of your top-nav bar */
   left: 0;
   overflow-y: auto;
   padding-top: 3px; /* Add padding to push content down */
@@ -125,8 +130,8 @@ client-body {
   position: fixed;
   font-size: 38px;
   color: darkblue;
-  top: 1%;
-  right: 4.8%;
+  top: 1.5%;
+  right: 5.5%;
 }
 
 .client-custom-icon2 {
@@ -142,19 +147,13 @@ client-body {
 .client-notification-container {
   position: absolute; 
   top: 0;
-  right: 8.2%;
+  right: 12%;
   width: 60px;
   height: 57px;
-  border: 1px solid #ccc;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.client-notification-container:hover {
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
 }
 
 .client-custom-bell-icon {
@@ -168,14 +167,7 @@ client-body {
   right: 4.1%; /* Adjust the horizontal position */
   width: 60px;
   height: 57px;
-  border: 1px solid #ccc;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s;
-}
-
-/* Add hover effect */
-.client-setting-container1:hover {
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
 }
 
 .client-icon-container2 {
@@ -184,21 +176,15 @@ client-body {
   right: 0.1%; /* Adjust the horizontal position */
   width: 60px;
   height: 57px;
-  border: 1px solid #ccc;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s;
 }
 
-/* Add hover effect */
-.client-icon-container2:hover {
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
-}
 
 /* Login.css */
 .client-logohome {
   position: fixed;
   top: 0.5%; /* Adjust the top position as needed to control the vertical position */
-  left: 0.5%; /* Adjust the left position as needed to control the horizontal position */
+  left: 23.5%; /* Adjust the left position as needed to control the horizontal position */
   max-width: 53px; /* Set the maximum width for the logo */
   border-radius: 20%;
 }
@@ -318,7 +304,7 @@ client-body {
 
 /* Add specific styles for each button */
 .client-button1 {
-  background-image: url('./button-bg1.jpeg');
+  background-image: url('./homeadminbutton.jpg');
 }
 
 .client-action-button:hover {
