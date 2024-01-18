@@ -72,14 +72,13 @@ const HomeForClient = () => {
   return (
     <div>
       <header className="client-top-nav">
-        <div>
-          <img src={legalHomeLogo} alt="Legal Logo" className="client-logohome" />
+      <div>
           <h1 className="client-header">Apex Legal Solution</h1>
         </div>
         <div>
         <div className="client-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
             <FontAwesomeIcon icon={faBell} className="client-custom-bell-icon" />
-          </div>
+          </div>
           <div className="client-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
             <FontAwesomeIcon icon={faCog} className="client-custom-icon1" />
           </div>
@@ -91,6 +90,9 @@ const HomeForClient = () => {
       <aside className="client-side-nav">
         <nav>
           <ul>
+            <li>
+              <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
+            </li>
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>
                 Case Management

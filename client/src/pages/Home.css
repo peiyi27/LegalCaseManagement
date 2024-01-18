@@ -130,8 +130,8 @@ admin-body {
   position: fixed;
   font-size: 38px;
   color: darkblue;
-  top: 1%;
-  right: 4.8%;
+  top: 1.5%;
+  right: 5.5%;
 }
 
 .admin-custom-icon2 {
@@ -147,19 +147,13 @@ admin-body {
 .admin-notification-container {
   position: absolute; 
   top: 0;
-  right: 8.2%;
+  right: 12%;
   width: 60px;
   height: 57px;
-  border: 1px solid #ccc;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.admin-notification-container:hover {
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
 }
 
 .admin-custom-bell-icon {
@@ -173,14 +167,7 @@ admin-body {
   right: 4.1%; /* Adjust the horizontal position */
   width: 60px;
   height: 57px;
-  border: 1px solid #ccc;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s;
-}
-
-/* Add hover effect */
-.admin-setting-container1:hover {
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
 }
 
 .admin-icon-container2 {
@@ -189,14 +176,7 @@ admin-body {
   right: 0.1%; /* Adjust the horizontal position */
   width: 60px;
   height: 57px;
-  border: 1px solid #ccc;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s;
-}
-
-/* Add hover effect */
-.admin-icon-container2:hover {
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Login.css */
