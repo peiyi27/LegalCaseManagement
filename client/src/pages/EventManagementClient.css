@@ -3,7 +3,7 @@
 /* Calendar Header Styles */
 .ant-fullcalendar-header {
   background-color: #1890ff; /* Change the background color as needed */
-  color: #fff; /* Change the text color as needed */
+  color: #37cb3a; /* Change the text color as needed */
 }
 
 /* Calendar Tile (Day) Styles */
@@ -76,4 +76,24 @@ button.create-case-button {
 button.create-back-button:hover,
 button.create-case-button:hover {
   background-color: #861b48; /* Change this color to your desired hover color */
+}
+
+.event-button {
+  width: 32px;
+  height: 28px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background: #fff; /* Default background color */
+  color: #333; /* Default text color */
+}
+
+.event-button.event-date {
+  width: 70%;
+  height: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background: #6bed6d; /* Background color for event date */
+  color: #000000; /* Text color for event date */
 }

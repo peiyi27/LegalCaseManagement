@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 import dayLocaleData from 'dayjs/plugin/localeData';
-import { Button, message, Space, Calendar, List, Col, Radio, Row, Select, Typography, theme } from 'antd';
+import { Button, Calendar, List, Col, Radio, Row, Select, Typography, theme } from 'antd';
 import { Link } from 'react-router-dom';
 import './EventManagementClient.css';
 import React, { useEffect, useState } from 'react';
@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import legalHomeLogo from './logo.png';
 import axios from 'axios';
 import caseLogo from './case-logo.png';
+
 
 dayjs.extend(dayLocaleData);
 dayjs.locale('en');
@@ -26,9 +27,9 @@ const App = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const events = [
-    { date: '2024-01-24', startTime: '10:00 AM', endTime: '12:00 PM', title: 'Formal Meeting with Mr. Henry' },
-    { date: '2024-01-27', startTime: '02:30 PM', endTime: '04:00 PM', title: 'Evidence Inspection' },
-    { date: '2024-01-28', startTime: '08:30 AM', endTime: '02:00 PM', title: 'Discussion of Case 007' },
+    { date: '2023-12-01', startTime: '10:00 AM', endTime: '12:00 PM', title: 'Formal Meeting with Mr. Henry' },
+    { date: '2023-12-05', startTime: '02:30 PM', endTime: '04:00 PM', title: 'Evidence Inspection' },
+    { date: '2023-12-07', startTime: '08:30 AM', endTime: '02:00 PM', title: 'Discussion of Case 007' },
   ];
   
 
@@ -60,44 +61,20 @@ const App = () => {
 
   const dateFullCellRender = (value) => {
     const day = value.date();
-    const isEventDate = events.some((event) => dayjs(event.date).isSame(value, 'day'));
-    const [messageApi, contextHolder] = message.useMessage();
-    const error = () => {
-      messageApi.open({
-        type: 'error',
-        content: 'No event available',
-      });
-    };
 
-return (
-    <>
-      {isEventDate ? (
-        <Link to={`/ViewEventClient`}>
-          <Button
-            type="text"
-            className={`event-button event-date`}
-            onClick={() => console.log(`Clicked on ${value.format('YYYY-MM-DD')}`)}
-          >
-            {day}
-          </Button>
-        </Link>
-      ) : (
-        <>
-          {contextHolder}
-            <Space>
-              <Button
-                type="text"
-                className={`event-button`}
-                onClick={error}
-              >
-                {day}
-              </Button>
-            </Space>
-          </>
-      )}
-    </>
-  );  
-};
+
+    return (
+      <Link to={`/ViewEventClient`}>
+        <Button
+          type="text"
+          style={{ width: '70%', height: '100%', textAlign: 'center', margin: '0', padding: '0' }}
+          onClick={() => console.log(`Clicked on ${value.format('YYYY-MM-DD')}`)}
+        >
+          {day}
+        </Button>
+      </Link>
+    );
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -105,11 +82,11 @@ return (
   };
 
   const handleCaseManagementClick = () => {
-    navigate('/CaseManagementClient');
+    navigate('/CaseManagementStaff');
   };
 
   const handleEventManagementClick = () => {
-    navigate('/EventManagementClient');
+    navigate('/EventManagementStaff');
   };
   
   const handleViewEventClient = () => {
@@ -118,7 +95,7 @@ return (
 
   const handleBackClick = () => {
     // Navigate to Home
-    navigate('/HomeForClient');
+    navigate('/HomeForStaff');
   };
 
   return (
@@ -142,12 +119,12 @@ return (
           <ul>
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>
-                Case Management
+                My Cases
               </a>
             </li>
             <li>
               <a href="#casematter" onClick={handleEventManagementClick}>
-                Event Management
+                My Events
               </a>
             </li>
           </ul>
