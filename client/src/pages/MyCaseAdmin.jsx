@@ -4,6 +4,7 @@ import './MyCaseAdmin.css';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 import legalHomeLogo from './logo.png';
 import Swal from 'sweetalert2';
 
@@ -129,10 +130,12 @@ return (
   <div>
   <header className="admin-mycase-top-nav">
     <div>
-      <img src={legalHomeLogo} alt="Legal Logo" className="admin-mycase-logohome" />
       <h1 className="admin-mycase-header">Apex Legal Solution</h1>
     </div>
     <div>
+    <div className="admin-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
+          <FontAwesomeIcon icon={faBell} className="admin-custom-bell-icon" />
+      </div>
       <div className="admin-mycase-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
         <FontAwesomeIcon icon={faCog} className="admin-mycase-custom-icon1" />
       </div>
@@ -144,6 +147,9 @@ return (
   <aside className="admin-mycase-side-nav">
   <nav>
         <ul>
+        <li>
+              <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
+          </li>
           <li>
             <a href="#clients" onClick={handleUserManagementClick}>User Management</a>
           </li>

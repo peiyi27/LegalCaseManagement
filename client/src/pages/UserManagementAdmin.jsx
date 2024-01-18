@@ -5,6 +5,7 @@ import './UserManagementAdmin.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import legalHomeLogo from './logo.png';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -142,10 +143,12 @@ const UserManagementAdmin = () => {
         <div className="admin-user-body">
           <header className="admin-user-top-nav">
             <div>
-              <img src={legalHomeLogo} alt="Legal Logo" className="admin-user-logohome" />
               <h1 className="admin-user-header">Apex Legal Solution</h1>
             </div>
             <div>
+             <div className="admin-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
+                <FontAwesomeIcon icon={faBell} className="admin-custom-bell-icon" />
+             </div>
               <div className="admin-user-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
                 <FontAwesomeIcon icon={faCog} className="admin-user-custom-icon1" />
               </div>
@@ -157,6 +160,9 @@ const UserManagementAdmin = () => {
           <aside className="admin-user-side-nav">
             <nav>
               <ul>
+                <li>
+                <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
+                </li>
                 <li>
                   <a href="#clients" onClick={handleUserManagementClick}>User Management</a>
                 </li>

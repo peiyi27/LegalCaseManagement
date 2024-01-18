@@ -145,7 +145,7 @@ staff-body {
   .staff-notification-container {
     position: absolute; 
     top: 0;
-    right: 9%;
+    right: 12%;
     width: 60px;
     height: 57px;
     transition: box-shadow 0.3s;
