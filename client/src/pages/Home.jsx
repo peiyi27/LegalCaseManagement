@@ -88,6 +88,10 @@ const HomePage = () => {
     navigate('/CaseManagementAdmin');
   };
 
+  const handleEventManagementClick = () => {
+    navigate('/EventManagementClient');
+  };
+
   const handleMyCaseClick = () => {
     navigate('/MyCaseAdmin');
   };
@@ -130,6 +134,11 @@ const HomePage = () => {
             </li>
             <li>
               <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
+            </li>
+            <li>
+              <a href="#casematter" onClick={handleEventManagementClick}>
+                Event Management
+              </a>
             </li>
             <li>
               <a href="#casematter" onClick={handleMyCaseClick}>

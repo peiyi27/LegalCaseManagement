@@ -31,21 +31,49 @@
 }
 
 .list-header {
-  margin-top: 20px;
-  margin-left:100px;
+  grid-column: 2; /* Specify the column for the list */
+  grid-row: 1;
+  margin-left: 0px;
+  margin-top: 100px;
 }
 
 .list {
-  margin-top: 0px;
-  margin-left:100px;
+  grid-column: 2; /* Specify the column for the list */
+  grid-row: 2;
+  margin-left: 20px;
 }
 
 /* Wrapper Margin */
 .wrapper {
   margin-top: 20px; /* Adjust the top margin as needed */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-column-gap: 20px;
+  grid-template-rows: auto 1fr;
 }
 
 .calendar {
-  margin-left:100px;
-  margin-right: 800px;
+  margin-top: 80px;
+  margin-left: 300px;
+  grid-column: 1; /* Specify the column for the calendar */
+  grid-row: 1 / span 2; 
+}
+
+button.create-back-button,
+button.create-case-button {
+  background-color: #2a678f; /* Change this color to your desired color */
+  color: #ffffff;
+  border: none;
+  margin-top: 50px;
+  margin-left: 320px;
+  width: 70px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 3px;
+  grid-column: 1; /* Specify the column for the list */
+}
+
+button.create-back-button:hover,
+button.create-case-button:hover {
+  background-color: #861b48; /* Change this color to your desired hover color */
 }

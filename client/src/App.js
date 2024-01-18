@@ -39,6 +39,7 @@ import UpdateEmailClient from "./pages/UpdateEmailClient";
 import ViewEventClient from "./pages/ViewEventClient";
 import React from 'react';
 import EventManagementClient from './pages/EventManagementClient';
+import AlertNotificationManagement from './pages/AlertNotificationManagement';
 import './App.css';
 
 
@@ -88,6 +89,7 @@ function App() {
           <Route path="/UpdateNameClient" element={<UpdateNameClient/>} />
           <Route path="/ViewEventClient" element={<ViewEventClient />} />
           <Route path="/EventManagementClient" element={<EventManagementClient />} />
+          <Route path="/AlertNotificationManagement" element={<AlertNotificationManagement />} />
         </Routes>
       </BrowserRouter>
     </div>
