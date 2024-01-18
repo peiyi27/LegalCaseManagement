@@ -68,6 +68,10 @@ const HomePage = () => {
     navigate('/CaseManagementStaff');
   };
 
+  const handleEventManagementClick = () => {
+    navigate('/EventManagementStaff');
+  };
+
   const handleButtonClick1 = () => {
     navigate('/CaseManagementStaff');
   };
@@ -94,7 +98,12 @@ const HomePage = () => {
           <ul>
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>
-                My Case
+                My Cases
+              </a>
+            </li>
+            <li>
+              <a href="#casematter" onClick={handleEventManagementClick}>
+                My Events
               </a>
             </li>
           </ul>
