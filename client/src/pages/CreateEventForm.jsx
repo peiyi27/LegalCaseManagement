@@ -1,16 +1,7 @@
 import React from 'react';
 import './CreateEventForm.css';
-import {
-  Button,
-  DatePicker,
-  message,
-  Space,
-  Form,
-  Input,
-  Mentions,
-  Select,
-  TimePicker,
-} from 'antd';
+import { Button, DatePicker, Form, Input, Mentions, Select, message, TimePicker } from 'antd';
+
 const { RangePicker } = TimePicker;
 const formItemLayout = {
   labelCol: {
@@ -31,6 +22,7 @@ const formItemLayout = {
   },
 };
 
+/*
 const [messageApi, contextHolder] = message.useMessage();
   const success = () => {
     messageApi.open({
@@ -38,6 +30,7 @@ const [messageApi, contextHolder] = message.useMessage();
       content: 'This is a success message',
     });
   };
+  */
 
 const App = () => (
   
@@ -132,8 +125,7 @@ const App = () => (
         span: 21,
       }}
     >
-    {contextHolder}
-      <Button onClick={success} type="primary" htmlType="submit">
+      <Button type="primary" htmlType="submit">
         Submit
       </Button>
     </Form.Item>
