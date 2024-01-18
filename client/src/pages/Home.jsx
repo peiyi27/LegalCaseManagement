@@ -115,7 +115,6 @@ const HomePage = () => {
     <div>
       <header className="admin-top-nav">
         <div>
-          <img src={legalHomeLogo} alt="Legal Logo" className="admin-logohome" />
           <h1 className="admin-header">Apex Legal Solution</h1>
         </div>
         <div>
@@ -133,6 +132,9 @@ const HomePage = () => {
       <aside className="admin-side-nav">
         <nav>
           <ul>
+            <li>
+              <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
+            </li>
             <li>
               <a href="#clients" onClick={handleUserManagementClick}>User Management</a>
             </li>

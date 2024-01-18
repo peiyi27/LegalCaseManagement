@@ -62,7 +62,6 @@
   
   /* Main content area */
   .admin-user-content {
-    margin-left: 275px;
     margin-top: 80px;
     padding: 20px;
     box-sizing: border-box;
@@ -87,6 +86,8 @@
   
   .admin-user-content th, .admin-user-content td {
     border: 1px solid #ddd;
+    width: 10px;
+    margin-left: 1000px;
     padding: 12px;
     text-align: left;
   }
