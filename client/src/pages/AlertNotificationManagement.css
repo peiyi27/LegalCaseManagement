@@ -1,45 +1,35 @@
-.alert-notification-icon {
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-  }
-  
-  .notification-dropdown {
-    position: absolute;
-    top: 100%; 
-    right: 0;
-    width: 300px;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    border-radius: 4px;
-    overflow: hidden;
-    z-index: 1000;
-  }
-  
-  .notification-item {
-    padding: 10px;
-    border-bottom: 1px solid #f0f0f0;
-    text-decoration: none;
-    color: black;
-    display: block;
-  }
-  
-  .notification-item:hover {
-    background-color: #f7f7f7;
-  }
-  
-  .notification-item:last-child {
-    border-bottom: none;
-  }
-  
-  .notification-title {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .notification-info {
-    font-size: 0.85rem;
-  }
-  
-  /* Add any additional styling you need here */
-  
+.alert-container {
+  font-family: Arial, sans-serif;
+}
+
+.date-time-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  background-color: #ffffff;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin: 0 100px;
+  border: 5px solid darkblue;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.date-display, .time-display {
+  font-size: 2em;
+  color: #000;
+  margin: 20px;
+}
+
+.no-events {
+  margin-top: 100px;
+  text-align: center;
+}
+
+
+.event-display {
+  /* Add styles for your event display */
+}
