@@ -43,6 +43,10 @@ const CaseManagementClient = () => {
     navigate('/CaseManagementClient');
   };
 
+  const handleEventManagementClick = () => {
+    navigate('/EventManagementClient');
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -71,6 +75,12 @@ const CaseManagementClient = () => {
             <li>
               <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
             </li>
+            <li>
+              <a href="#casematter" onClick={handleEventManagementClick}>
+                Event Management
+              </a>
+            </li>
+
           </ul>
         </nav>
     </aside>

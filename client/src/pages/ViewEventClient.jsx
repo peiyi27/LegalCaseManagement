@@ -4,6 +4,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './ViewEventClient.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import legalHomeLogo from './logo.png';
+import caseLogo from './case-logo.png';
+import { Link } from 'react-router-dom';
+
 
 const ViewEventClient = () => {
   const [caseData, setCaseData] = useState({});
