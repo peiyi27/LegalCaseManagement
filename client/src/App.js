@@ -40,6 +40,7 @@ import ViewEventClient from "./pages/ViewEventClient";
 import React from 'react';
 import EventManagementClient from './pages/EventManagementClient';
 import EventManagementStaff from './pages/EventManagementStaff';
+import EventManagementAdmin from './pages/EventManagementAdmin';
 import CreateEventForm from './pages/CreateEventForm';
 import AlertNotificationManagement from './pages/AlertNotificationManagement';
 import './App.css';
@@ -92,6 +93,7 @@ function App() {
           <Route path="/ViewEventClient" element={<ViewEventClient />} />
           <Route path="/EventManagementClient" element={<EventManagementClient />} />
           <Route path="/EventManagementStaff" element={<EventManagementStaff />} />
+          <Route path="/EventManagementAdmin" element={<EventManagementAdmin />} />
           <Route path="/CreateEventForm" element={<CreateEventForm />} />
           <Route path="/AlertNotificationManagement" element={<AlertNotificationManagement />} />
         </Routes>
