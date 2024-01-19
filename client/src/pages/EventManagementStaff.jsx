@@ -7,6 +7,7 @@ import './EventManagementStaff.css';
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import AlertNotificationManagement from './AlertNotificationManagement';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import legalHomeLogo from './logo.png';
@@ -138,9 +139,9 @@ return (
           <h1 className="main-header">Apex Legal Solution</h1>
         </div>
         <div>
-        <div className="main-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
-          <FontAwesomeIcon icon={faBell} className="main-custom-bell-icon" />
-        </div>
+        <div className="main-notification-container">
+          <AlertNotificationManagement />
+          </div>
           <div className="main-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
             <FontAwesomeIcon icon={faCog} className="main-custom-icon1" />
           </div>

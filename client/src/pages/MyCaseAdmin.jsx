@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import legalHomeLogo from './logo.png';
+import AlertNotificationManagement from './AlertNotificationManagement';
 import Swal from 'sweetalert2';
 
 const MyCaseAdmin = () => {
@@ -142,8 +143,8 @@ return (
       <h1 className="main-header">Apex Legal Solution</h1>
     </div>
     <div>
-    <div className="main-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
-          <FontAwesomeIcon icon={faBell} className="main-custom-bell-icon" />
+    <div className="main-notification-container">
+        <AlertNotificationManagement />
       </div>
       <div className="main-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
         <FontAwesomeIcon icon={faCog} className="main-custom-icon1" />

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import './ViewEventClient.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AlertNotificationManagement from './AlertNotificationManagement';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import legalHomeLogo from './logo.png';
 import caseLogo from './case-logo.png';
@@ -51,9 +52,9 @@ const ViewEventClient = () => {
           <h1 className="client-header">Apex Legal Solution</h1>
         </div>
         <div>
-        <div className="staff-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
-          <FontAwesomeIcon icon={faBell} className="staff-custom-bell-icon" />
-        </div>
+        <div className="main-notification-container">
+          <AlertNotificationManagement />
+          </div>
           <div className="client-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
             <FontAwesomeIcon icon={faCog} className="client-custom-icon1" />
           </div>
