@@ -56,6 +56,10 @@ const HomeForClient = () => {
     navigate('/login');
   };
 
+  const handleHomeClientClick = () => {
+    navigate('/HomeForClient');
+  };
+
   const handleCaseManagementClick = () => {
     navigate('/CaseManagementClient');
   };
@@ -93,6 +97,9 @@ const HomeForClient = () => {
             <li>
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
+            <li>
+               <a href="#home" onClick={handleHomeClientClick}>Home</a>
+           </li>
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>
                 Case Management

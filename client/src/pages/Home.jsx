@@ -81,6 +81,10 @@ const HomePage = () => {
     navigate('/login');
   };
 
+  const handleHomeAdminClick = () => {
+    navigate('/Home');
+  };
+
   const handleUserManagementClick = () => {
     navigate('/UserManagementAdmin');
   };
@@ -135,6 +139,9 @@ const HomePage = () => {
             <li>
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
+            <li>
+               <a href="#home" onClick={handleHomeAdminClick}>Home</a>
+           </li>
             <li>
               <a href="#clients" onClick={handleUserManagementClick}>User Management</a>
             </li>

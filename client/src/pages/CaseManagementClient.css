@@ -1,280 +1,99 @@
-/* CaseManagementAdmin.css */
+.client-case-management .table-container {
+  max-height: 600px; /* Increase the max-height of the table container */
+  overflow: auto; /* Enable both vertical and horizontal scrolling */
+  margin-top: 10px; /* Adjust the margin-top to create space for the table */
+}
 
-/* Main layout */
-.client-case-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #DFF2FF;
-    margin: 0;
-    padding: 0;
-  }
-  .logo-test {
-    width: 200px;
-    margin-left: 15px;
-  }
-  
-  /* Top navigation bar */
-  .client-case-top-nav {
-    position: fixed;
-    top: 0;
-    left: 20;
-    right: 0;
-    width: 1005px;
-    height: 60px; /* Set the height of your top-nav bar */
-    background-color: #ffffff;
-    z-index: 1000; /* Higher than side-nav to stay on top */
-  }
-  
-  .client-case-header {
-    font-size: 20px;
-    position: fixed;
-    top: 0.7%; /* Adjust the top position as needed to control the vertical position */
-    left: 25%; /* Adjust the left position as needed to control the horizontal position */
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  
-  /* Side navigation */
-  .client-case-side-nav {
-    background-color: #2c3e50;
-    color: #ffffff;
-    width: 275px; /* Adjust width as necessary */
-    height: 100vh;
-    position: fixed;
-    top: 0; /* Set this to the height of your top-nav bar */
-    left: 0;
-    overflow-y: auto;
-    padding-top: 3px; /* Add padding to push content down */
-    z-index: 999; /* Ensure it is below the top-nav which has a higher z-index */
-  }
-  
-  /* Side nav items */
-  .client-case-side-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .client-case-side-nav ul li {
-    padding: 15px 20px;
-    border-bottom: 1px solid #34495e;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  
-  .client-case-side-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-  }
-  
-  .client-case-management .table-container {
-    max-height: 600px; /* Increase the max-height of the table container */
-    overflow: auto; /* Enable both vertical and horizontal scrolling */
-    margin-top: 10px; /* Adjust the margin-top to create space for the table */
-  }
-  
-  .client-case-management table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .client-case-management th, .admin-case-management td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-  }
-  
-  .client-case-management th {
-    background-color: #436480;
-    color: #ffffff;
-    position: sticky;
-    top: 0;
-  }
-  
-  .client-case-management tbody {
-    max-height: 500px; /* Adjust the max-height of the tbody */
-    overflow-y: auto; /* Enable vertical scrolling for tbody */
-    overflow-x: auto; /* Enable horizontal scrolling for tbody */
-  }
-  
-  .client-case-management tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .client-case-management td button {
-    background-color: #7890a0;
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
-    margin-right: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 3px;
-  }
-  
-  .client-case-management td button:hover {
-    background-color: #774e4e;
-  }
-  
-  /* Increase the width of the Actions header */
-  .client-case-actions-header {
-    width: 150px; /* Adjust the width as needed */
-  }
-  
-  /* Increase the width of the Actions cells */
-  .client-case-actions-cell {
-    width: 150px; /* Adjust the width as needed */
-  }
-  
-  /* Additional styling for the buttons inside the Actions cell (optional) */
-  .client-case-actions-cell button {
-    margin-right: 5px; /* Add spacing between buttons */
-  }
-  
-  /* Main content area */
-  .client-case-content {
-    margin-left: 275px;
-    margin-top: 80px; /* Adjust the margin-top */
-    padding: 20px;
-    box-sizing: border-box;
-    overflow: hidden; /* Hide the overflow to prevent double scrollbars */
-    background-color: #e2e2e2;
-    opacity: 85%;
-  }
-  
-  /* Dashboard cards */
-  .client-case-card {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  /* Card header */
-  .client-case-card-header {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  
-  /* Card content */
-  .client-case-card-content {
-    display: flex;
-    justify-content: space-between;
-    /* Additional styles for your card content */
-  }
-  
-  /* Utility classes for text colors */
-  .client-case-text-success {
-    color: #2ecc71;
-  }
-  
-  .client-case-text-warning {
-    color: #f1c40f;
-  }
-  
-  .client-case-text-danger {
-    color: #e74c3c;
-  }
-  
-  /* Utility classes for background colors */
-  .client-case-bg-primary {
-    background-color: #3498db;
-  }
-  
-  .client-case-bg-success {
-    background-color: #2ecc71;
-  }
-  
-  .client-case-bg-warning {
-    background-color: #f1c40f;
-  }
-  
-  .client-case-bg-danger {
-    background-color: #e74c3c;
-  }
-  
-  .client-case-custom-icon1 {
-    position: fixed;
-    font-size: 38px;
-    color: darkblue;
-    top: 1.5%;
-    right: 5.5%;
-  }
-  
-  .client-case-custom-icon2 {
-    position: fixed;
-    font-size: 38px;
-    color: darkblue;
-    top: 1%;
-    right: 1%;
-  }
-  
-    /* You can continue to expand this with specifics like grid layouts, charts, and media queries for responsiveness */
-  
-    .client-case-notification-container {
-      position: absolute; 
-      top: 0;
-      right: 12%;
-      width: 60px;
-      height: 57px;
-      transition: box-shadow 0.3s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .client-case-custom-bell-icon {
-      font-size: 2.5em;
-      color: darkblue; 
-    }
-  
-  .client-case-setting-container1 {
-    position: absolute; /* Change from fixed to absolute */
-    top: 0;
-    right: 4.1%; /* Adjust the horizontal position */
-    width: 60px;
-    height: 57px;
-    transition: box-shadow 0.3s;
-  }
+.client-case-management table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  .client-case-icon-container2 {
-    position: absolute; /* Change from fixed to absolute */
-    top: 0;
-    right: 0.1%; /* Adjust the horizontal position */
-    width: 60px;
-    height: 57px;
-    transition: box-shadow 0.3s;
-  }
-  
-  /* Login.css */
-  .client-case-logohome {
-    position: fixed;
-    top: 0.5%; /* Adjust the top position as needed to control the vertical position */
-    left: 23.5%; /* Adjust the left position as needed to control the horizontal position */
-    max-width: 53px; /* Set the maximum width for the logo */
-    border-radius: 20%;
-  }
-  
-  /* Find or add styles for Back and Create Case buttons */
-  .client-case-management button.create-back-button
-    {
-    background-color: #2a678f; /* Change this color to your desired color */
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
-    font-size: 50px;
-    cursor: pointer;
-    border-radius: 3px;
+.client-case-management th, .admin-case-management td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
 
-    margin-top: 50px;
-    margin-left: 320px;
-    width: 70px;
-  }
+.client-case-management th {
+  background-color: #436480;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+}
+
+.client-case-management tbody {
+  max-height: 500px; /* Adjust the max-height of the tbody */
+  overflow-y: auto; /* Enable vertical scrolling for tbody */
+  overflow-x: auto; /* Enable horizontal scrolling for tbody */
+}
+
+.client-case-management tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.client-case-management td button {
+  background-color: #7890a0;
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.client-case-management td button:hover {
+  background-color: #774e4e;
+}
+
+/* Increase the width of the Actions header */
+.client-case-actions-header {
+  width: 150px; /* Adjust the width as needed */
+}
+
+/* Increase the width of the Actions cells */
+.client-case-actions-cell {
+  width: 150px; /* Adjust the width as needed */
+}
+
+/* Additional styling for the buttons inside the Actions cell (optional) */
+.client-case-actions-cell button {
+  margin-right: 5px; /* Add spacing between buttons */
+}
+
+/* Main content area */
+.client-case-content {
+  margin-left: 275px;
+  margin-top: 80px; /* Adjust the margin-top */
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* Hide the overflow to prevent double scrollbars */
+  background-color: #e2e2e2;
+  opacity: 85%;
+}
   
-  .client-case-management button.create-back-button:hover
+/* Find or add styles for Back and Create Case buttons */
+.client-case-management button.create-back-button
   {
-    background-color: #861b48; /* Change this color to your desired hover color */
-  }
+  background-color: #2a678f; /* Change this color to your desired color */
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  font-size: 50px;
+  cursor: pointer;
+  border-radius: 3px;
 
-  .client-case-management-header {
-    display: flex;
-  }
+  margin-top: 50px;
+  margin-left: 320px;
+  width: 70px;
+}
+
+.client-case-management button.create-back-button:hover
+{
+  background-color: #861b48; /* Change this color to your desired hover color */
+}
+
+.client-case-management-header {
+  display: flex;
+}

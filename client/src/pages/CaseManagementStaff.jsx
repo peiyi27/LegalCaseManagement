@@ -115,6 +115,9 @@ const CaseManagementStaff = () => {
   navigate('/login');
 };
 
+const handleHomeStaffClick = () => {
+  navigate('/HomeForStaff');
+};
 
 const handleCaseManagementClick = () => {
   navigate('/CaseManagementStaff');
@@ -127,27 +130,30 @@ const handleEventManagementClick = () => {
 
   return (
       <div>
-      <header className="staff-case-top-nav">
+      <header className="main-top-nav">
         <div>
-          <h1 className="staff-case-header">Apex Legal Solution</h1>
+          <h1 className="main-header">Apex Legal Solution</h1>
         </div>
         <div>
-        <div className="staff-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
-          <FontAwesomeIcon icon={faBell} className="staff-custom-bell-icon" />
+        <div className="main-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
+          <FontAwesomeIcon icon={faBell} className="main-custom-bell-icon" />
         </div>
-          <div className="staff-case-setting-container1" onClick={() => navigate('/ProfileSettingStaff')}>
-            <FontAwesomeIcon icon={faCog} className="staff-case-custom-icon1" />
+          <div className="main-setting-container1" onClick={() => navigate('/ProfileSettingStaff')}>
+            <FontAwesomeIcon icon={faCog} className="main-custom-icon1" />
           </div>
-          <div className="staff-case-icon-container2" onClick={handleLogout}>
-            <FontAwesomeIcon icon={faSignOutAlt} className="staff-case-custom-icon2" />
+          <div className="main-icon-container2" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOutAlt} className="main-custom-icon2" />
           </div>
         </div>
       </header>
-      <aside className="staff-case-side-nav">
+      <aside className="main-side-nav">
       <nav>
             <ul>
             <li>
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
+            </li>
+            <li>
+             <a href="#home" onClick={handleHomeStaffClick}>Home</a>
             </li>
               <li>
                 <a href="#case" onClick={handleCaseManagementClick}>My Cases</a>

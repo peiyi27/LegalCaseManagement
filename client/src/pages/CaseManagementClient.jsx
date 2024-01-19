@@ -27,6 +27,10 @@ const CaseManagementClient = () => {
     navigate('/HomeForClient');
   };
 
+  const handleHomeClientClick = () => {
+    navigate('/HomeForClient');
+  };
+
   const handleViewClick = (caseId) => {
     navigate(`/ViewCaseClient/${caseId}`);
     // Handle View button click, you can navigate to a specific view page or perform any action
@@ -56,28 +60,31 @@ const CaseManagementClient = () => {
 
   return (
     <div>
-    <header className="client-case-top-nav">
+    <header className="main-top-nav">
       <div>
-        <h1 className="client-case-header">Apex Legal Solution</h1>
+        <h1 className="main-header">Apex Legal Solution</h1>
       </div>
       <div>
-        <div className="client-case-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
-          <FontAwesomeIcon icon={faBell} className="client-case-custom-bell-icon" />
+        <div className="main-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
+          <FontAwesomeIcon icon={faBell} className="main-custom-bell-icon" />
           </div>
-        <div className="client-case-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
-          <FontAwesomeIcon icon={faCog} className="client-case-custom-icon1" />
+        <div className="main-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
+          <FontAwesomeIcon icon={faCog} className="main-custom-icon1" />
         </div>
-        <div className="client-case-icon-container2" onClick={handleLogout}>
-          <FontAwesomeIcon icon={faSignOutAlt} className="client-case-custom-icon2" />
+        <div className="main-icon-container2" onClick={handleLogout}>
+          <FontAwesomeIcon icon={faSignOutAlt} className="main-custom-icon2" />
         </div>
       </div>
     </header>
-    <aside className="client-case-side-nav">
+    <aside className="main-side-nav">
     <nav>
           <ul>
             <li>
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
+            <li>
+               <a href="#home" onClick={handleHomeClientClick}>Home</a>
+           </li>
             <li>
               <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
             </li>

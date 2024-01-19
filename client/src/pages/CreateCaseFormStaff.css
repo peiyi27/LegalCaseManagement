@@ -1,21 +1,20 @@
+.staff-create-case-form {
+  margin-top: 400px;
+  margin-bottom: 50px;
+}
 .staff-create-case-form Form {
     max-width: 100%; /* This will prevent any horizontal overflow */
     padding: 20px;
-    box-sizing: border-box; /* This ensures padding doesn't add to the width */
-    /* ... other styles ... */
+    box-sizing: border-box;
   }
   
   /* Remove any fixed or max-width from individual Form.Control to prevent overflow */
   .staff-create-case-form  Form.Control {
     width: 100%;
-    /* Remove max-width if you want them to be full width of the form */
-    /* ... other styles ... */
   }
   
   .staff-create-case-form Form.Control#caseDetails {
     min-height: 150px; /* This allows the box to grow if needed */
-    /* Remove max-width to allow it to be full width */
-    /* ... other styles ... */
   }
   
   .staff-create-case-form button {
