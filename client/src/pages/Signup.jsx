@@ -39,7 +39,6 @@ function Register() {
   return (
     <div className="register-container">
       <div className="register-left-panel">
-        <img src={legalRegisterLogo} alt="Legal Logo" className="logoRegister" />
         <h1>Get Started with your Account</h1>
         <img src={legalRegisterImage} alt="Legal Register Image" />
       </div>

@@ -1,5 +1,5 @@
 /* Main layout */
-admin-body {
+main-body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background-color: #DFF2FF;
   margin: 0;
@@ -11,8 +11,9 @@ admin-body {
   margin-left: 15px;
 }
 
+
 /* Top navigation bar */
-.admin-top-nav {
+.main-top-nav {
   position: fixed;
   top: 0;
   left: 20;
@@ -23,58 +24,58 @@ admin-body {
   z-index: 1000; /* Higher than side-nav to stay on top */
 }
 
-.admin-header {
+.main-header {
   font-size: 20px;
   position: fixed;
-  top: 0.7%; /* Adjust the top position as needed to control the vertical position */
-  left: 25%; /* Adjust the left position as needed to control the horizontal position */
+  top: 0.7%;
+  left: 25%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 /* Side navigation */
-.admin-side-nav {
+.main-side-nav {
   background-color: #2c3e50;
   color: #ffffff;
-  width: 275px; /* Adjust width as necessary */
+  width: 275px;
   height: 100vh;
   position: fixed;
-  top: 0; /* Set this to the height of your top-nav bar */
+  top: 0;
   left: 0;
   overflow-y: auto;
-  padding-top: 3px; /* Add padding to push content down */
-  z-index: 999; /* Ensure it is below the top-nav which has a higher z-index */
+  padding-top: 3px;
+  z-index: 999;
 }
 
 /* Side nav items */
-.admin-side-nav ul {
+.main-side-nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.admin-side-nav ul li {
+.main-side-nav ul li {
   padding: 15px 20px;
   border-bottom: 1px solid #34495e;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.admin-side-nav ul li a {
+.main-side-nav ul li a {
   color: #ffffff;
   text-decoration: none;
 }
 
 /* Main content area */
-.admin-content {
-  margin-left: 275px; /* Adjust the margin-left to match the side nav width */
-  margin-top: 60px; /* Adjust the margin-top to match the top nav height */
+.main-content {
+  margin-left: 275px;
+  margin-top: 60px; 
   padding: 20px;
-  height: calc(100vh - 60px); /* Calculate the remaining height of the viewport */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  overflow-y: auto; /* Add vertical scroll if content exceeds the height */
+  height: calc(100vh - 60px);
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 /* Dashboard cards */
-.admin-card {
+.main-card {
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -83,50 +84,51 @@ admin-body {
 }
 
 /* Card header */
-.admin-card-header {
+.main-card-header {
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
 /* Card content */
-.admin-card-content {
+.main-card-content {
   display: flex;
   justify-content: space-between;
-  /* Additional styles for your card content */
 }
 
 /* Utility classes for text colors */
-.admin-text-success {
+.main-text-success {
   color: #2ecc71;
 }
 
-.admin-text-warning {
+.main-text-warning {
   color: #f1c40f;
 }
 
-.admin-text-danger {
+.main-text-danger {
   color: #e74c3c;
 }
 
 /* Utility classes for background colors */
-.admin-bg-primary {
+.main-bg-primary {
   background-color: #3498db;
 }
 
-.admin-bg-success {
+.main-bg-success {
   background-color: #2ecc71;
 }
 
-.admin-bg-warning {
+.main-bg-warning {
   background-color: #f1c40f;
 }
 
-.admin-bg-danger {
+.main-bg-danger {
   background-color: #e74c3c;
 }
 
-.admin-custom-icon1 {
+/* You can continue to expand this with specifics like grid layouts, charts, and media queries for responsiveness */
+
+.main-custom-icon1 {
   position: fixed;
   font-size: 38px;
   color: darkblue;
@@ -134,7 +136,7 @@ admin-body {
   right: 5.5%;
 }
 
-.admin-custom-icon2 {
+.main-custom-icon2 {
   position: fixed;
   font-size: 38px;
   color: darkblue;
@@ -142,9 +144,7 @@ admin-body {
   right: 1%;
 }
 
-/* You can continue to expand this with specifics like grid layouts, charts, and media queries for responsiveness */
-
-.admin-notification-container {
+.main-notification-container {
   position: absolute; 
   top: 0;
   right: 12%;
@@ -156,38 +156,38 @@ admin-body {
   align-items: center;
 }
 
-.admin-custom-bell-icon {
+.main-custom-bell-icon {
   font-size: 2.5em;
   color: darkblue; 
 }
 
-.admin-setting-container1 {
-  position: absolute; /* Change from fixed to absolute */
+.main-setting-container1 {
+  position: absolute;
   top: 0;
-  right: 4.1%; /* Adjust the horizontal position */
+  right: 4.1%;
   width: 60px;
   height: 57px;
   transition: box-shadow 0.3s;
 }
 
-.admin-icon-container2 {
-  position: absolute; /* Change from fixed to absolute */
+.main-icon-container2 {
+  position: absolute;
   top: 0;
-  right: 0.1%; /* Adjust the horizontal position */
+  right: 0.1%;
   width: 60px;
   height: 57px;
   transition: box-shadow 0.3s;
 }
 
-/* Login.css */
-.admin-logohome {
+.main-logohome {
   position: fixed;
-  top: 0.5%; /* Adjust the top position as needed to control the vertical position */
-  left: 23.5%; /* Adjust the left position as needed to control the horizontal position */
-  max-width: 53px; /* Set the maximum width for the logo */
+  top: 0.5%;
+  left: 23.5%;
+  max-width: 53px;
   border-radius: 20%;
 }
 
+/* Adjust the width of the count boxes */
 .admin-count-boxes {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -251,31 +251,33 @@ admin-body {
   margin-right: 10px; /* Adjust the right margin for spacing */
 }
 
-.admin-welcome-message {
-  font-size: 2em; /* Increase the font size for emphasis */
-  font-weight: bold; /* Add bold font weight */
-  color: #081f2e; /* Set a color that complements your design */
-  margin-top: 20px; /* Adjust the margin-top for spacing */
-  margin-bottom: 30px; /* Adjust the margin-bottom for spacing */
-  text-transform: uppercase; /* Convert text to uppercase for a stylized look */
-  letter-spacing: 2px; /* Add letter spacing for clarity */
+/* End of count boxes */
+
+.main-welcome-message {
+  font-size: 2em;
+  font-weight: bold;
+  color: #081f2e;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.admin-button-container {
+.main-button-container {
   width: 100%;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.admin-action-button {
+.main-action-button {
   width: 100%;
   height: 80px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #ffffff;
-  border:aqua;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: box-shadow 0.3s, background-color 0.3s;
@@ -290,16 +292,15 @@ admin-body {
 }
 
 /* Additional styles for the text display within buttons */
-.admin-action-button-text {
-  font-family: 'roboto', sans-serif; /* Change to your desired font */
+.main-action-button-text {
+  font-family: 'Roboto', sans-serif; /* Change to your desired font */
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: white;
 }
 
 /* Add styles for tooltips */
-.admin-tooltip {
+.main-tooltip {
   font-size: 0.8em;
   color: #fff;
   background-color: #333;
@@ -314,23 +315,22 @@ admin-body {
 }
 
 /* Add specific styles for each button */
-.admin-button1 {
+.main-button1 {
+  background-image: url('./homeadminbutton.jpg');
+}
+.main-button2 {
   background-image: url('./homeadminbutton.jpg'); 
 }
 
-.admin-button2 {
+.main-button3 {
   background-image: url('./homeadminbutton.jpg');
 }  
 
-.admin-button3 {
-  background-image: url('./homeadminbutton.jpg');
+.main-action-button:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adjust the shadow for the floating effect */
 }
 
-.admin-action-button:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adjust the shadow for floating effect */
-}
-
-.admin-action-button::before {
+.main-action-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -342,6 +342,6 @@ admin-body {
   transition: background 0.3s;
 }
 
-.admin-action-button:hover::before {
+.main-action-button:hover::before {
   background: rgba(0, 0, 0, 0.4); /* Adjust the darkness on hover */
 }

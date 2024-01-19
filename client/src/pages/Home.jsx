@@ -113,23 +113,23 @@ const HomePage = () => {
  
   return (
     <div>
-      <header className="admin-top-nav">
+      <header className="main-top-nav">
         <div>
-          <h1 className="admin-header">Apex Legal Solution</h1>
+          <h1 className="main-header">Apex Legal Solution</h1>
         </div>
         <div>
-        <div className="admin-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
-            <FontAwesomeIcon icon={faBell} className="admin-custom-bell-icon" />
+        <div className="main-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
+            <FontAwesomeIcon icon={faBell} className="main-custom-bell-icon" />
           </div>
-          <div className="admin-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
-            <FontAwesomeIcon icon={faCog} className="admin-custom-icon1" />
+          <div className="main-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
+            <FontAwesomeIcon icon={faCog} className="main-custom-icon1" />
           </div>
-          <div className="admin-icon-container2" onClick={handleLogout}>
-            <FontAwesomeIcon icon={faSignOutAlt} className="admin-custom-icon2" />
+          <div className="main-icon-container2" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOutAlt} className="main-custom-icon2" />
           </div>
         </div>
       </header>
-      <aside className="admin-side-nav">
+      <aside className="main-side-nav">
         <nav>
           <ul>
             <li>
@@ -154,8 +154,8 @@ const HomePage = () => {
           </ul>
         </nav>
       </aside>
-      <main className="admin-content">
-        <h2 className="admin-welcome-message">Welcome, {adminName}!</h2>
+      <main className="main-content">
+        <h2 className="main-welcome-message">Welcome, {adminName}!</h2>
         <div className="admin-count-boxes">
           <div className="admin-count-box">
             <img src={clientLogo} alt="Client Logo" className="admin-count-box-image" />
@@ -187,18 +187,18 @@ const HomePage = () => {
           </div>
           {/* Removed Total Admin and Total Case count boxes */}
         </div>
-        <div className="admin-button-container">
-          <button className="admin-action-button admin-button1" onClick={handleButtonClick1}>
+        <div className="main-button-container">
+          <button className="main-action-button main-button1" onClick={handleButtonClick1}>
             Explore and manage users within the firm
-            <span className="admin-tooltip">Explore and manage users within the firm</span>
+            <span className="main-tooltip">Explore and manage users within the firm</span>
           </button>
-          <button className="admin-action-button admin-button2" onClick={handleButtonClick2}>
+          <button className="main-action-button main-button2" onClick={handleButtonClick2}>
             Navigate and manage all cases across the firm
-            <span className="admin-tooltip">Navigate and manage all cases across the firm</span>
+            <span className="main-tooltip">Navigate and manage all cases across the firm</span>
           </button>
-          <button className="admin-action-button admin-button3" onClick={handleButtonClick3}>
+          <button className="main-action-button main-button3" onClick={handleButtonClick3}>
             Take charge of your client cases and interactions
-            <span className="admin-tooltip">Take charge of your client cases and interactions</span>
+            <span className="main-tooltip">Take charge of your client cases and interactions</span>
           </button>
         </div>
       </main>

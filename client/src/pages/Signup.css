@@ -21,14 +21,6 @@
     background-color: white;
 }
 
-.logoRegister {
-    position: fixed;
-    top: 5%; /* Adjust the top position as needed to control the vertical position */
-    left: 19.5%; /* Adjust the left position as needed to control the horizontal position */
-    max-width: 50px; /* Set the maximum width for the logo */
-    border-radius: 20%; /* Space below the logo */
-}
-
 .register-left-panel h1 {
     color: #3b3b3b;
     font-size: 24px; /* Larger font size for readability */

@@ -80,23 +80,23 @@ const HomePage = () => {
 
   return (
     <div>
-      <header className="staff-top-nav">
+      <header className="main-top-nav">
         <div>
-          <h1 className="staff-header">Apex Legal Solution</h1>
+          <h1 className="main-header">Apex Legal Solution</h1>
         </div>
         <div>
-          <div className="staff-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
-            <FontAwesomeIcon icon={faBell} className="staff-custom-bell-icon" />
+          <div className="main-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
+            <FontAwesomeIcon icon={faBell} className="main-custom-bell-icon" />
             </div>
-          <div className="staff-setting-container1" onClick={() => navigate('/ProfileSettingStaff')}>
-            <FontAwesomeIcon icon={faCog} className="staff-custom-icon1" />
+          <div className="main-setting-container1" onClick={() => navigate('/ProfileSettingStaff')}>
+            <FontAwesomeIcon icon={faCog} className="main-custom-icon1" />
           </div>
-          <div className="staff-icon-container2" onClick={handleLogout}>
-            <FontAwesomeIcon icon={faSignOutAlt} className="staff-custom-icon2" />
+          <div className="main-icon-container2" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOutAlt} className="main-custom-icon2" />
           </div>
         </div>
       </header>
-      <aside className="staff-side-nav">
+      <aside className="main-side-nav">
         <nav>
           <ul>
             <li>
@@ -115,8 +115,8 @@ const HomePage = () => {
           </ul>
         </nav>
       </aside>
-      <main className="staff-content">
-        <h2 className="staff-welcome-message">Welcome, {adminName}!</h2>
+      <main className="main-content">
+        <h2 className="main-welcome-message">Welcome, {adminName}!</h2>
         <div className="staff-count-boxes">
           <div className="staff-count-box">
             <img src={clientLogo} alt="Client Logo" className="staff-count-box-image" />
@@ -133,8 +133,8 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="staff-button-container">
-  <button className="staff-action-button staff-button1" onClick={handleButtonClick1}>
+        <div className="main-button-container">
+  <button className="main-action-button main-button1" onClick={handleButtonClick1}>
   Take charge of your client cases
   </button>
 </div>
