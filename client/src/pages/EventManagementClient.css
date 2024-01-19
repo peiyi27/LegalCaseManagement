@@ -67,8 +67,7 @@
   grid-row: 1 / span 2; 
 }
 
-button.create-back-button,
-button.create-case-button {
+button.create-back-button {
   background-color: #2a678f; /* Change this color to your desired color */
   color: #ffffff;
   border: none;
@@ -81,8 +80,7 @@ button.create-case-button {
   grid-column: 1; /* Specify the column for the list */
 }
 
-button.create-back-button:hover,
-button.create-case-button:hover {
+button.create-back-button:hover {
   background-color: #861b48; /* Change this color to your desired hover color */
 }
 

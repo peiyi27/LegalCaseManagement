@@ -92,11 +92,13 @@ const CaseManagementClient = () => {
     </aside>
     <main className="client-case-content">
       <div>
-  <div className="client-case-management">
-    <h2>Case Management</h2>
+  <div className='client-case-management-header'>
+  <h2>Case Management</h2>
     <button className="create-back-button" onClick={handleBackClick}>
       Back
     </button>
+  </div>
+  <div className="client-case-management">
     <div className="table-container">
       {cases.length > 0 ? (
         <table>
