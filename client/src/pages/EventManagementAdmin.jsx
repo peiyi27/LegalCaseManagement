@@ -74,7 +74,7 @@ const App = () => {
 return (
     <>
       {isEventDate ? (
-        <Link to={`/ViewEventClient`}>
+        <Link to={`/ViewEventAdmin`}>
           <Button
             type="text"
             className={`event-button event-date`}
@@ -122,8 +122,8 @@ return (
     navigate('/MyCaseAdmin');
   };
   
-  const handleViewEventClient = () => {
-    navigate('/ViewEventClient');
+  const handleViewEventAdmin = () => {
+    navigate('/ViewEventAdmin');
   };
 
   const handleBackClick = () => {
@@ -274,7 +274,7 @@ return (
           dataSource={events}
           renderItem={(item) => (
           <List.Item>
-            <a href="#casematter" onClick={handleViewEventClient}>
+            <a href="#casematter" onClick={handleViewEventAdmin}>
               {dayjs(item.date).format('YYYY-MM-DD')}: {item.title}
               <br />
               {item.startTime} - {item.endTime}

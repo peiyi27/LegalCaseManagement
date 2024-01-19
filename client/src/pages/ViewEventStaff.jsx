@@ -1,9 +1,9 @@
-//ViewEventClient.jsx
+//ViewEventStaff.jsx
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import './ViewEventClient.css';
+import './ViewEventStaff.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import legalHomeLogo from './logo.png';
@@ -11,7 +11,7 @@ import caseLogo from './case-logo.png';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 
 
-const ViewEventClient = () => {
+const ViewEventStaff = () => {
   const [caseData, setCaseData] = useState({});
   const { caseId } = useParams();
   const navigate = useNavigate();
@@ -32,18 +32,22 @@ const ViewEventClient = () => {
   };
 
   const handleCaseManagementClick = () => {
-    navigate('/CaseManagementClient');
+    navigate('/CaseManagementStaff');
   };
 
   const handleEventManagementClick = () => {
-    navigate('/EventManagementClient');
+    navigate('/EventManagementStaff');
   };
   
+  const handleViewEventStaff = () => {
+    navigate('/ViewEventStaff');
+  };
+
   const handleBackClick = () => {
     // Navigate to Home
-    navigate('/HomeForClient');
+    navigate('/HomeForStaff');
   };
-  
+    
   return (
     <div>
       <header className="client-top-nav">
@@ -65,17 +69,17 @@ const ViewEventClient = () => {
       <aside className="client-side-nav">
         <nav>
           <ul>
-            <li>
+          <li>
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>
-                Case Management
+                My Cases
               </a>
             </li>
             <li>
               <a href="#casematter" onClick={handleEventManagementClick}>
-                Event Management
+                My Events
               </a>
             </li>
           </ul>
@@ -98,4 +102,4 @@ const ViewEventClient = () => {
   );
 };
 
-export default ViewEventClient;
+export default ViewEventStaff;
