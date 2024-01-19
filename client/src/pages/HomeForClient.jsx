@@ -71,23 +71,23 @@ const HomeForClient = () => {
 
   return (
     <div>
-      <header className="client-top-nav">
+      <header className="main-top-nav">
       <div>
-          <h1 className="client-header">Apex Legal Solution</h1>
+          <h1 className="main-header">Apex Legal Solution</h1>
         </div>
         <div>
-        <div className="client-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
-            <FontAwesomeIcon icon={faBell} className="client-custom-bell-icon" />
+        <div className="main-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
+            <FontAwesomeIcon icon={faBell} className="main-custom-bell-icon" />
           </div>
-          <div className="client-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
-            <FontAwesomeIcon icon={faCog} className="client-custom-icon1" />
+          <div className="main-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
+            <FontAwesomeIcon icon={faCog} className="main-custom-icon1" />
           </div>
-          <div className="client-icon-container2" onClick={handleLogout}>
-            <FontAwesomeIcon icon={faSignOutAlt} className="client-custom-icon2" />
+          <div className="main-icon-container2" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOutAlt} className="main-custom-icon2" />
           </div>
         </div>
       </header>
-      <aside className="client-side-nav">
+      <aside className="main-side-nav">
         <nav>
           <ul>
             <li>
@@ -106,8 +106,8 @@ const HomeForClient = () => {
           </ul>
         </nav>
       </aside>
-      <main className="client-content">
-        <h2 className="client-welcome-message">Welcome, {adminName}!</h2>
+      <main className="main-content">
+        <h2 className="main-welcome-message">Welcome, {adminName}!</h2>
         <div className="client-count-boxes">
           <div className="client-count-box">
             <img src={caseLogo} alt="Case Logo" className="client-count-box-image" />
@@ -117,8 +117,8 @@ const HomeForClient = () => {
             </div>
           </div>
         </div>
-        <div className="client-button-container">
-          <button className="client-action-button client-button1" onClick={handleButtonClick1}>
+        <div className="main-button-container">
+          <button className="main-action-button main-button1" onClick={handleButtonClick1}>
             Explore and View Personal Case
           </button>
         </div>
