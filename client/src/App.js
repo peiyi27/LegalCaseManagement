@@ -36,6 +36,8 @@ import DocumentManagementClient from "./pages/DocumentManagementClient";
 import ProfileSettingClient from "./pages/ProfileSettingClient";
 import UpdateNameClient from "./pages/UpdateNameClient";
 import UpdateEmailClient from "./pages/UpdateEmailClient";
+import ViewEventStaff from "./pages/ViewEventStaff";
+import ViewEventAdmin from "./pages/ViewEventAdmin";
 import ViewEventClient from "./pages/ViewEventClient";
 import React from 'react';
 import EventManagementClient from './pages/EventManagementClient';
@@ -90,6 +92,8 @@ function App() {
           <Route path="/ProfileSettingClient" element={<ProfileSettingClient/>} />
           <Route path="/UpdateEmailClient" element={<UpdateEmailClient/>} />
           <Route path="/UpdateNameClient" element={<UpdateNameClient/>} />
+          <Route path="/ViewEventStaff" element={<ViewEventStaff />} />
+          <Route path="/ViewEventAdmin" element={<ViewEventAdmin />} />
           <Route path="/ViewEventClient" element={<ViewEventClient />} />
           <Route path="/EventManagementClient" element={<EventManagementClient />} />
           <Route path="/EventManagementStaff" element={<EventManagementStaff />} />

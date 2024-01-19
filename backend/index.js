@@ -35,7 +35,7 @@ const connection = mysql.createConnection({
   user: 'root',
   port: '3306',
   password: 'root',
-  database: 'event',
+  database: 'legal',
 });
 
 
@@ -66,14 +66,14 @@ app.get('/api/alert/events/upcoming', (req, res) => {
 app.get('/events', (req, res) => {
   const caseId = req.params.caseId;
   console.log('Case ID:', caseId);
-  const query = 'SELECT * FROM `events` WHERE case_id = ?';
+  const query = 'SELECT * FROM `event` WHERE case_id = ?';
 
   connection.query(query, [caseId], (error, results) => {
     if (error) {
       console.error('Error executing MySQL query: ', error);
       res.status(500).json({ success: false, message: 'Internal Server Error' });
     } else if (results.length === 0) {
-      return res.status(404).json({ success: false, message: 'Case not found' });       
+      return res.status(404).json({ success: false, message: 'Event not found' });       
     } else {
       console.log('Fetched event details:', results[0]);
       return res.status(200).json({ success: true, caseData: results[0] });

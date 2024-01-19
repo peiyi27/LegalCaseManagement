@@ -33,7 +33,7 @@
   .list-header {
     grid-column: 2; /* Specify the column for the list */
     grid-row: 1;
-    margin-left: 0px;
+    margin-left: 25px;
     margin-top: 70px;
   }
   

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import './ViewEventClient.css';
+import './ViewEventAdmin.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import legalHomeLogo from './logo.png';
@@ -11,7 +11,7 @@ import caseLogo from './case-logo.png';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 
 
-const ViewEventClient = () => {
+const ViewEventAdmin = () => {
   const [caseData, setCaseData] = useState({});
   const { caseId } = useParams();
   const navigate = useNavigate();
@@ -31,17 +31,25 @@ const ViewEventClient = () => {
     navigate('/login');
   };
 
+  const handleUserManagementClick = () => {
+    navigate('/UserManagementAdmin');
+  };
+
   const handleCaseManagementClick = () => {
-    navigate('/CaseManagementClient');
+    navigate('/CaseManagementAdmin');
   };
 
   const handleEventManagementClick = () => {
-    navigate('/EventManagementClient');
+    navigate('/EventManagementAdmin');
+  };
+
+  const handleMyCaseClick = () => {
+    navigate('/MyCaseAdmin');
   };
   
   const handleBackClick = () => {
     // Navigate to Home
-    navigate('/HomeForClient');
+    navigate('/Home');
   };
   
   return (
@@ -65,17 +73,23 @@ const ViewEventClient = () => {
       <aside className="client-side-nav">
         <nav>
           <ul>
-            <li>
+          <li>
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
             <li>
-              <a href="#casematter" onClick={handleCaseManagementClick}>
-                Case Management
-              </a>
+              <a href="#clients" onClick={handleUserManagementClick}>User Management</a>
+            </li>
+            <li>
+              <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
             </li>
             <li>
               <a href="#casematter" onClick={handleEventManagementClick}>
                 Event Management
+              </a>
+            </li>
+            <li>
+              <a href="#casematter" onClick={handleMyCaseClick}>
+                My Case
               </a>
             </li>
           </ul>
@@ -98,4 +112,4 @@ const ViewEventClient = () => {
   );
 };
 
-export default ViewEventClient;
+export default ViewEventAdmin;
