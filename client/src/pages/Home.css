@@ -20,7 +20,7 @@ main-body {
   right: 0;
   width: 1005px;
   height: 60px; /* Set the height of your top-nav bar */
-  background-color: #ffffff;
+  background-color: #708090ab;
   z-index: 1000; /* Higher than side-nav to stay on top */
 }
 
@@ -316,18 +316,20 @@ main-body {
 
 /* Add specific styles for each button */
 .main-button1 {
-  background-image: url('./homeadminbutton.jpg');
+  background-color: #ccc
 }
 .main-button2 {
-  background-image: url('./homeadminbutton.jpg'); 
+  background-color: #ccc
 }
 
 .main-button3 {
-  background-image: url('./homeadminbutton.jpg');
+  background-color: #ccc
 }  
 
 .main-action-button:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adjust the shadow for the floating effect */
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .main-action-button::before {
@@ -337,7 +339,6 @@ main-body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.2); /* Adjust the darkness */
   z-index: 1;
   transition: background 0.3s;
 }

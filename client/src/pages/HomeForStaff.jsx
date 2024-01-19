@@ -64,6 +64,9 @@ const HomePage = () => {
     localStorage.removeItem('token');
     navigate('/login');
   };
+  const handleHomeStaffClick = () => {
+    navigate('/HomeForStaff');
+  };
 
   const handleCaseManagementClick = () => {
     navigate('/CaseManagementStaff');
@@ -102,6 +105,9 @@ const HomePage = () => {
             <li>
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
+            <li>
+               <a href="#home" onClick={handleHomeStaffClick}>Home</a>
+           </li>
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>
                 My Cases

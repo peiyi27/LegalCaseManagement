@@ -106,6 +106,10 @@ return (
     navigate('/login');
   };
 
+  const handleHomeStaffClick = () => {
+    navigate('/HomeForStaff');
+  };
+
   const handleCaseManagementClick = () => {
     navigate('/CaseManagementStaff');
   };
@@ -151,6 +155,9 @@ return (
           <li>
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
+            <li>
+               <a href="#home" onClick={handleHomeStaffClick}>Home</a>
+           </li>
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>
                 My Cases
