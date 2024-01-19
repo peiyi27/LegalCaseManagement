@@ -6,6 +6,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import './ViewEventAdmin.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import AlertNotificationManagement from './AlertNotificationManagement';
 import legalHomeLogo from './logo.png';
 import caseLogo from './case-logo.png';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
@@ -59,9 +60,9 @@ const ViewEventAdmin = () => {
           <h1 className="client-header">Apex Legal Solution</h1>
         </div>
         <div>
-        <div className="staff-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
-          <FontAwesomeIcon icon={faBell} className="staff-custom-bell-icon" />
-        </div>
+        <div className="main-notification-container">
+          <AlertNotificationManagement />
+          </div>
           <div className="client-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
             <FontAwesomeIcon icon={faCog} className="client-custom-icon1" />
           </div>

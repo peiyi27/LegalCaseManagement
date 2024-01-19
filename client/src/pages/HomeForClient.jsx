@@ -8,6 +8,7 @@ import axios from 'axios';
 import './HomeForClient.css';
 import caseLogo from './case-logo.png';
 import { Link } from 'react-router-dom';
+import AlertNotificationManagement from './AlertNotificationManagement';
 
 const HomeForClient = () => {
   const navigate = useNavigate();
@@ -80,8 +81,8 @@ const HomeForClient = () => {
           <h1 className="main-header">Apex Legal Solution</h1>
         </div>
         <div>
-        <div className="main-notification-container" onClick={() => navigate('/AlertNotificationManagement')}>
-            <FontAwesomeIcon icon={faBell} className="main-custom-bell-icon" />
+        <div className="main-notification-container">
+          <AlertNotificationManagement />
           </div>
           <div className="main-setting-container1" onClick={() => navigate('/ProfileSettingClient')}>
             <FontAwesomeIcon icon={faCog} className="main-custom-icon1" />

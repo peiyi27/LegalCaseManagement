@@ -1,36 +1,30 @@
-.alert-container {
-  font-family: Arial, sans-serif;
-}
-
-.date-time-display {
+.notification-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  background-color: #e2e2e2;
-  opacity: 80%;
-  position: fixed;
-  top: 100px;
-  left: 0;
-  right: 0;
-  margin: 0 100px;
-  border: 5px solid darkblue;
-  border-radius: 5px;
-  z-index: 1000;
 }
 
-.date-display, .time-display {
-  font-size: 2em;
-  color: #000;
-  margin: 20px;
+.notification-text {
+  margin-right: 8px;
 }
 
-.no-events {
-  margin-top: 100px;
+.notification-menu {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.notification-read {
+  background: white;
+}
+
+.notification-unread {
+  background: #f0f0f0;
+}
+
+.text-center {
   text-align: center;
 }
 
-
-.event-display {
-  /* Add styles for your event display */
+.notification-icon {
+  font-size: 38px;
+  color: darkblue;
 }
