@@ -135,6 +135,8 @@
     padding: 20px;
     box-sizing: border-box;
     overflow: hidden; /* Hide the overflow to prevent double scrollbars */
+    background-color: #e2e2e2;
+    opacity: 85%;
   }
   
   /* Dashboard cards */
@@ -259,13 +261,20 @@
     color: #ffffff;
     border: none;
     padding: 8px 12px;
-    margin-right: 5px;
-    font-size: 16px;
+    font-size: 50px;
     cursor: pointer;
     border-radius: 3px;
+
+    margin-top: 50px;
+    margin-left: 320px;
+    width: 70px;
   }
   
   .client-case-management button.create-back-button:hover
   {
     background-color: #861b48; /* Change this color to your desired hover color */
+  }
+
+  .client-case-management-header {
+    display: flex;
   }
