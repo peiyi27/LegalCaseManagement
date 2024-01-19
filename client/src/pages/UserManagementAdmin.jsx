@@ -134,6 +134,11 @@ const UserManagementAdmin = () => {
         navigate('/CaseManagementAdmin');
       };
     
+      const handleEventManagementClick = () => {
+        navigate('/EventManagementAdmin');
+      };
+
+
       const handleMyCaseClick = () => {
         navigate('/MyCaseAdmin');
       };
@@ -169,6 +174,10 @@ const UserManagementAdmin = () => {
                 <li>
                   <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
                 </li>
+                <li>
+                  <a href="#case" onClick={handleEventManagementClick}>Event Management</a>
+                </li>
+
                 <li>
                   <a href="#casematter" onClick={handleMyCaseClick}>
                     My Case

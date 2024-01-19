@@ -120,6 +120,10 @@ const handleCaseManagementClick = () => {
   navigate('/CaseManagementStaff');
 };
 
+const handleEventManagementClick = () => {
+  navigate('/EventManagementStaff');
+};
+
 
   return (
       <div>
@@ -146,8 +150,12 @@ const handleCaseManagementClick = () => {
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
               <li>
-                <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
+                <a href="#case" onClick={handleCaseManagementClick}>My Cases</a>
               </li>
+              <li>
+                <a href="#case" onClick={handleEventManagementClick}>My Events</a>
+              </li>
+
             </ul>
           </nav>
       </aside>

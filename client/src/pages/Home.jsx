@@ -90,7 +90,7 @@ const HomePage = () => {
   };
 
   const handleEventManagementClick = () => {
-    navigate('/EventManagementClient');
+    navigate('/EventManagementAdmin');
   };
 
   const handleMyCaseClick = () => {

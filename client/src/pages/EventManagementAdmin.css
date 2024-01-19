@@ -1,0 +1,132 @@
+/* Additional Styles */
+
+/* Calendar Header Styles */
+.ant-fullcalendar-header {
+    background-color: #1890ff; /* Change the background color as needed */
+    color: #37cb3a; /* Change the text color as needed */
+  }
+  
+  /* Calendar Tile (Day) Styles */
+  .day-button {
+    background-color: #fafafa; /* Change the background color as needed */
+    color: #333; /* Change the text color as needed */
+    border: 1px solid #d9d9d9; /* Change the border color as needed */
+    width: 10px; /* Adjust the width of each day cell as needed */
+    height: 40px; /* Adjust the height of each day cell as needed */
+    line-height: 40px;
+  }
+  
+  .day-button:hover {
+    background-color: #1890ff; /* Change the background color on hover as needed */
+    color: #fff; /* Change the text color on hover as needed */
+  }
+  
+  /* List Item Styles */
+  .ant-list-item {
+    border-bottom: 6px solid #000000; /* Change the border color as needed */
+  }
+  
+  .ant-list-item:last-child {
+    border-bottom: none; /* Remove border for the last item in the list */
+  }
+  
+  .list-header {
+    grid-column: 2; /* Specify the column for the list */
+    grid-row: 1;
+    margin-left: 0px;
+    margin-top: 70px;
+  }
+  
+  .list {
+    grid-column: 2; /* Specify the column for the list */
+    grid-row: 2;
+    margin-left: 20px;
+  }
+  
+  /* Wrapper Margin */
+  .wrapper {
+    margin-top: 20px; /* Adjust the top margin as needed */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-column-gap: 20px;
+    grid-template-rows: auto 1fr;
+  }
+  
+  .calendar {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 300px;
+    grid-column: 1; /* Specify the column for the calendar */
+    grid-row: 1 / span 2; 
+  }
+  
+  .button-container {
+    display: flex;
+    align-items:end;
+  }
+  
+  button.create-event-button {
+    width: 120px;
+    font-size: 16px;
+    margin-left: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    color: #ffffff;
+    background-color: #2a678f;
+    border: none;
+    margin-left: 155px; /* Adjust the margin as needed */
+  }
+  
+  button.create-back-button {
+    background-color: #2a678f; /* Change this color to your desired color */
+    color: #ffffff;
+    border: none;  
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 320px;
+    width: 70px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    grid-column: 1; /* Specify the column for the list */
+  }
+  
+  button.create-back-button:hover {
+    background-color: #861b48; /* Change this color to your desired hover color */
+  }
+  
+  .event-button {
+    width: 32px;
+    height: 28px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: #fff; /* Default background color */
+    color: #333; /* Default text color */
+  }
+  
+  button.create-event-button {
+    background-color: #2a678f; /* Change this color to your desired color */
+    color: #ffffff;
+    border: none;
+    width: 120px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    grid-column: 1; /* Specify the column for the list */
+  }
+  
+  button.create-event-button:hover {
+    background-color: #861b48; /* Change this color to your desired hover color */
+  }
+  
+  .event-button.event-date {
+    width: 70%;
+    height: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: #6bed6d; /* Background color for event date */
+    color: #000000; /* Text color for event date */
+  }
+  
