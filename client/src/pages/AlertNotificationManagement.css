@@ -25,6 +25,9 @@
 }
 
 .notification-icon {
-  font-size: 38px;
+  position: fixed;
+  font-size: 42px;
   color: darkblue;
+  top: 1.15%;
+  right: 8.4%;
 }
