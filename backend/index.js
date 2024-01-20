@@ -5,11 +5,9 @@ import cors from 'cors';
 import session from 'express-session';
 import cookieParser from 'cookie-parser'
 import multer from 'multer';
-import dotenv from 'dotenv';
 
 const app = express();
 const port = 3001;
-dotenv.config();
 
 app.use(cors({
   origin: ["http://localhost:3000"],
@@ -33,12 +31,11 @@ app.use(session({
 
 // MySQL database connection setup
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    port: process.env.DB_PORT,
-  
+  host: '127.0.0.1',
+  user: 'root',
+  port: '3306',
+  password: 'root',
+  database: 'legal',
 });
 
 
@@ -1037,6 +1034,11 @@ app.get('/', (req, res) => {
   };
 });*/
 
+
+// Main page after login
+app.get('/main', (req, res) => {
+  res.send('Welcome to the main page!');
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
