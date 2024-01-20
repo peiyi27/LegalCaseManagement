@@ -174,7 +174,7 @@ return (
           </li>
 
           <li>
-            <a href="#casematter" onClick={handleMyCaseClick}>
+            <a href="#casematter" onClick={handleMyCaseClick} style={{ color: '#f6d41e' }}>
               My Case
             </a>
           </li>

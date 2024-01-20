@@ -87,7 +87,7 @@ const CaseManagementClient = () => {
                <a href="#home" onClick={handleHomeClientClick}>Home</a>
            </li>
             <li>
-              <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
+              <a href="#case" onClick={handleCaseManagementClick} style={{ color: '#f6d41e' }}>Case Management</a>
             </li>
             <li>
               <a href="#casematter" onClick={handleEventManagementClick}>

@@ -107,7 +107,7 @@ const HomePage = () => {
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
             <li>
-               <a href="#home" onClick={handleHomeStaffClick}>Home</a>
+               <a href="#home" onClick={handleHomeStaffClick} style={{ color: '#f6d41e' }}>Home</a>
            </li>
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>

@@ -99,7 +99,7 @@ const HomeForClient = () => {
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
             <li>
-               <a href="#home" onClick={handleHomeClientClick}>Home</a>
+               <a href="#home" onClick={handleHomeClientClick} style={{ color: '#f6d41e' }}>Home</a>
            </li>
             <li>
               <a href="#casematter" onClick={handleCaseManagementClick}>

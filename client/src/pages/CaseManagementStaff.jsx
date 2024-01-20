@@ -157,7 +157,7 @@ const handleEventManagementClick = () => {
              <a href="#home" onClick={handleHomeStaffClick}>Home</a>
             </li>
               <li>
-                <a href="#case" onClick={handleCaseManagementClick}>My Cases</a>
+                <a href="#case" onClick={handleCaseManagementClick} style={{ color: '#f6d41e' }}>My Cases</a>
               </li>
               <li>
                 <a href="#case" onClick={handleEventManagementClick}>My Events</a>
