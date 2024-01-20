@@ -32,9 +32,9 @@ app.use(session({
 // MySQL database connection setup
 const connection = mysql.createConnection({
   host: '127.0.0.1',
-  user: 'root',
+  user: 'cmt322',
   port: '3306',
-  password: 'root',
+  password: '12345',
   database: 'legal',
 });
 
