@@ -1,8 +1,59 @@
-.custom-form {
-  width: 120%;
-  margin-left: 0px !important;
+.admin-create-case-form {
+  margin-top: 400px;
+  margin-bottom: 50px;
 }
 
-.header {
-    text-align: center;
-}
+.admin-create-case-form Form {
+    max-width: 100%; /* This will prevent any horizontal overflow */
+    padding: 20px;
+    box-sizing: border-box; 
+    margin-top: 400px;
+    margin-bottom: 50px;
+  }
+  
+  /* Remove any fixed or max-width from individual Form.Control to prevent overflow */
+  .admin-create-case-form Form.Control {
+    width: 100%;
+  }
+  
+  .admin-create-case-form Form.Control#caseDetails {
+    min-height: 150px; 
+  }
+  
+  .admin-create-case-form button {
+    background-color: #71879e;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .admin-create-case-form button:hover {
+    background-color: #885b5f;
+  }
+  
+  .admin-create-case-form h2 {
+    color: #333;
+  }
+  
+  .admin-create-case-form Form.Label {
+    font-weight: bold;
+  }
+  
+  .admin-create-case-form Form.Control {
+    margin-bottom: 15px;
+  }
+  
+  .admin-create-case-form Button[type="submit"] {
+    background-color: #75997d;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .admin-create-case-form Button[type="submit"]:hover {
+    background-color: #885b5f;
+  }
