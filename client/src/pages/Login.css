@@ -34,6 +34,7 @@ html {
 
   /* Login.css */
 .logologin {
+    position:fixed;
     top:0.5%; /* Adjust the top position as needed to control the vertical position */
     left:16.5%; /* Adjust the left position as needed to control the horizontal position */
     max-width: 50px; /* Set the maximum width for the logo */
@@ -44,7 +45,7 @@ html {
     color: #3b3b3b;
     font-size:20px;
     margin-left: 20%;
-    margin-top: 10%;
+    margin-top: 0.2%;
     text-align: center;
   }
   
@@ -75,10 +76,10 @@ html {
   /* Styling for the form and its elements */
   form {
     background: #ffffff;
-    margin-top: 90px;
-    padding: 70px 40px;
-    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.1);
+    padding: 18px 30px;
+
     border-radius: 10px;
+    box-shadow: 0 0px 2px 1px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
 
@@ -103,6 +104,15 @@ html {
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+  select{
+    width: 105.5%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+ 
   
   /* Styling for the buttons */
   button {
