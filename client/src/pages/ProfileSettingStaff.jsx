@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Make sure to install axios if not already installed
 import './ProfileSettingStaff.css';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const ProfileSettingStaff = () => {
   const navigate = useNavigate();
@@ -60,32 +63,44 @@ const ProfileSettingStaff = () => {
   };
 
   const handleBackClick = () => {
-    navigate(`/HomeForStaff`);
+    navigate('/HomeForStaff');
   };
 
   return (
     <div className="staff-profile-setting">
-    {loading && <p className="loading">Loading...</p>}
-    {!loading && error && <p className="error">Error: {error}</p>}
-    {!loading && !error && (
-      <div className="staff-details">
-        <button onClick={handleBackClick} className="back-button">&#8592; Back</button>
-        <div className="profile-section">
-          <div className="profile-item">
-            <h2>Staff's Name</h2>
-            <p>{adminName}</p>
-            <button onClick={handleNameButtonClick} className="update-button">Edit Name</button>
-          </div>
-          <div className="profile-item">
-            <h2>Staff's Email</h2>
-            <p>{adminEmail}</p>
-            <button onClick={handleEmailButtonClick} className="update-button">Edit Email</button>
+      {loading && <p className="loading">Loading...</p>}
+      {!loading && error && <p className="error">Error: {error}</p>}
+      {!loading && !error && (
+        <div className="staff-details">
+          <button onClick={handleBackClick} className="back-button">&#8592; Back</button>
+          <div className="profile-section">
+            <div className="profile-item">
+              <div className="item-heading">
+                <FontAwesomeIcon icon={faUser} className="fa-user" />
+              </div>
+              <div className="item-content">
+                <h2>Staff's Name</h2>
+                <p>{adminName}</p>
+                <button onClick={handleNameButtonClick} className="update-button">Edit Name</button>
+              </div>
+            </div>
+            <div className="profile-item">
+              <div className="item-heading">
+                <FontAwesomeIcon icon={faEnvelope} className="fa-user" />
+              </div>
+              <div className="item-content">
+                <h2>Staff's Email</h2>
+                <p>{adminEmail}</p>
+                <button onClick={handleEmailButtonClick} className="update-button">Edit Email</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    )}
-  </div>
+      )}
+    </div>
   );
+  
+  
 };
 
 export default ProfileSettingStaff;
