@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Make sure to install axios if not already installed
 import './ProfileSettingClient.css';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
 
 const ProfileSettingClient = () => {
   const navigate = useNavigate();
@@ -60,31 +64,41 @@ const ProfileSettingClient = () => {
   };
 
   const handleBackClick = () => {
-    navigate(`/HomeForClient`);
+    navigate('/HomeForClient');
   };
 
   return (
     <div className="client-profile-setting">
-    {loading && <p className="loading">Loading...</p>}
-    {!loading && error && <p className="error">Error: {error}</p>}
-    {!loading && !error && (
-      <div className="client-details">
-        <button onClick={handleBackClick} className="back-button">&#8592; Back</button>
-        <div className="profile-section">
-          <div className="profile-item">
-            <h2>Client's Name</h2>
-            <p>{adminName}</p>
-            <button onClick={handleNameButtonClick} className="update-button">Edit Name</button>
-          </div>
-          <div className="profile-item">
-            <h2>Client's Email</h2>
-            <p>{adminEmail}</p>
-            <button onClick={handleEmailButtonClick} className="update-button">Edit Email</button>
+      {loading && <p className="loading">Loading...</p>}
+      {!loading && error && <p className="error">Error: {error}</p>}
+      {!loading && !error && (
+        <div className="client-details">
+          <button onClick={handleBackClick} className="back-button">&#8592; Back</button>
+          <div className="profile-section">
+            <div className="profile-item">
+              <div className="item-heading">
+                <FontAwesomeIcon icon={faUser} className="fa-user" />
+              </div>
+              <div className="item-content">
+                <h2>Client's Name</h2>
+                <p>{adminName}</p>
+                <button onClick={handleNameButtonClick} className="update-button">Edit Name</button>
+              </div>
+            </div>
+            <div className="profile-item">
+              <div className="item-heading">
+                <FontAwesomeIcon icon={faEnvelope} className="fa-user" />
+              </div>
+              <div className="item-content">
+                <h2>Client's Email</h2>
+                <p>{adminEmail}</p>
+                <button onClick={handleEmailButtonClick} className="update-button">Edit Email</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    )}
-  </div>
+      )}
+    </div>
   );
 };
 
