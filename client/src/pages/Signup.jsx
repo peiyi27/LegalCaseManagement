@@ -25,7 +25,7 @@ function Register() {
         name,
       });
       if (response.status === 200) {
-        navigate('/');
+        navigate('/login');
       }
     } catch (err) {
       if (err.response && err.response.status === 400) {
@@ -39,7 +39,6 @@ function Register() {
   return (
     <div className="register-container">
       <div className="register-left-panel">
-      <img src={legalRegisterLogo} alt="Legal Logo" className="logoRegister" />
         <h1>Get Started with your Account</h1>
         <img src={legalRegisterImage} alt="Legal Register Image" />
       </div>
@@ -75,7 +74,7 @@ function Register() {
           </div>
           <div>
             <label>Role:</label>
-            <select value={role} onChange={(e) => setRole(e.target.value)} classname= "signup-select" required>
+            <select value={role} onChange={(e) => setRole(e.target.value)} required>
               <option value="">Select Role</option>
               <option value="admin">Admin</option>
               <option value="user">Client</option>
@@ -87,7 +86,7 @@ function Register() {
           </button>
           <div className="register-text-center">
             <p>
-              Already have an account? <Link to="/">Sign In</Link>
+              Already have an account? <Link to="/login">Sign In</Link>
             </p>
           </div>
           {error && (

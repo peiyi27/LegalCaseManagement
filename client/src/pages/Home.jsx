@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 import AlertNotificationManagement from './AlertNotificationManagement';
 import { useNavigate } from 'react-router-dom';
 import legalHomeLogo from './logo.png';
@@ -78,7 +79,7 @@ const HomePage = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/');
+    navigate('/login');
   };
 
   const handleHomeAdminClick = () => {
@@ -137,7 +138,7 @@ const HomePage = () => {
         <nav>
           <ul>
             <li>
-            <img src={legalHomeLogo} alt="Legal Logo" className="logohome" />
+              <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
             <li>
             <a href="#home" onClick={handleHomeAdminClick} style={{ color: '#f6d41e' }}>Home</a>

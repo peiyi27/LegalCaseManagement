@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import './Login.css'; // Make sure this path is correct
 import legalLoginImage from './legal1.png';
-import legalLoginLogo from './logo.png';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -50,7 +49,6 @@ function Login() {
   return (
     <div className="login-container">
       <div className="left-panel">
-      <img src={legalLoginLogo} alt="Legal Logo" className="logologin" />
         <h1>Welcome to Apex Legal Solution</h1>
         <p>Your best legal advice</p>
         <img src={legalLoginImage} alt="Legal Image" />

@@ -3,21 +3,13 @@
 .register-container {
     width: 100%;
     max-width: 1000px;
-    height: 720px;
+    height: auto; /* Adjusted to auto for variable content height */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     overflow: hidden;
     display: flex;
     margin: auto; /* Center the container on the page */
     background: white;
-}
-
-.logoRegister {
-    position:fixed;
-    top:4%; /* Adjust the top position as needed to control the vertical position */
-    left:19.5%; /* Adjust the left position as needed to control the horizontal position */
-    max-width: 50px; /* Set the maximum width for the logo */
-    border-radius: 20%; /* Space below the logo */
 }
 
 .register-left-panel {
@@ -36,12 +28,10 @@
     margin: 20px 0; /* Space above and below the title */
 }
 
-
 .register-left-panel img {
     width: 100%; /* Responsive width */
     height: auto; /* Maintain aspect ratio */
 }
-
 
 .register-right-panel {
     flex: 1; /* Assign flex to take up equal space */
@@ -72,11 +62,11 @@
     color: #6c6c6c;
 }
 
-/* Added for the new name input */
+input[type="text"], /* Added for the new name input */
 input[type="email"],
-input[type="password"]
-{
-    width: 105%;
+input[type="password"],
+select {
+    width: 100%; /* Adjusted width for better responsiveness */
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -84,28 +74,9 @@ input[type="password"]
     font-size: 16px;
 }
 
-input[type="text"]{
-    width: 99%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px; /* Square borders for the dropdown */
-    font-size: 16px;
-
-}
-
-.signup-select{
-        width: 80%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px; /* Square borders for the dropdown */
-        font-size: 16px;
-    
-}
 .RegisterButton {
     padding: 10px;
-    max-width: 106%; /* Adjusted for better responsiveness */
+    max-width: 100%; /* Adjusted for better responsiveness */
     border: none;
     border-radius: 5px;
     margin-top: 15px;
