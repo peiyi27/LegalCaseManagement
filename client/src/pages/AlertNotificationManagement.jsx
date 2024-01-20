@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Dropdown, Menu, Badge, Button, Space } from 'antd'; // Ensure you have antd installed
-import { BellOutlined } from '@ant-design/icons'; // Ensure you have ant-design/icons installed
+import { Dropdown, Menu, Badge, Button, Space } from 'antd';
+import { BellOutlined } from '@ant-design/icons';
 import './AlertNotificationManagement.css';
 
 const AlertNotificationManagement = () => {
   const [notifications, setNotifications] = useState([]);
-  const [unreadCount, setUnreadCount] = useState(0); //no need
 
   useEffect(() => {
-    // Replace this with the actual endpoint where you fetch notifications
+    // Fetch notifications from the API
     axios.get('/api/alert/notifications')
       .then(response => {
         setNotifications(response.data.notifications);
-        setUnreadCount(response.data.unreadCount); // no need
       })
       .catch(error => {
         console.error('Error fetching notifications:', error);
@@ -21,56 +19,55 @@ const AlertNotificationManagement = () => {
   }, []);
 
   const handleNotificationClick = (notification) => {
-    // Logic to handle notification click retrive database
+    // Logic to handle notification click
   };
 
   const handleClearNotifications = () => {
-    // Logic to clear all notifications no need!!!
+    setNotifications([]);
+    localStorage.setItem('notifications', JSON.stringify([])); // Clear notifications in local storage
   };
 
   return (
-  <div className="headerRightRight">
-    <div className="notification-wrapper">
-      <Dropdown
-        overlay={
-          <Menu className="notification-menu">
-            {notifications.length === 0 ? (
-              <Menu.Item disabled>No notifications</Menu.Item>
-            ) : (
-              notifications.slice(0, 4).map((notification) => ( // noti display limit
-                <Menu.Item
-                  key={notification.id}
-                  className={notification.read ? "notification-read" : "notification-unread"}
-                  onClick={() => handleNotificationClick(notification)}
-                >
-                  <p>
-                    {notification.event_desc} scheduled at {notification.event_date} for the Case: {notification.event_name}
-                  </p>
-                </Menu.Item>
-              ))
-            )}
-            {notifications.length > 0 && (
+    <div className="headerRightRight">
+      <div className="notification-wrapper">
+        <Dropdown
+          overlay={
+            <Menu className="notification-menu" style={{ maxHeight: '300px', overflowY: 'auto' }}>
+              {notifications.length === 0 ? (
+                <Menu.Item disabled>No notifications</Menu.Item>
+              ) : (
+                notifications.slice(0, 4).map((notification) => (
+                  <Menu.Item
+                    key={notification.id}
+                    className={notification.read ? "notification-read" : "notification-unread"}
+                    onClick={() => handleNotificationClick(notification)}
+                  >
+                    <p>
+                      {notification.event_desc} scheduled at {notification.event_date} for the Case: {notification.event_name}
+                    </p>
+                  </Menu.Item>
+                ))
+              )}
               <Menu.Item className="text-center">
                 <Button type="link" onClick={handleClearNotifications}>
                   Clear All Notifications
                 </Button>
               </Menu.Item>
-            )}
-          </Menu>
-        }
-      >
-        <a onClick={(e) => e.preventDefault()}>
-          <Space>
-            <Badge count={unreadCount}>
-              <span className="notification-icon">
-                <BellOutlined />
-              </span>
-            </Badge>
-          </Space>
-        </a>
-      </Dropdown>
+            </Menu>
+          }
+        >
+          <a onClick={(e) => e.preventDefault()}>
+            <Space>
+              <Badge count={notifications.length}>
+                <span className="notification-icon">
+                  <BellOutlined />
+                </span>
+              </Badge>
+            </Space>
+          </a>
+        </Dropdown>
+      </div>
     </div>
-  </div>
   );
 };
 
