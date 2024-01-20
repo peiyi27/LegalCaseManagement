@@ -3,63 +3,49 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import './NotificationListAdmin.css';
 import 'dayjs/locale/en';
-import dayLocaleData from 'dayjs/plugin/localeData';
-import { Button, message, Space, Calendar, List, Col, Radio, Row, Select, Typography, theme } from 'antd';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import AlertNotificationManagement from './AlertNotificationManagement';
-import { useNavigate } from 'react-router-dom';
-import legalHomeLogo from './logo.png';
+import { List } from 'antd';
 
 const NotificationListAdmin = () => {
-  const currentDate = dayjs().format('YYYY-MM-DD');
-  const [events, setEvents] = useState([]);  
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3001/get-all-events-admin')
       .then(response => {
-        console.log('Events:', response.data.events);
         setEvents(response.data.events);
       })
       .catch(error => console.error('Error fetching events:', error));
   }, []);
 
+  const groupedEvents = events.reduce((grouped, event) => {
+    const date = dayjs(event.event_date).format('YYYY-MM-DD');
+    if (!grouped[date]) {
+      grouped[date] = [];
+    }
+    grouped[date].push(event);
+    return grouped;
+  }, {});
 
-  const isEventToday = (eventDate) => {
-    return dayjs(eventDate).isSame(currentDate, 'day');
-  };
+  const sortedDates = Object.keys(groupedEvents).sort();
 
   return (
-    <div className="notification-list-admin">
-      <div className="current-date-box">
-        {events.some(event => isEventToday(event.event_date)) ? (
-          events.filter(event => isEventToday(event.event_date)).map(event => (
-            <div key={event.event_id} className="event-item">
-              <h3>{event.event_name}</h3>
-              <p>{event.event_desc}</p>
-            </div>
-          ))
-        ) : (
-          <div className="no-event">No Notifications</div>
-        )}
-      </div>
-      <div className="upcoming-events">
-        <h2>Upcoming Events:</h2>
-        <List
-          className="list"
-          dataSource={events}
-          renderItem={(item) => (
-            <List.Item>
-              <a href="#casematter">
-                {dayjs(item.event_date).format('YYYY-MM-DD')}: {item.event_name}
-                <br />
-                {item.event_time_start} - {item.event_time_end}
-              </a>
-            </List.Item>
-          )}
-        />
-      </div>
+    <div className="alert-list-notification-list-admin">
+      {sortedDates.map(date => (
+        <div key={date} className="alert-list-date-section">
+          <div className="alert-list-date-header">{date}</div>
+          <List
+            className="list"
+            dataSource={groupedEvents[date]}
+            renderItem={item => (
+              <List.Item className="alert-list-event-box">
+                <div className="alert-list-event-details">
+                  <h3>{item.event_name}</h3>
+                  <p>{item.event_time_start} - {item.event_time_end}</p>
+                </div>
+              </List.Item>
+            )}
+          />
+        </div>
+      ))}
     </div>
   );
 };
