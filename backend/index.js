@@ -45,15 +45,27 @@ connection.connect((err) => {
 });
 
 // index.js for alert system
-app.get('/api/alert/events/upcoming', (req, res) => {
-  const query = 'SELECT event_id, event_name, event_date, event_time_start FROM alert.events WHERE event_date >= CURDATE()';
-  
+app.get('/api/events/notifications', (req, res) => {
+  const query = 'SELECT event_id, event_name, event_date, event_desc FROM legal.event';
   connection.query(query, (error, results) => {
     if (error) {
-      console.error('Error fetching upcoming events:', error);
+      console.error('Error fetching events:', error);
       res.status(500).json({ success: false, message: 'Internal Server Error' });
     } else {
-      res.status(200).json(results);
+      res.status(200).json({ events: results });
+    }
+  });
+});
+
+// Fetch all events for admin
+app.get('/get-all-events-admin', (req, res) => {
+  const query = 'SELECT * FROM legal.event ORDER BY event_date ASC';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error fetching events:', error);
+      res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else {
+      res.status(200).json({ events: results });
     }
   });
 });
