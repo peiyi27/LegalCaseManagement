@@ -1,0 +1,46 @@
+.alert-list-notification-list-admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 450px;
+    width: 500px;
+}
+  
+  .alert-list-date-section {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .alert-list-date-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+  
+  .alert-list-event-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .alert-list-event-details {
+    text-align: left;
+    margin-left: 20px;
+}
+  
+  .alert-list-event-details h3 {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+  }
+  
+  .alert-list-event-details p {
+    font-size: 1.2em;
+    color: #666;
+  }
