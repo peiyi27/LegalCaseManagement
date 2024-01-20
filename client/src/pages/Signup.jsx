@@ -25,7 +25,7 @@ function Register() {
         name,
       });
       if (response.status === 200) {
-        navigate('/login');
+        navigate('/');
       }
     } catch (err) {
       if (err.response && err.response.status === 400) {
@@ -86,7 +86,7 @@ function Register() {
           </button>
           <div className="register-text-center">
             <p>
-              Already have an account? <Link to="/login">Sign In</Link>
+              Already have an account? <Link to="/">Sign In</Link>
             </p>
           </div>
           {error && (

@@ -29,7 +29,7 @@ const ViewEventClient = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
   };
 
   const handleCaseManagementClick = () => {

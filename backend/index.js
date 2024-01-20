@@ -44,10 +44,6 @@ connection.connect((err) => {
   console.log('Connected to MySQL Server!');
 });
 
-app.get("/", (req, res) => {
-  res.json("Hello testing")
-})
-
 // index.js for alert system
 app.get('/api/alert/events/upcoming', (req, res) => {
   const query = 'SELECT event_id, event_name, event_date, event_time_start FROM alert.events WHERE event_date >= CURDATE()';
@@ -144,9 +140,9 @@ app.post('/register', (req, res) => {
 
 
 
-app.options('/login', cors());
+app.options('/', cors());
 
-app.post('/login', (req, res) => {
+app.post('/', (req, res) => {
   const { email, password, role } = req.body;
 
   // Create separate queries for user and admin

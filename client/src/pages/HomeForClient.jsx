@@ -54,7 +54,7 @@ const HomeForClient = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
   };
 
   const handleHomeClientClick = () => {

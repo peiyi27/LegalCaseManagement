@@ -112,7 +112,7 @@ const MyCaseAdmin = () => {
   
  const handleLogout = () => {
   localStorage.removeItem('token');
-  navigate('/login');
+  navigate('/');
 };
 
 const handleHomeAdminClick = () => {

@@ -113,7 +113,7 @@ const CaseManagementStaff = () => {
   
  const handleLogout = () => {
   localStorage.removeItem('token');
-  navigate('/login');
+  navigate('/');
 };
 
 const handleHomeStaffClick = () => {
