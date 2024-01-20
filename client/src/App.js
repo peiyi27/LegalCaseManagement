@@ -45,6 +45,7 @@ import EventManagementStaff from './pages/EventManagementStaff';
 import EventManagementAdmin from './pages/EventManagementAdmin';
 import CreateEventForm from './pages/CreateEventForm';
 import AlertNotificationManagement from './pages/AlertNotificationManagement';
+import NotificationListAdmin from './pages/NotificationListAdmin';
 import './App.css';
 
 
@@ -100,6 +101,7 @@ function App() {
           <Route path="/EventManagementAdmin" element={<EventManagementAdmin />} />
           <Route path="/CreateEventForm" element={<CreateEventForm />} />
           <Route path="/AlertNotificationManagement" element={<AlertNotificationManagement />} />
+          <Route path="/NotificationListAdmin" element={<NotificationListAdmin />} />
         </Routes>
       </BrowserRouter>
     </div>
