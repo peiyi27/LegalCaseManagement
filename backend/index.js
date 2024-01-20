@@ -5,9 +5,11 @@ import cors from 'cors';
 import session from 'express-session';
 import cookieParser from 'cookie-parser'
 import multer from 'multer';
+import dotenv from 'dotenv';
 
 const app = express();
 const port = 3001;
+dotenv.config();
 
 app.use(cors({
   origin: ["http://localhost:3000"],
@@ -1034,11 +1036,6 @@ app.get('/', (req, res) => {
   };
 });*/
 
-
-// Main page after login
-app.get('/main', (req, res) => {
-  res.send('Welcome to the main page!');
-});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
