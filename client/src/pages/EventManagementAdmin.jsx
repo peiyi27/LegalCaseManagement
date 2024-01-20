@@ -8,12 +8,9 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import AlertNotificationManagement from './AlertNotificationManagement';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import legalHomeLogo from './logo.png';
 import axios from 'axios';
-import caseLogo from './case-logo.png';
-import Swal from 'sweetalert2'; // Import SweetAlert2
 
 
 dayjs.extend(dayLocaleData);
@@ -255,7 +252,7 @@ return (
         <List
           className="list"
           dataSource={events}
-          renderItem={(item, index) => (
+          renderItem={(item) => (
             <List.Item>
               <a href="#casematter" onClick={handleViewEventAdmin}>
                 {dayjs(item.event_date).format('YYYY-MM-DD')}: {item.event_name}
