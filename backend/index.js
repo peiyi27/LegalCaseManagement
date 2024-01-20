@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser'
 import multer from 'multer';
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 app.use(cors({
   origin: ["http://localhost:3000"],
@@ -28,14 +28,12 @@ app.use(session({
 }))
 
 
-
-// MySQL database connection setup
 const connection = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'root',
-  port: '3306',
-  password: '12345',
-  database: 'legal',
+  host: process.env.DB_HOST || '127.0.0.1',
+  user: process.env.DB_USER || 'root',
+  port: process.env.DB_PORT || '3306',
+  password: process.env.DB_PASSWORD || '12345',
+  database: process.env.DB_NAME || 'legal',
 });
 
 
