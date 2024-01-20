@@ -165,7 +165,7 @@ return (
               </a>
             </li>
             <li>
-              <a href="#casematter" onClick={handleEventManagementClick}>
+              <a href="#casematter" onClick={handleEventManagementClick} style={{ color: '#f6d41e' }}>
                 My Events
               </a>
             </li>

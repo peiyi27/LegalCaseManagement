@@ -139,40 +139,42 @@ const CaseManagementAdmin = () => {
   
   return (
     <div>
-    <header className="main-top-nav">
-      <div>
-        <h1 className="main-header">Apex Legal Solution</h1>
-      </div>
-      <div>
-      <div className="main-notification-container">
+      <header className="main-top-nav-case main-top-nav">
+        <div>
+          <h1 className="main-header">Apex Legal Solution</h1>
+        </div>
+        <div>
+        <div className="main-notification-container">
           <AlertNotificationManagement />
           </div>
-        <div className="main-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
-          <FontAwesomeIcon icon={faCog} className="main-custom-icon1" />
+          <div className="main-setting-container1" onClick={() => navigate('/ProfileSettingAdmin')}>
+            <FontAwesomeIcon icon={faCog} className="main-custom-icon1" />
+          </div>
+          <div className="main-icon-container2" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOutAlt} className="main-custom-icon2" />
+          </div>
         </div>
-        <div className="main-icon-container2" onClick={handleLogout}>
-          <FontAwesomeIcon icon={faSignOutAlt} className="main-custom-icon2" />
-        </div>
-      </div>
-    </header>
-    <aside className="main-side-nav">
-    <nav>
+      </header>
+      <aside className="main-side-nav">
+        <nav>
           <ul>
             <li>
               <img src={legalHomeLogo} alt="Legal Logo" className="logo-test" />
             </li>
             <li>
-               <a href="#home" onClick={handleHomeAdminClick}>Home</a>
+            <a href="#home" onClick={handleHomeAdminClick}>Home</a>
            </li>
             <li>
               <a href="#clients" onClick={handleUserManagementClick}>User Management</a>
             </li>
             <li>
-              <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
+              <a href="#case" onClick={handleCaseManagementClick} style={{ color: '#f6d41e' }}>Case Management</a>
             </li>
             <li>
-              <a href="#case" onClick={handleEventManagementClick}>Event Management</a>
-            </li>        
+              <a href="#casematter" onClick={handleEventManagementClick}>
+                Event Management
+              </a>
+            </li>
             <li>
               <a href="#casematter" onClick={handleMyCaseClick}>
                 My Case
@@ -180,7 +182,7 @@ const CaseManagementAdmin = () => {
             </li>
           </ul>
         </nav>
-    </aside>
+      </aside>
     <main className="admin-case-content">
       <div>
   <div className="admin-case-management">

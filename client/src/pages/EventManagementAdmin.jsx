@@ -13,49 +13,25 @@ import { useNavigate } from 'react-router-dom';
 import legalHomeLogo from './logo.png';
 import axios from 'axios';
 import caseLogo from './case-logo.png';
+import Swal from 'sweetalert2'; // Import SweetAlert2
+
 
 dayjs.extend(dayLocaleData);
 dayjs.locale('en');
 
-const App = () => {
-  const { token } = theme.useToken();
+const EventManagementAdmin = () => {
   const navigate = useNavigate();
-  const [staffCount, setStaffCount] = useState(0);
-  const [adminCount, setAdminCount] = useState(0);
-  const [clientCount, setClientCount] = useState(0);
-  const [caseCount, setCaseCount] = useState(0);
-  const [adminName, setAdminName] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
-  const events = [
-    { date: '2024-01-24', startTime: '10:00 AM', endTime: '12:00 PM', title: 'Formal Meeting with Mr. Henry' },
-    { date: '2024-01-27', startTime: '02:30 PM', endTime: '04:00 PM', title: 'Evidence Inspection' },
-    { date: '2024-01-28', startTime: '08:30 AM', endTime: '01:00 PM', title: 'Discussion of Case 007' },
-    { date: '2024-01-30', startTime: '09:00 AM', endTime: '12:30 PM', title: 'Crime Scene 003 Investigation' },
-  ];
-  
+  const [events, setEvents] = useState([]);  
 
   useEffect(() => {
-    const baseUrl = 'http://localhost:3001'; // Adjust the base URL based on your server configuration
-
-    axios.get('http://localhost:3001/profile-get-client-name')
-    .then(response => {
-      const { success, adminName, message } = response.data;
-
-      if (success) {
-        setAdminName(adminName);
-      } else {
-        setError(message);
-      }
-    })
-    .catch(error => {
-      console.error(error);
-      setError('Internal Server Error');
-    })
-    .finally(() => {
-      setLoading(false);
-    });
+    axios.get('http://localhost:3001/get-all-events-admin')
+      .then(response => {
+        console.log('Events:', response.data.events);
+        setEvents(response.data.events);
+      })
+      .catch(error => console.error('Error fetching events:', error));
   }, []);
+
 
   const onPanelChange = (value, mode) => {
     console.log(value.format('YYYY-MM-DD'), mode);
@@ -63,8 +39,7 @@ const App = () => {
 
   const dateFullCellRender = (value) => {
     const day = value.date();
-    const isEventDate = events.some((event) => dayjs(event.date).isSame(value, 'day'));
-    const [messageApi, contextHolder] = message.useMessage();
+    const isEventDate = events.some((event) => dayjs(event.event_date).isSame(value, 'day'));    const [messageApi, contextHolder] = message.useMessage();
     const error = () => {
       messageApi.open({
         type: 'error',
@@ -133,7 +108,7 @@ return (
 
   const handleBackClick = () => {
     // Navigate to Home
-    navigate('/HomeForStaff');
+    navigate('/Home');
   };
 
   const handleCreateEvent = () => {
@@ -174,7 +149,7 @@ return (
               <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
             </li>
             <li>
-              <a href="#casematter" onClick={handleEventManagementClick}>
+              <a href="#casematter" onClick={handleEventManagementClick} style={{ color: '#f6d41e' }}>
                 Event Management
               </a>
             </li>
@@ -280,14 +255,14 @@ return (
         <List
           className="list"
           dataSource={events}
-          renderItem={(item) => (
-          <List.Item>
-            <a href="#casematter" onClick={handleViewEventAdmin}>
-              {dayjs(item.date).format('YYYY-MM-DD')}: {item.title}
-              <br />
-              {item.startTime} - {item.endTime}
-            </a>
-          </List.Item>
+          renderItem={(item, index) => (
+            <List.Item>
+              <a href="#casematter" onClick={handleViewEventAdmin}>
+                {dayjs(item.event_date).format('YYYY-MM-DD')}: {item.event_name}
+                <br />
+                {item.event_time_start} - {item.event_time_end}
+              </a>
+            </List.Item>
           )}
         />
         <button className="create-back-button" onClick={handleBackClick}>
@@ -298,4 +273,4 @@ return (
   );
 };
 
-export default App;
+export default EventManagementAdmin;

@@ -140,7 +140,7 @@ const HomePage = () => {
             <img src={legalHomeLogo} alt="Legal Logo" className="logohome" />
             </li>
             <li>
-               <a href="#home" onClick={handleHomeAdminClick}>Home</a>
+            <a href="#home" onClick={handleHomeAdminClick} style={{ color: '#f6d41e' }}>Home</a>
            </li>
             <li>
               <a href="#clients" onClick={handleUserManagementClick}>User Management</a>

@@ -65,24 +65,6 @@ app.get('/api/alert/events/upcoming', (req, res) => {
   });
 });
 
-//get event details
-app.get('/events', (req, res) => {
-  const caseId = req.params.caseId;
-  console.log('Case ID:', caseId);
-  const query = 'SELECT * FROM `event` WHERE case_id = ?';
-
-  connection.query(query, [caseId], (error, results) => {
-    if (error) {
-      console.error('Error executing MySQL query: ', error);
-      res.status(500).json({ success: false, message: 'Internal Server Error' });
-    } else if (results.length === 0) {
-      return res.status(404).json({ success: false, message: 'Event not found' });       
-    } else {
-      console.log('Fetched event details:', results[0]);
-      return res.status(200).json({ success: true, caseData: results[0] });
-    }
-  });
-});
 
 app.post('/register', (req, res) => {
   const { email, password, name, role } = req.body;
@@ -606,6 +588,24 @@ app.get('/get-cases-client', (req, res) => {
 });
 
 
+app.get('/get-all-events-admin', (req, res) => {
+ 
+  // Fetch specific columns from the database
+  const selectQuery = "SELECT * FROM legal.event; ";
+
+  connection.query(selectQuery, (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else {
+      // Log the fetched data in the console
+      console.log('Fetched events:', results);
+
+      // Send the retrieved cases as a JSON response
+      return res.status(200).json({ success: true, events: results });
+    }
+  });
+});
 
 app.get('/get-all-cases-admin', (req, res) => {
  
@@ -714,8 +714,25 @@ app.delete('/delete-case/:caseId', (req, res) => {
   });
 });
 
+//create event
+app.post('/create-event', (req, res) => {
+  const staffId = req.session.username;
+  const { eventName, eventDesc, eventDate, eventStart, eventEnd } = req.body;
 
+  // Insert the case details into the database
+  const insertQuery = "INSERT INTO legal.event (event_name, event_desc, event_date, event_time_start, event_time_end) VALUES (?, ? , ?, ?, ?)";
 
+  connection.query(insertQuery, [eventName, eventDesc, eventDate, eventStart, eventEnd], (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    } else {
+      // Assuming success, you can send a response with the case_id
+      const caseId = results.insertId; // The auto-incremented case_id
+      return res.status(200).json({ success: true, caseId, message: 'Event created successfully!' });
+    }
+  });
+});
 
 app.post('/create-case', (req, res) => {
   const staffId = req.session.username;

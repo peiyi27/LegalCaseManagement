@@ -4,6 +4,11 @@
   margin-top: 10px; /* Adjust the margin-top to create space for the table */
 }
 
+.main-top-nav-case {
+  width: 988px;
+  background-color: #97a2ad;
+}
+
 .client-case-management table {
   width: 100%;
   border-collapse: collapse;
@@ -69,7 +74,6 @@
   padding: 20px;
   box-sizing: border-box;
   overflow: hidden; /* Hide the overflow to prevent double scrollbars */
-  background-color: #e2e2e2;
   opacity: 85%;
 }
   

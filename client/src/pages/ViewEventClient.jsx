@@ -75,7 +75,7 @@ const ViewEventClient = () => {
               </a>
             </li>
             <li>
-              <a href="#casematter" onClick={handleEventManagementClick}>
+              <a href="#casematter" onClick={handleEventManagementClick} style={{ color: '#f6d41e' }}>
                 Event Management
               </a>
             </li>

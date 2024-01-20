@@ -177,7 +177,7 @@ const UserManagementAdmin = () => {
                    <a href="#home" onClick={handleHomeAdminClick}>Home</a>
                </li>
                 <li>
-                  <a href="#clients" onClick={handleUserManagementClick}>User Management</a>
+                  <a href="#clients" onClick={handleUserManagementClick} style={{ color: '#f6d41e' }}>User Management</a>
                 </li>
                 <li>
                   <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
@@ -195,7 +195,6 @@ const UserManagementAdmin = () => {
             </nav>
           </aside>
           <main className="admin-user-content">
-            <button onClick={handleBackClick}>Back</button>
             <div className="admin-user-table-container">
               {/* External Users Table */}
               <div>
@@ -255,6 +254,9 @@ const UserManagementAdmin = () => {
               </div>
             </div>
           </main>
+          <button className="create-back-button" onClick={handleBackClick}>
+          Back
+        </button>
         </div>
       );
     };
