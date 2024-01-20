@@ -79,7 +79,7 @@ const HomePage = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
   };
 
   const handleHomeAdminClick = () => {

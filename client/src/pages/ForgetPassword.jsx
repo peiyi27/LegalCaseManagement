@@ -36,7 +36,7 @@ function ForgotPassword() {
         setResetPasswordError('');
         
         // Redirect to the login page
-        navigate('/Login');
+        navigate('');
       }
     } catch (err) {
       setResetPasswordError('Password reset failed.');
