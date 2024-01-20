@@ -7,6 +7,10 @@
   overflow: hidden; /* Hide the overflow to prevent double scrollbars */
 }
 
+.admin-case-management {
+  margin-top: 250px;
+}
+
 .admin-case-management .table-container {
   max-height: 600px; /* Increase the max-height of the table container */
   overflow: auto; /* Enable both vertical and horizontal scrolling */

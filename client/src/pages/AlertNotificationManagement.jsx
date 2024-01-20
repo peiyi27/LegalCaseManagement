@@ -6,14 +6,14 @@ import './AlertNotificationManagement.css';
 
 const AlertNotificationManagement = () => {
   const [notifications, setNotifications] = useState([]);
-  const [unreadCount, setUnreadCount] = useState(0);
+  const [unreadCount, setUnreadCount] = useState(0); //no need
 
   useEffect(() => {
     // Replace this with the actual endpoint where you fetch notifications
     axios.get('/api/alert/notifications')
       .then(response => {
         setNotifications(response.data.notifications);
-        setUnreadCount(response.data.unreadCount);
+        setUnreadCount(response.data.unreadCount); // no need
       })
       .catch(error => {
         console.error('Error fetching notifications:', error);
@@ -21,11 +21,11 @@ const AlertNotificationManagement = () => {
   }, []);
 
   const handleNotificationClick = (notification) => {
-    // Logic to handle notification click
+    // Logic to handle notification click retrive database
   };
 
   const handleClearNotifications = () => {
-    // Logic to clear all notifications
+    // Logic to clear all notifications no need!!!
   };
 
   return (
@@ -37,7 +37,7 @@ const AlertNotificationManagement = () => {
             {notifications.length === 0 ? (
               <Menu.Item disabled>No notifications</Menu.Item>
             ) : (
-              notifications.slice(0, 4).map((notification) => (
+              notifications.slice(0, 4).map((notification) => ( // noti display limit
                 <Menu.Item
                   key={notification.id}
                   className={notification.read ? "notification-read" : "notification-unread"}

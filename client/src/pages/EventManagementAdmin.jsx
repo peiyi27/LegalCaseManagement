@@ -133,7 +133,7 @@ return (
 
   const handleBackClick = () => {
     // Navigate to Home
-    navigate('/HomeForStaff');
+    navigate('/Home');
   };
 
   const handleCreateEvent = () => {
@@ -174,7 +174,7 @@ return (
               <a href="#case" onClick={handleCaseManagementClick}>Case Management</a>
             </li>
             <li>
-              <a href="#casematter" onClick={handleEventManagementClick}>
+              <a href="#casematter" onClick={handleEventManagementClick} style={{ color: '#f6d41e' }}>
                 Event Management
               </a>
             </li>
