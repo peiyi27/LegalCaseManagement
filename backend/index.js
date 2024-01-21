@@ -9,7 +9,8 @@ import dotenv from 'dotenv';
 
 const app = express();
 const port = process.env.PORT || 3001;
-dotenv.config();
+require('dotenv').config();
+
 
 app.use(cors({
   origin: ["http://localhost:3000"],
