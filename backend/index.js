@@ -16,6 +16,7 @@ app.use(cors({
   methods: ["POST", "GET", "PUT", "DELETE"],
   credentials: true
 }));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
