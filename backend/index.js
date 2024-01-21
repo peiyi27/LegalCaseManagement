@@ -12,8 +12,8 @@ const port = process.env.PORT || 3001;
 dotenv.config();
 
 app.use(cors({
-  origin: ["http://localhost:3000"],
-  methods: ["POST", "GET",'PUT', 'DELETE'],
+  origin: ["https://legalcasemanagement.onrender.com"],
+  methods: ["POST", "GET", "PUT", "DELETE"],
   credentials: true
 }));
 app.use(express.json());
